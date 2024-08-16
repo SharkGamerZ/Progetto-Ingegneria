@@ -2,6 +2,7 @@
 
 #include <string>
 #include <ctime>
+#include <vector>
 using namespace std;
 
 struct Articolo {
@@ -18,7 +19,7 @@ struct Articolo {
 struct Ordine {
     int ID;
     string ID_Customer;
-    Articolo *articoli;
+    vector<Articolo> articoli;
     time_t istante;
     int ID_Spedizione;
 };
@@ -29,7 +30,7 @@ struct Spedizione {
     int ID_Ordine;
     int ID_Mezzo;
     time_t presa_in_gestione;
-    int *ID_Magazzini;
-    time_t arriviMagazzini;
+    vector<int>     ID_Magazzini;
+    vector<time_t>  arriviMagazzini;
     time_t arrivoConsegna;
 };
