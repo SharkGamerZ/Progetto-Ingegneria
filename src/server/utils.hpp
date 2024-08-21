@@ -1,4 +1,5 @@
-#pragma once
+#ifndef UTILS_HPP
+#define UTILS_HPP
 
 #include <string>
 #include <ctime>
@@ -34,3 +35,4 @@ struct Spedizione {
     vector<time_t>  arriviMagazzini;
     time_t arrivoConsegna;
 };
+#endif
