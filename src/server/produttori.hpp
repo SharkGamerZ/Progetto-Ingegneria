@@ -21,4 +21,10 @@ struct Magazzino {
     string indirizzo;
     int ID_Produttore; // ID del produttore proprietario
 };
+
+/* Includere il produttore è inutile perché crea ridondanza visto che il magazzino 
+è di un singolo produttore */
+void nuovoArticolo(Magazzino *magaz, Articolo *arti);
+    
+
 #endif
