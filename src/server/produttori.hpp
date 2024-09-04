@@ -22,9 +22,12 @@ struct Magazzino {
     int ID_Produttore; // ID del produttore proprietario
 };
 
-/* Includere il produttore è inutile perché crea ridondanza visto che il magazzino 
-è di un singolo produttore */
-void nuovoArticolo(Magazzino *magaz, Articolo *arti);
+/* Prototipo di funzione per aggiungere un nuovo articolo, di un certo produttore in un certo magazzino */
+void nuovoArticolo(Magazzino *magaz, Articolo *arti, Produttore *prod);
     
+/* Prototipo di funzione per modificare un certo articolo di un certo produttore */
+void modificaArticolo(int ID_Articolo, Magazzino *magaz = NULL, string nome = "", string descrizione = "", float prezzo = -1, int sconto = -1, int qta = -1);
+
+
 
 #endif
