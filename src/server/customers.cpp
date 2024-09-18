@@ -82,3 +82,8 @@ void buyCart(Customer c) {
 Ordine[] getPastOrders (Customer c) {
 	// TODO query per prendere gli ordini passati
 }
+
+
+void updateCustomer (Customer oldCust, Customer newCust) {
+	// TODO query con la update
+}

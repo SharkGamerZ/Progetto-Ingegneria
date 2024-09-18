@@ -34,11 +34,26 @@ struct Spedizione {
     bool stato;
 };
 
-/** Prototipo di funzione per modificare un certo articolo di un certo produttore
+/** TODO Prototipo di funzione per modificare un certo articolo di un certo produttore
  * 
  * @param oldArt Articolo da modificare
  * @param newArt Articolo con i nuovi dati
  */
 void updateProduct(Articolo oldArt, Articolo newArt);
 
+
+/** TODO Prototipo di funzione per ricercare i prodotti in vendita.
+ *  Deve fare un check qta > 0;
+ * 
+ * @return Lista di tutti gli articoli in vendita.
+ */
+Articolo[] getProducts();
+
+
+/** TODO Prototipo di funzione per ricercare i prodotti in vendita con dei filtri.
+ *  I filtri includeranno produttore, nome, qta, prezzo.
+ * 
+ * @return Lista di tutti gli articoli in vendita.
+ */
+Articolo[] getFilteredProducts(Filters f);
 #endif

@@ -67,10 +67,10 @@ Funzionalità
 Customers
 Hanno tutti bisogno di login.
 Possono:
-[ ]	- Vedere i prodotti messi in vendita dai produttori.
+[x]	- Vedere i prodotti messi in vendita dai produttori.
 		Articolo[] getProducts(); utils.cpp
 
-[ ]	- Ricercare un prodotto con vari filtri.
+[x]	- Ricercare un prodotto con vari filtri.
 		Articolo[] getFilteredProducts(Filters f); utils.cpp	
 
 [x]	-  Aggiungere un prodotto al proprio carrello.
@@ -87,21 +87,21 @@ Possono:
 			- Svuotare il carrello
 
 
-[ ]	- Visualizzare tracciamento pacco. (Da estendere dopo)
-		- bool getOrderStateCustomer(Ordine o, Customer c); customers.cpp
+[x]	- Visualizzare tracciamento pacco. (Da estendere dopo)
+		- bool getOrderState(Ordine o); utils.cpp
 
-[ ]	- Lasciare una recensione per un articolo, il venditore e il trasportatore. (Da rivedere dopo)
 		
 
 
-[ ]	- Visualizzare i propri ordini passati.
+[x]	- Visualizzare i propri ordini passati.
 		Ordine[] getPastOrders (Customer c); customers.cpp
 
-[ ]	- Aggiungere un metodo di pagamento all’account. (dopo)
 
+[x]	- Aggiornare i dati di un account.
+		void updateCustomer(Customer oldCust, Customer newCust); customers.cpp
 
-[ ]	- Aggiungere un indirizzo di spedizione all’account.
-		void addAddress(String Indirizzo); customers.cpp
+[ ]	- Lasciare una recensione per un articolo, il venditore e il trasportatore. (Da rivedere dopo)
+
 
 
 Produttori
@@ -117,7 +117,7 @@ Possono:
 
 
 	- Vedere lo stato di una spedizione.
-		bool getOrderStateProducer(Ordine o, Produttore p); produttori.cpp
+		bool getOrderState(Ordine o); utils.cpp
 
 	- Marcare un prodotto come discontinuo.
 		void setDiscontinuedProduct(Articolo a, Produttore p); produttori.cpp
