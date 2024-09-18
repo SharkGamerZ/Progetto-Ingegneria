@@ -35,4 +35,8 @@ struct Spedizione {
     vector<time_t>  arriviMagazzini;
     time_t arrivoConsegna;
 };
+
+/* Prototipo di funzione per modificare un certo articolo di un certo produttore */
+void updateProduct(Articolo oldArt, Articolo newArt);
+
 #endif
