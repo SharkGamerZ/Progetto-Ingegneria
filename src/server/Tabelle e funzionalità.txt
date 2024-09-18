@@ -1,0 +1,139 @@
+Tabelle:
+1) Customers:
+	- CF (ID)
+	- Nome
+	- Cognome
+	- Indirizzo
+	- Data nascita
+	- Metodi di pagamento (forse)
+	- Ordini (Req.5)
+	- Carrello (Req. 6)
+
+
+2) Produttori
+	- P.IVA (ID)
+	- Ragione Sociale
+	- Sede
+	- Prodotti (Req. 4)
+
+
+3) Trasportatori
+	- P.IVA (ID)
+	- Ragione Sociale
+	- Sede
+	- Spedizioni assegnate (Req.7)
+
+
+
+4) Articoli
+	- Nome
+	- Descrizione
+	- Produttore che li fa (Req.2)
+	- Costo
+	- Quantità
+	- Discontinuo bool
+
+
+
+5) Ordini
+	- Lista di Articoli (Req. 4)
+	- Customer (Req.1)
+	- Istante
+
+
+6) Carrello
+	- Customer proprietario (Req. 1)
+	- Prodotti contenuti (Req.4)
+
+
+
+7) Spedizione
+	- Ordine a cui si riferisce (Req.5)
+	- Trasportatore assegnato (Req. 3)
+	- Stato spedizione ordine bool
+	- Istante presa in gestione
+
+
+
+----------------------------------
+
+
+
+Funzionalità
+
+
+
+
+Customers
+Hanno tutti bisogno di login.
+Possono:
+[ ]	- Vedere i prodotti messi in vendita dai produttori.
+		Articolo[] getProducts(); utils.cpp
+
+[ ]	- Ricercare un prodotto con vari filtri.
+		Articolo[] getFilteredProducts(Filters f); utils.cpp	
+
+[x]	-  Aggiungere un prodotto al proprio carrello.
+		void addProductToCart(Articolo x, Customer c); customers.cpp
+			- Fare un check che l'articolo aggiunto sia effettivamente disponibile
+
+[x]	- Acquistare il contenuto del proprio carrello.
+		void buyCart(Customer c); customers.cpp
+			- Creare un ordine con i prodotti del carrello
+				- usando void addOrder(Order o);
+			- Diminuire quantità presenti in magazzino
+			- Crea una spedizione e gliela assegna
+				- void newShipping(Order o); trasportatori.cpp
+			- Svuotare il carrello
+
+
+[ ]	- Visualizzare tracciamento pacco. (Da estendere dopo)
+		- bool getOrderStateCustomer(Ordine o, Customer c); customers.cpp
+
+[ ]	- Lasciare una recensione per un articolo, il venditore e il trasportatore. (Da rivedere dopo)
+		
+
+
+[ ]	- Visualizzare i propri ordini passati.
+		Ordine[] getPastOrders (Customer c); customers.cpp
+
+[ ]	- Aggiungere un metodo di pagamento all’account. (dopo)
+
+
+[ ]	- Aggiungere un indirizzo di spedizione all’account.
+		void addAddress(String Indirizzo); customers.cpp
+
+
+Produttori
+Hanno tutti bisogno di login.
+Possono:
+	- Mettere in vendita un nuovo articolo. (Aggiungere un nuovo prodotto o rimpizarne la quantità)
+		void addStock (Articolo a, Quantità q); produttori.cpp 
+			- In caso l'articolo a non esiste, lo crea e gli assegna la quantità q.
+			- In caso esista, prende la quantità q' di a, e gli assegna q + q'.
+
+	- Modificare proprietà di un articolo.
+		void updateProduct(Articolo old, Articolo new); utils.cpp
+
+
+	- Vedere lo stato di una spedizione.
+		bool getOrderStateProducer(Ordine o, Produttore p); produttori.cpp
+
+	- Marcare un prodotto come discontinuo.
+		void setDiscontinuedProduct(Articolo a, Produttore p); produttori.cpp
+
+	- Visualizzare i propri articoli venduti.
+		Ordine[] getPastOrders (Produttore p); produttori.cpp
+
+
+
+Trasportatori
+Possono:
+	- Visualizzare tutte le proprie spedizioni.
+		Spedizione[] getShippings(Trasportatore t); trasportatori.cpp
+
+	- Aggiornare lo stato di una spedizione.
+		void updateShipping(Trasportatore t, Spedizione old, Spedizione new); trasportatori.cpp
+
+	- Prendere in carico un ordine.
+		void newShipping(Order o); utils.cpp

@@ -29,10 +29,8 @@ struct Ordine {
 struct Spedizione {
     int ID;
     int ID_Ordine;
-    int ID_Mezzo;
+    int ID_Trasportatore;
     time_t presa_in_gestione;
-    vector<int>     ID_Magazzini;
-    vector<time_t>  arriviMagazzini;
-    time_t arrivoConsegna;
+    bool stato;
 };
 #endif
