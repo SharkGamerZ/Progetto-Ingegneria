@@ -43,4 +43,26 @@ struct Spedizione {
  */
 void updateProduct(Articolo oldArt, Articolo newArt);
 
+/** Prototipo di funzione che permette di vedere lo stato di un prodotto 
+ * 
+ * @param o Ordine da controllare
+ * @return true se l'ordine è stato consegnato, false altrimenti
+ */
+bool getOrderState(Ordine o);
+
+
+bool getOrderState(Ordine o) {
+    bool delivered = false;
+    bool exist = false; // TODO query per controllare se nell'ordine è presente 
+
+    if (!exist) {
+        delivered = true; // TODO query per controllare se l'ordine è stato consegnato
+    }
+    else {
+        throw -1;
+    }
+
+    return delivered;
+}
+
 #endif

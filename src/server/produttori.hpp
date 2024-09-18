@@ -30,13 +30,6 @@ struct Magazzino {
  */
 void addProduct(Articolo a);
 
-/** Prototipo di funzione che permette ad un produttore di vedere lo stato di una spedizione in cui è presente un articolo da lui prodotto 
- * 
- * @param o Ordine da controllare
- * @return true se l'ordine è stato consegnato, false altrimenti
- */
-bool getOrderStateProducer(Ordine o);
-
 /** Prototipo di funzione che permette di marcare un prodotto come discontinuo
  * 
  * @param a Articolo da marcare come discontinuo
