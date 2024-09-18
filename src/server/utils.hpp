@@ -33,4 +33,12 @@ struct Spedizione {
     time_t presa_in_gestione;
     bool stato;
 };
+
+/** Prototipo di funzione per modificare un certo articolo di un certo produttore
+ * 
+ * @param oldArt Articolo da modificare
+ * @param newArt Articolo con i nuovi dati
+ */
+void updateProduct(Articolo oldArt, Articolo newArt);
+
 #endif
