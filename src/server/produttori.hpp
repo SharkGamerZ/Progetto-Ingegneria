@@ -24,16 +24,30 @@ struct Magazzino {
 
 /* TODO magari forse potrebbe essere utile implementare qualche sicurezza */
 
-/* Prototipo di funzione che aggiunge nel DB un nuovo articolo */
+/** Prototipo di funzione che aggiunge nel DB un nuovo articolo 
+ * 
+ * @param a Articolo da aggiungere
+ */
 void addProduct(Articolo a);
 
-/* Prototipo di funzione che permette ad un produttore di vedere lo stato di una spedizione in cui è presente un articolo da lui prodotto */
+/** Prototipo di funzione che permette ad un produttore di vedere lo stato di una spedizione in cui è presente un articolo da lui prodotto 
+ * 
+ * @param o Ordine da controllare
+ * @return true se l'ordine è stato consegnato, false altrimenti
+ */
 bool getOrderStateProducer(Ordine o);
 
-/* Prototipo di funzione che permette di marcare un prodotto come discontinuo */
+/** Prototipo di funzione che permette di marcare un prodotto come discontinuo
+ * 
+ * @param a Articolo da marcare come discontinuo
+*/
 void setDiscontinuedProduct(Articolo a);
 
-/* Prototipo di funzione che ritorna i propri articoli venduti */
+/** Prototipo di funzione che ritorna i propri articoli venduti
+ * 
+ * @param p Produttore di cui si vogliono vedere gli articoli venduti
+ * @return Vector di articoli venduti
+ */
 vector<Articolo> getPastOrders(Produttore p);
 
 

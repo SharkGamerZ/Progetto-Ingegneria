@@ -36,7 +36,11 @@ struct Spedizione {
     time_t arrivoConsegna;
 };
 
-/* Prototipo di funzione per modificare un certo articolo di un certo produttore */
+/** Prototipo di funzione per modificare un certo articolo di un certo produttore
+ * 
+ * @param oldArt Articolo da modificare
+ * @param newArt Articolo con i nuovi dati
+ */
 void updateProduct(Articolo oldArt, Articolo newArt);
 
 #endif
