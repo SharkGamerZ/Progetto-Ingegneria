@@ -29,14 +29,12 @@ struct Ordine {
 struct Spedizione {
     int ID;
     int ID_Ordine;
-    int ID_Mezzo;
+    int ID_Trasportatore;
     time_t presa_in_gestione;
-    vector<int>     ID_Magazzini;
-    vector<time_t>  arriviMagazzini;
-    time_t arrivoConsegna;
+    bool stato;
 };
 
-/** Prototipo di funzione per modificare un certo articolo di un certo produttore
+/** TODO Prototipo di funzione per modificare un certo articolo di un certo produttore
  * 
  * @param oldArt Articolo da modificare
  * @param newArt Articolo con i nuovi dati
@@ -65,4 +63,19 @@ bool getOrderState(Ordine o) {
     return delivered;
 }
 
+
+/** TODO Prototipo di funzione per ricercare i prodotti in vendita.
+ *  Deve fare un check qta > 0;
+ * 
+ * @return Lista di tutti gli articoli in vendita.
+ */
+Articolo[] getProducts();
+
+
+/** TODO Prototipo di funzione per ricercare i prodotti in vendita con dei filtri.
+ *  I filtri includeranno produttore, nome, qta, prezzo.
+ * 
+ * @return Lista di tutti gli articoli in vendita.
+ */
+Articolo[] getFilteredProducts(Filters f);
 #endif

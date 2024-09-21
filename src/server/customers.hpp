@@ -1,10 +1,10 @@
 #include "utils.hpp"
 
 struct Customer {
+    string CF;
     string nome;
     string cognome;
     string mail;
-    string password;
 
     vector<Articolo> carrello;
     vector<Ordine> ordini_passati;
