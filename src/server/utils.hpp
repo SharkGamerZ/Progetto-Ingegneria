@@ -69,7 +69,7 @@ bool getOrderState(Ordine o) {
  * 
  * @return Lista di tutti gli articoli in vendita.
  */
-Articolo[] getProducts();
+vector<Articolo> getProducts();
 
 
 /** TODO Prototipo di funzione per ricercare i prodotti in vendita con dei filtri.
@@ -77,5 +77,5 @@ Articolo[] getProducts();
  * 
  * @return Lista di tutti gli articoli in vendita.
  */
-Articolo[] getFilteredProducts(Filters f);
+vector<Articolo> getFilteredProducts(Filters f);
 #endif
