@@ -11,7 +11,7 @@
  * 
  */
 void addProductToCart(Articolo a, Customer c) {
-	cart = c.carrello;
+		vector<Articolo> cart = c.carrello;	
 
 	// Placeholder per la quantità, TODO da aggiungere
 	qta = 1;
