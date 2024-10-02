@@ -29,7 +29,7 @@ struct Ordine {
 struct Spedizione {
     int ID;
     int ID_Ordine;
-    int ID_Trasportatore;
+    string ID_Trasportatore;
     time_t presa_in_gestione;
     bool stato;
 };
@@ -79,4 +79,7 @@ vector<Articolo> getProducts();
  * @return Lista di tutti gli articoli in vendita.
  */
 vector<Articolo> getFilteredProducts(int id);
+
+void newShipping(Ordine o);
+
 #endif
