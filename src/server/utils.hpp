@@ -78,6 +78,7 @@ vector<Articolo> getProducts();
  * 
  * @return Lista di tutti gli articoli in vendita.
  */
+
 vector<Articolo> getFilteredProducts(int id);
 
 void newShipping(Ordine o);
