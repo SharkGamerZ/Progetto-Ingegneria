@@ -1,17 +1,12 @@
-cmake_minimum_required(VERSION 3.28)
+project (ing CXX)
 
-project (nome CXX)
+set(CMAKE_CXX_STANDARD 23)
 
-set (CMAKE_CXX_STANDARD 20)
+set(SOURCE_FILES
+    src/main.cpp
+    src/server/Customer.cpp
+    src/server/Shipper.cpp
+    src/server/Supplier.cpp
+)
 
-set(SOURCE_FILES        
-        src/main.cpp
-        src/server/customers.cpp
-        src/server/produttori.cpp
-
-        src/dbutils/pgutils.cpp
-        src/dbutils/rdutils.cpp
-        )
-
-# Aggiungi tutte le sorgenti del progetto
-add_executable(nome ${SOURCE_FILES})
+add_executable(ing ${SOURCE_FILES})

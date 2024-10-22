@@ -11,7 +11,7 @@
  * 
  */
 void Customer::addProductToCart(Product p, int qta) {
-	map<Product,int> cart = this->cart;
+	map<int,int> cart = this->cart;
 	
 	// Controlla la disponibilità dell'articolo
 	if (p.quantity < qta) {
@@ -19,28 +19,28 @@ void Customer::addProductToCart(Product p, int qta) {
 	}
 	
 	// Controlla se l'articolo è già presente nel carrello
-	if (cart.find(p) != cart.end()) {
-		cart[p] += qta;
+	if (cart.find(p.ID) != cart.end()) {
+		cart[p.ID] += qta;
 	} else {
-		cart[p] = qta;
+		cart[p.ID] = qta;
 	}
 
 	// TODO le cose per salvarlo su redis
 }
 
 void Customer::removeProductFromCart(Product p, int qta) {
-	map<Product,int> cart = this->cart;
+	map<int,int> cart = this->cart;
 	
 	// Controlla se l'articolo è presente nel carrello
 	// e se la quantità da rimuovere è minore o uguale a quella presente
-	if (cart.find(p) == cart.end() || cart[p] < qta) {
+	if (cart.find(p.ID) == cart.end() || cart[p.ID] < qta) {
 		throw -1;
 	}
 
-	if (cart[p] == qta) {
-		cart.erase(p);
+	if (cart[p.ID] == qta) {
+		cart.erase(p.ID);
 	} else {
-		cart[p] -= qta;
+		cart[p.ID] -= qta;
 
 
 	}
@@ -64,22 +64,23 @@ void buyCart(Customer customer) {
 	order.products = customer.cart;
 
 	// TODO Fare query che restituisce quantita' dei vari prodotti
+	// La query dovra' tornare una mappa ProductID->Quantity
 	vector<int> qta = {0};
 
 	// Controlla se c'è la quantità di articoli necessaria.
-	map<Product, int>::iterator it;
+	map<int, int>::iterator it;
 	for (it = order.products.begin(); it != order.products.end(); it++) {
-		Product product = it-> first;
+		int productID = it-> first;
 		int quantityOrdered = it-> second;
 
 
 		// Controlla che ci sia la quantita' necessaria
-		if (product.quantity < quantityOrdered) {
+		if (qta[productID] < quantityOrdered) {
 			throw -1;
 		}
 		
 		// Aggiorna la quantità
-		product.quantity -= quantityOrdered;
+		qta[productID] -= quantityOrdered;
 	}
 
 	// Crea la spedizione (TODO Romina)

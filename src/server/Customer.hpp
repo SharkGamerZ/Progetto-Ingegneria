@@ -3,7 +3,7 @@
 
 class Customer : public User {
 public:
-    map<Product, int> cart;
+    map<int, int> cart;         // Maps ProductIDs to quantities
     vector<Order> pastOrders;
 
     /**

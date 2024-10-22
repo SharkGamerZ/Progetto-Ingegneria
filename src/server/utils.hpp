@@ -30,7 +30,7 @@ public:
     int ID;
     int customerID;
     int shipmentID;
-    map<Product, int> products;
+    map<int, int> products;
     time_t orderTime;
 
 };
