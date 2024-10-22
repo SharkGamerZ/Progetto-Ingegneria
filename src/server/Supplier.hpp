@@ -26,22 +26,22 @@ struct Magazzino {
 
 /** Prototipo di funzione che aggiunge nel DB un nuovo articolo 
  * 
- * @param a Articolo da aggiungere
+ * @param a Product da aggiungere
  */
-void addProduct(Articolo a);
+void addProduct(Product a);
 
 /** Prototipo di funzione che permette di marcare un prodotto come discontinuo
  * 
- * @param a Articolo da marcare come discontinuo
+ * @param a Product da marcare come discontinuo
 */
-void setDiscontinuedProduct(Articolo a);
+void setDiscontinuedProduct(Product a);
 
 /** Prototipo di funzione che ritorna i propri articoli venduti
  * 
  * @param p Produttore di cui si vogliono vedere gli articoli venduti
  * @return Vector di articoli venduti
  */
-vector<Articolo> getPastOrders(Produttore p);
+vector<Product> deleteSoldProducts(Produttore p);
 
 
 
