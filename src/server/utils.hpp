@@ -4,6 +4,7 @@
 #include <ctime>
 #include <vector>
 #include <map>
+#include <iostream>
 using namespace std;
 
 
@@ -28,7 +29,7 @@ class Order {
 public:
     int ID;
     int customerID;
-    int deliveryID;
+    int shipmentID;
     map<Product, int> products;
     time_t orderTime;
 
@@ -64,3 +65,4 @@ vector<Product> getProducts();
  * @return Lista di tutti gli articoli in vendita.
  */
 vector<Product> getFilteredProducts(int id);
+
