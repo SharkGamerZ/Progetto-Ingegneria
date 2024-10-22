@@ -7,8 +7,8 @@ class User {
 public:
     int ID;
     string CF;
-    string nome;
-    string cognome;
+    string name;
+    string surname;
     string email;
 
     ofstream *file;

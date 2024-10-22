@@ -1,7 +1,9 @@
-#ifndef MAIN_HPP
-#define MAIN_HPP
+#pragma once
 
 #include <stdio.h>
+#include "server/utils.hpp"
+#include "server/Customer.hpp"
 #include "server/Supplier.hpp"
+#include "server/Shipper.hpp"
 
-#endif
+
