@@ -1,18 +1,46 @@
 #include "main.hpp"
+#include <cstdio>
 
+
+void populateDB() {
+    pqxx::connection conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+    pqxx::work w(conn);
+
+    w.exec("INSERT INTO users (cf, name, surname, email) VALUES ('MRCMS','Mario', 'Rossi','mail' )");
+    w.exec("INSERT INTO users (cf, name, surname, email) VALUES ('LGV','Luigi', 'Verdi','mail' )");
+    w.exec("INSERT INTO users (cf, name, surname, email) VALUES ('GBNC','Giovanni', 'Bianchi','mail' )");
+
+    w.commit();
+}
 
 
 void testCustomer() {
-    Customer c;
-    c.name = "Mario";
-    c.surname = "Rossi";
-    c.ID = 1;
+    string query = "SELECT name,surname,id FROM users";
 
-    printf("Customer: %s %s, ID: %d\n", c.name.c_str(), c.surname.c_str(), c.ID);
-}
+    pqxx::connection conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+    pqxx::work w(conn);
+
+    
+    for (auto [name, surname, id] : w.query<string, string, int>(query)) {
+        cout << name << " " << surname << " " << id << endl;
+    }
+    pqxx::result r = w.exec(query);
+    w.commit();
+ }
 
 int main() {
-    printf("Ciao!\n");
+    cout<<"Initializing DB"<<endl;
+    initDB();
+
+
+    cout<<"Populating DB"<<endl;
+    populateDB();
+
+
+    cout<<"Testing Customers"<<endl;
     testCustomer();
+
+
 }
+
 

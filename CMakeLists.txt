@@ -7,6 +7,8 @@ set(SOURCE_FILES
     src/server/Customer.cpp
     src/server/Shipper.cpp
     src/server/Supplier.cpp
+    src/dbutils/pgutils.cpp
 )
 
 add_executable(ing ${SOURCE_FILES})
+target_link_libraries(ing PRIVATE -lhiredis -lpqxx)

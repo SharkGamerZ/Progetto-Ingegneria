@@ -6,4 +6,6 @@
 #include "server/Supplier.hpp"
 #include "server/Shipper.hpp"
 
+#include "dbutils/pgutils.hpp"
+
 
