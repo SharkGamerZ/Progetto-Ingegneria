@@ -1,14 +1,22 @@
 #include "main.hpp"
 #include <cstdio>
+#include <string>
+#include <vector>
 
 
-void populateDB() {
+void populateDB(int n) {
     pqxx::connection conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
     pqxx::work w(conn);
 
-    w.exec("INSERT INTO users (cf, name, surname, email) VALUES ('MRCMS','Mario', 'Rossi','mail' )");
-    w.exec("INSERT INTO users (cf, name, surname, email) VALUES ('LGV','Luigi', 'Verdi','mail' )");
-    w.exec("INSERT INTO users (cf, name, surname, email) VALUES ('GBNC','Giovanni', 'Bianchi','mail' )");
+    vector<string> names = getRandomNames(n);
+    vector<string> surnames = getRandomSurnames(n);
+
+    for (int i = 0; i < n; i++) {
+        string query = "INSERT INTO users (cf, name, surname, email) VALUES ('" + to_string(i) + "','" + names[i] + "', '" + surnames[i] + "','mail' )";
+
+        w.exec(query);
+    }
+
 
     w.commit();
 }
@@ -29,15 +37,15 @@ void testCustomer() {
  }
 
 int main() {
-    cout<<"Initializing DB"<<endl;
+    cout<<"[INFO]Initializing DB"<<endl;
     initDB();
 
 
-    cout<<"Populating DB"<<endl;
-    populateDB();
+    cout<<"[INFO]Populating DB"<<endl;
+    populateDB(50000);
 
 
-    cout<<"Testing Customers"<<endl;
+    cout<<"[INFO]Testing Customers"<<endl;
     testCustomer();
 
 

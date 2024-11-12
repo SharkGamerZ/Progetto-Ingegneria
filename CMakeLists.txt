@@ -8,6 +8,7 @@ set(SOURCE_FILES
     src/server/Shipper.cpp
     src/server/Supplier.cpp
     src/dbutils/pgutils.cpp
+    src/test-generator/generator.cpp
 )
 
 add_executable(ing ${SOURCE_FILES})

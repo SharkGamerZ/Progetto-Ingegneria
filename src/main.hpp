@@ -8,4 +8,5 @@
 
 #include "dbutils/pgutils.hpp"
 
+#include "test-generator/generator.hpp"
 
