@@ -102,25 +102,29 @@ void createTables(pqxx::connection &conn) {
         w.exec("CREATE TABLE products (id SERIAL PRIMARY KEY, \
                                         name VARCHAR(255) NOT NULL, \
                                         description VARCHAR(255) NOT NULL, \
-                                        price FLOAT NOT NULL, \
+                                        price REAL NOT NULL, \
                                         stock INTEGER NOT NULL)");
-        
-        w.exec("CREATE TABLE shippings (id SERIAL PRIMARY KEY, \
+
+        w.exec("CREATE TABLE orders (id SERIAL PRIMARY KEY, \
+                                    customer INTEGER NOT NULL references customers(userID), \
+                                    instant timestamp NOT NULL)");
+
+       
+        w.exec("CREATE TABLE shippings (orderID INTEGER PRIMARY KEY references orders(id), \
                                         shipper INTEGER NOT NULL references shippers(userID), \
                                         handlingtime timestamp NOT NULL, \
                                         state BOOLEAN NOT NULL)");
 
 
-        w.exec("CREATE TABLE orders (id SERIAL PRIMARY KEY, \
-                                    customer INTEGER NOT NULL references customers(userID), \
-                                    shipping INTEGER NOT NULL references shippings(id), \
-                                    instant timestamp NOT NULL)");
+        w.exec("CREATE TABLE orderProducts (orderID INTEGER NOT NULL references orders(id), \
+                                            product INTEGER NOT NULL references products(id), \
+                                            quantity INTEGER NOT NULL, \
+                                            PRIMARY KEY (orderID, product))");
 
-
-        w.exec("CREATE TABLE cart (id SERIAL PRIMARY KEY, \
-                                    customer INTEGER NOT NULL references customers(userID), \
+        w.exec("CREATE TABLE cart (customer INTEGER NOT NULL references customers(userID), \
                                     product INTEGER NOT NULL references products(id), \
-                                    quantity INTEGER NOT NULL)");
+                                    quantity INTEGER NOT NULL, \
+                                    PRIMARY KEY (customer, product))");
 
         w.commit();
     } catch (const std::exception &e) {

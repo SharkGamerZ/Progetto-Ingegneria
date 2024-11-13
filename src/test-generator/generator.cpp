@@ -93,3 +93,45 @@ vector<string> getRandomProducts(int n) {
 }
 
 
+vector<string> getRandomProductNames(int n) {
+    srand(time(NULL));
+
+    vector<string> productNames;
+
+    // Reads from files and gets random names
+    ifstream file("../src/test-generator/products.txt");
+    string productName;
+    while (getline(file, productName)) {
+        productNames.push_back(productName);
+    }
+    
+    vector<string> randomProductNames;
+    for (int i = 0; i < n; i++) {
+        int randomIndex = rand() % productNames.size();
+        randomProductNames.push_back(productNames[randomIndex]);
+    }
+
+    return randomProductNames;
+}
+
+
+vector<string> getRandomAdjectives(int n) {
+    srand(time(NULL));
+
+    vector<string> adjectives;
+
+    // Reads from files and gets random names
+    ifstream file("../src/test-generator/adjectives.txt");
+    string adjective;
+    while (getline(file, adjective)) {
+        adjectives.push_back(adjective);
+    }
+
+    vector<string> randomAdjectives;
+    for (int i = 0; i < n; i++) {
+        int randomIndex = rand() % adjectives.size();
+        randomAdjectives.push_back(adjectives[randomIndex]);
+    }
+
+    return randomAdjectives;
+}
