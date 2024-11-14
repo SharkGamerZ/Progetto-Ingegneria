@@ -148,7 +148,7 @@ TEST-GENERATOR
 [x] suppliers
 [x] shippers
 [x] products
-[ ] orders
-[ ] shippings
-[ ] orderProducts
-[ ] cart
+[x] orders
+[x] orderProducts
+[x] shippings
+[x] cart

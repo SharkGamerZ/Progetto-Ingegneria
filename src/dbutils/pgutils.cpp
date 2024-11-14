@@ -112,7 +112,7 @@ void createTables(pqxx::connection &conn) {
        
         w.exec("CREATE TABLE shippings (orderID INTEGER PRIMARY KEY references orders(id), \
                                         shipper INTEGER NOT NULL references shippers(userID), \
-                                        handlingtime timestamp NOT NULL, \
+                                        handlingtime timestamp, \
                                         state BOOLEAN NOT NULL)");
 
 
@@ -121,10 +121,41 @@ void createTables(pqxx::connection &conn) {
                                             quantity INTEGER NOT NULL, \
                                             PRIMARY KEY (orderID, product))");
 
-        w.exec("CREATE TABLE cart (customer INTEGER NOT NULL references customers(userID), \
+        w.exec("CREATE TABLE carts (customer INTEGER NOT NULL references customers(userID), \
                                     product INTEGER NOT NULL references products(id), \
                                     quantity INTEGER NOT NULL, \
                                     PRIMARY KEY (customer, product))");
+
+
+
+
+        w.exec("CREATE OR REPLACE FUNCTION check_handling_time()\n\
+                RETURNS TRIGGER AS $$\n\
+                DECLARE\n\
+                    order_instant TIMESTAMP;\n\
+                BEGIN\n\
+                    -- Recupera l'istante dell'ordine collegato\n\
+                    SELECT instant INTO order_instant\n\
+                    FROM orders\n\
+                    WHERE id = NEW.orderID;\n\
+                    \n\
+                    -- Controlla che handlingTime sia >= di instant\n\
+                    IF NEW.handlingTime < order_instant THEN\n\
+                        RAISE EXCEPTION 'handlingTime deve essere maggiore o uguale a instant di orders';\n\
+                    END IF;\n\
+                    \n\
+                    RETURN NEW;\n\
+                END;\n\
+                $$ LANGUAGE plpgsql;");
+
+
+
+        w.exec("CREATE TRIGGER check_handling_time \
+                BEFORE INSERT OR UPDATE ON shippings \
+                FOR EACH ROW \
+                EXECUTE FUNCTION check_handling_time();");
+
+
 
         w.commit();
     } catch (const std::exception &e) {

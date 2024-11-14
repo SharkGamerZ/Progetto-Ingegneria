@@ -26,7 +26,7 @@ void populateDB(int n) {
 
             w.exec(query);
         } catch (const std::exception &e) {
-            cerr << e.what() << endl;
+            /*cerr << e.what() << endl;*/
         }
 
         w.commit();
@@ -44,6 +44,7 @@ void populateDB(int n) {
                 query = "INSERT INTO " + ruoli[ruolo] + " (userID) VALUES ('" + 
                                                                     to_string(i+1) + "')";
             }
+            // Inserimento con piva random
             else {
                 query = "INSERT INTO " + ruoli[ruolo] + " (userID, piva) VALUES ('" + 
                                                                     to_string(i+1) + "', '" + 
@@ -86,17 +87,21 @@ void populateDB(int n) {
 
     // Riempimento orders
     vector<int> customers;
-    pqxx::work w(conn);
-    for (auto [id] : w.query<int>("SELECT userID FROM customers")) {
-        customers.push_back(id);
+    try {
+        pqxx::work w(conn);
+        for (auto [id] : w.query<int>("SELECT userID FROM customers")) {
+            customers.push_back(id);
+        }
+        w.commit();
+    } catch (const std::exception &e) {
+        cerr << e.what() << endl;
     }
-    w.commit();
 
     for (int i = 0; i < n; i++) {
         pqxx::work w(conn);
 
-        time_t start = 1388530800;
-        time_t end = 1704067200;
+        time_t start = 1388530800;  // 1 Gennaio 2014
+        time_t end = 1704067200;    // 1 Gennaio 2024
         time_t time = start + rand()%(end-start);
         tm* tm = localtime(&time);
         stringstream randomTime;
@@ -112,6 +117,134 @@ void populateDB(int n) {
         }
         w.commit();
     }
+
+
+
+    // Riempimento orderProducts
+    vector<int> products;
+    try {
+        pqxx::work w(conn);
+        for (auto [id] : w.query<int>("SELECT id FROM products")) {
+            products.push_back(id);
+        }
+        w.commit();
+    } catch (const std::exception &e) {
+        cerr << e.what() << endl;
+    }
+
+    vector<int> orders;
+    try {
+        pqxx::work w(conn);
+        for (auto [id] : w.query<int>("SELECT id FROM orders")) {
+            orders.push_back(id);
+        }
+        w.commit();
+    } catch (const std::exception &e) {
+        cerr << e.what() << endl;
+    }
+
+    for (int i = 0; i < orders.size(); i++) {
+        // Genera numero casuale di prodotti in un ordine
+        int numProducts = rand()%10+1;
+        for (int j = 0; j < numProducts; j++) {
+            bool success = true;
+            do {
+                success = true;
+                pqxx::work w(conn);
+                try {
+                    string query = "INSERT INTO orderProducts (orderID, product, quantity) VALUES ('" + 
+                                                to_string(orders[i]) + "', '" + 
+                                                to_string(products[rand()%products.size()]) + "', '" + 
+                                                to_string(rand()%10+1) + "')";
+
+                    w.exec(query);
+                } catch (const std::exception &e) {
+                    /*cerr << e.what() << endl;*/
+                    success = false;
+                }
+            w.commit();
+            } while(!success);
+        }
+
+    }
+
+
+
+    // Riempimento shippings
+    vector<int> shippers;
+    try {
+        pqxx::work w(conn);
+        for (auto [id] : w.query<int>("SELECT userID FROM shippers")) {
+            shippers.push_back(id);
+        }
+        w.commit();
+    } catch (const std::exception &e) {
+        cerr << e.what() << endl;
+    }
+
+    for (int i = 0; i < orders.size(); i++) {
+        
+
+        bool success;
+        do {
+            success = true;
+
+            // Generate random timestamp
+            time_t start = 1388530800;  // 1 Gennaio 2014
+            time_t end = 1704067200;    // 1 Gennaio 2024
+            time_t time = start + rand()%(end-start);
+            tm* tm = localtime(&time);
+            stringstream randomTime;
+            randomTime << put_time(tm, "%Y-%m-%d %H:%M:%S");
+
+            cout<<randomTime.str()<<endl;
+
+            pqxx::work w(conn);
+
+            try {
+                string query = "INSERT INTO shippings (orderID, shipper, handlingtime, state) VALUES ('" + 
+                                            to_string(orders[i]) + "', '" +
+                                            to_string(shippers[rand()%shippers.size()]) + "', '" +
+                                            randomTime.str() + "', '" +
+                                            to_string(rand()%2) + "')";
+                w.exec(query);
+            } catch (const std::exception &e) {
+                cerr << e.what() << endl;
+                success = false;
+            }
+        w.commit();
+
+        } while(!success);
+                
+
+    }
+
+
+    // Riempimento Carts
+    for (int i = 0; i < customers.size(); i++) {
+        // Genera numero casuale di prodotti in un carrello
+        int numProducts = rand()%10;
+        for (int j = 0; j < numProducts; j++) {
+            bool success = true;
+            do {
+                success = true;
+                pqxx::work w(conn);
+                try {
+                    string query = "INSERT INTO carts (customer, product, quantity) VALUES ('" + 
+                                                to_string(customers[i]) + "', '" + 
+                                                to_string(products[rand()%products.size()]) + "', '" + 
+                                                to_string(rand()%10+1) + "')";
+
+                    w.exec(query);
+                } catch (const std::exception &e) {
+                    cerr << e.what() << endl;
+                    success = false;
+                }
+            w.commit();
+            } while(!success);
+        }   
+    }
+
 
 }
 
