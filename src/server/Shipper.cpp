@@ -1,5 +1,5 @@
 #include "Shipper.hpp"
-#include <pqxx/pqxx> // Per gestire PostgreSQL
+#include <pqxx/pqxx>
 #include <iostream>
 
 /*
