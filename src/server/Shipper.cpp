@@ -1,4 +1,6 @@
 #include "Shipper.hpp"
+#include <pqxx/pqxx> // Per gestire PostgreSQL
+#include <iostream>
 
 /*
 Funzione con la quale il trasportatore ottiene le spedizioni a proprio carico.
@@ -113,4 +115,5 @@ void newShipping(Order o, pqxx::connection &conn) {
         throw e;
     }
 }
+
 
