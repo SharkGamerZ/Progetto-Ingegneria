@@ -102,6 +102,7 @@ void createTables(pqxx::connection &conn) {
         w.exec("CREATE TABLE products (id SERIAL PRIMARY KEY, \
                                         name VARCHAR(255) NOT NULL, \
                                         description VARCHAR(255) NOT NULL, \
+                                        supplier INTEGER NOT NULL references suppliers(userID), \
                                         price REAL NOT NULL, \
                                         stock INTEGER NOT NULL)");
 
@@ -226,7 +227,7 @@ void dropDatabase(pqxx::connection &conn) {
 void initDB() {
     pqxx::connection conn = getConnection("postgres", "localhost", "postgres", "postgres");
 
-    cout << "Dropping the database" << endl;
+    cout << "[INFO]Dropping the database" << endl;
     dropDatabase(conn);
     dropRole(conn, "ecommerce");
 
