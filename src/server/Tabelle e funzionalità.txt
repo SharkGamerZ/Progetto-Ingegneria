@@ -137,3 +137,18 @@ Possono:
 
 [ ]	- Prendere in carico un ordine.
 		void newShipping(Order o); utils.cpp
+
+
+
+
+---------------------------------------------
+TEST-GENERATOR
+[x] users
+[x] customers
+[x] suppliers
+[x] shippers
+[x] products
+[x] orders
+[x] orderProducts
+[x] shippings
+[x] cart
