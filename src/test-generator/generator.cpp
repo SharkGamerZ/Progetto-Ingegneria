@@ -143,13 +143,13 @@ vector<string> getRandomAdjectives(int n) {
 
 
 void testCustomer(int n) {
-    pqxx::connection conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+    std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
     // Ci prendiamo customers e products
     cout<<"[INFO]Getting Customers"<<endl;
     vector<Customer> customers;
     try {
-        pqxx::work w(conn);
+        pqxx::work w(*conn);
         for (auto [id, CF, name, surname, email] : w.query<int, string, string, string, string>("SELECT id, CF, name, surname, email FROM customers, users WHERE users.id=customers.userID")) {
             customers.push_back(Customer(id, CF, name, surname, email));
         }
@@ -161,7 +161,7 @@ void testCustomer(int n) {
     cout<<"[INFO]Getting Products"<<endl;
     vector<Product> products;
     try {
-        pqxx::work w(conn);
+        pqxx::work w(*conn);
         for (auto [id, supplierID, name, description, price, stock] : w.query<int, int, string, string, double, int>("SELECT id, supplier, name, description, price, stock FROM products")) {
             products.push_back(Product(id, supplierID, name, description, price, stock));
         }

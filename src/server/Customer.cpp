@@ -65,9 +65,9 @@ void Customer::buyCart() {
 	// La query dovra' tornare una mappa ProductID->stock
 	map <int, int> qta;
 	try {
-		pqxx::connection conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
-		pqxx::work w(conn);
+		std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
+		pqxx::work w(*conn);
 		string query = "SELECT id, stock FROM products";
 		for (auto [id, stock] : w.query<int, int>(query)) {
 			qta[id] = stock;

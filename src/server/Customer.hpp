@@ -1,5 +1,7 @@
 #include "utils.hpp"
 #include "User.hpp"
+#include "../dbutils/pgutils.hpp"
+
 
 class Customer : public User {
 public:
