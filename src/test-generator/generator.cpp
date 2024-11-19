@@ -1,5 +1,6 @@
 #include "generator.hpp"
 #include <cstdlib>
+#include <string>
 
 
 vector<string> getRandomNames(int n) {
@@ -134,4 +135,69 @@ vector<string> getRandomAdjectives(int n) {
     }
 
     return randomAdjectives;
+}
+
+
+
+
+
+
+void testCustomer(int n) {
+    pqxx::connection conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+
+    // Ci prendiamo customers e products
+    cout<<"[INFO]Getting Customers"<<endl;
+    vector<Customer> customers;
+    try {
+        pqxx::work w(conn);
+        for (auto [id, CF, name, surname, email] : w.query<int, string, string, string, string>("SELECT id, CF, name, surname, email FROM customers, users WHERE users.id=customers.userID")) {
+            customers.push_back(Customer(id, CF, name, surname, email));
+        }
+        w.commit();
+    } catch (const std::exception &e) {
+        cerr << e.what() << endl;
+    }
+
+    cout<<"[INFO]Getting Products"<<endl;
+    vector<Product> products;
+    try {
+        pqxx::work w(conn);
+        for (auto [id, supplierID, name, description, price, stock] : w.query<int, int, string, string, double, int>("SELECT id, supplier, name, description, price, stock FROM products")) {
+            products.push_back(Product(id, supplierID, name, description, price, stock));
+        }
+        w.commit();
+    } catch (const std::exception &e) {
+        cerr << e.what() << endl;
+    }
+
+
+    // addProductToCart test
+    cout<<"[INFO]Testing addProductToCart"<<endl;
+    for (int i = 0; i < n; i++) {
+        Customer c = customers[rand() % customers.size()];
+        for (int j = 0; j < 5; j++) {
+            Product p = products[rand() % products.size()];
+            c.addProductToCart(p, rand() % 10 + 1);
+        }
+    }
+
+    // removeProductFromCart test
+    cout<<"[INFO]Testing removeProductFromCart"<<endl;
+    for (int i = 0; i < n; i++) {
+        Customer c = customers[rand() % customers.size()];
+        for (int j = 0; j < 5; j++) {
+            Product p = products[rand() % products.size()];
+            c.removeProductFromCart(p, rand() % 5 + 1);
+        }
+    }
+
+
+    // buyCart test
+    cout<<"[INFO]Testing buyCart"<<endl;
+    for (int i = 0; i < n; i++) {
+        Customer c = customers[rand() % customers.size()];
+        c.buyCart();
+
+    }
+
 }

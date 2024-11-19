@@ -27,6 +27,7 @@ void populateDB(int n) {
 
             w.exec(query);
         } catch (const std::exception &e) {
+            continue;
             cerr << e.what() << endl;
         }
 
@@ -59,6 +60,8 @@ void populateDB(int n) {
                 w.exec(query);
             } catch (const std::exception &e) {
                 // Se gia' esiste quella partita iva, riprova
+                continue;
+                cerr << e.what() << endl;
                 success = false;
             }
             w.commit();
@@ -85,6 +88,7 @@ void populateDB(int n) {
         cerr << e.what() << endl;
     }
     for (int i = 0; i < n; i++) {
+        if (suppliers.size() == 0) break;
         pqxx::work w(conn);
         try {
             double price =  (rand() % 20000) / 100.0; 
@@ -117,7 +121,10 @@ void populateDB(int n) {
         cerr << e.what() << endl;
     }
 
+
     for (int i = 0; i < n; i++) {
+        if (customers.size() == 0) break;
+
         pqxx::work w(conn);
 
         time_t start = 1388530800;  // 1 Gennaio 2014
@@ -133,6 +140,7 @@ void populateDB(int n) {
 
             w.exec(query);
         } catch (const std::exception &e) {
+            continue;
             cerr << e.what() << endl;
         }
         w.commit();
@@ -166,6 +174,7 @@ void populateDB(int n) {
 
 
     for (int i = 0; i < orders.size(); i++) {
+        if (products.size() == 0) break;
         // Genera numero casuale di prodotti in un ordine
         int numProducts = rand()%10+1;
         for (int j = 0; j < numProducts; j++) {
@@ -181,7 +190,8 @@ void populateDB(int n) {
 
                     w.exec(query);
                 } catch (const std::exception &e) {
-                    /*cerr << e.what() << endl;*/
+                    continue;
+                    cerr << e.what() << endl;
                     success = false;
                 }
             w.commit();
@@ -206,6 +216,7 @@ void populateDB(int n) {
     }
 
     for (int i = 0; i < orders.size(); i++) {
+        if (shippers.size() == 0) break;
         bool success;
         do {
             success = true;
@@ -234,6 +245,7 @@ void populateDB(int n) {
                                             to_string(rand()%2) + "')";
                 w.exec(query);
             } catch (const std::exception &e) {
+                continue;
                 cerr << e.what() << endl;
                 success = false;
             }
@@ -247,6 +259,7 @@ void populateDB(int n) {
     cout<<"[INFO]Populating Carts"<<endl;
     // Riempimento Carts
     for (int i = 0; i < customers.size(); i++) {
+        if (products.size() == 0) break;
         // Genera numero casuale di prodotti in un carrello
         int numProducts = rand()%10;
         for (int j = 0; j < numProducts; j++) {
@@ -262,6 +275,7 @@ void populateDB(int n) {
 
                     w.exec(query);
                 } catch (const std::exception &e) {
+                    continue;
                     /*cerr << e.what() << endl;*/
                     success = false;
                 }
@@ -288,20 +302,51 @@ void testCustomer() {
     w.commit();
  }
 
+void printMenu() {
+    cout<<"Welcome to the E-Commerce Database"<<endl;
+    cout<<"Make a choice:"<<endl;
+    cout<<"1. Navigate DB"<<endl;
+    cout<<"2. Populate DB"<<endl;
+    cout<<"3. Test Functionalities"<<endl;
+    cout<<"9. Exit"<<endl;
+
+}
+
+
 int main() {
     cout<<"[INFO]Initializing DB"<<endl;
     initDB();
 
 
-    cout<<"[INFO]Populating DB"<<endl;
-    populateDB(10000);
+    int choice, n;
+    do {
+        system("clear");
+        printMenu();
+        cin>>choice;
+        switch(choice) {
+            case 1:
+                system("clear");
+                system("psql -h localhost -U ecommerce -d ecommerce ");
+                break;
+            case 2:
+                cout<<"Choose the number of elements to populate"<<endl;
+                cin>>n;
+                populateDB(n);
+                break;
+            case 3:
+                cout<<"Testing Functionalities"<<endl;
+                cout<<"Choose the number of elements to test"<<endl;
+                cin>>n;
+                testCustomer(n);
+                break;
+            case 9:
+                cout<<"Exiting"<<endl;
+                break;
+            default:
+                cout<<"Invalid choice"<<endl;
+        }
+    } while(choice != 9);
 
-
-    cout<<"[INFO]Testing Customers"<<endl;
-    testCustomer();
-
-
-    system("psql -h localhost -U ecommerce -d ecommerce ");
 }
 
 

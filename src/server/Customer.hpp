@@ -6,6 +6,14 @@ public:
     map<int, int> cart;         // Maps ProductIDs to quantities
     vector<Order> pastOrders;
 
+    Customer(int ID, string CF, string name, string surname, string email) {
+        this->ID = ID;
+        this->CF = CF;
+        this->name = name;
+        this->surname = surname;
+        this->email = email;
+    }
+
     /**
      * Adds a product to the cart
      * @param a the product to add to the cart

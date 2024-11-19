@@ -14,7 +14,7 @@ void Customer::addProductToCart(Product p, int qta) {
 	map<int,int> cart = this->cart;
 	
 	// Controlla la disponibilità dell'articolo
-	if (p.quantity < qta) {
+	if (p.stock < qta) {
 		throw -1;
 	}
 	
@@ -54,40 +54,51 @@ void Customer::removeProductFromCart(Product p, int qta) {
  * Prima crea un ordine, lo salva sul db, aggiorna il magazzino dei prodotti, assegna l'ordine
  * ad un trasportatore e poi svuota il carrello.
  * 
- * @param c Customer di cui piazzare l'ordine.
  */
-void buyCart(Customer customer) {
+void Customer::buyCart() {
 	Order order;
-	order.ID = 0; // TODO Funzione per generare in automatico gli ID, o magari lo lasciamo gestire al db;
 	
-	order.customerID = customer.ID;
-	order.products = customer.cart;
+	order.customerID = this->ID;
+	order.products = this->cart;
 
 	// TODO Fare query che restituisce quantita' dei vari prodotti
-	// La query dovra' tornare una mappa ProductID->Quantity
-	vector<int> qta = {0};
+	// La query dovra' tornare una mappa ProductID->stock
+	map <int, int> qta;
+	try {
+		pqxx::connection conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+		pqxx::work w(conn);
+
+		string query = "SELECT id, stock FROM products";
+		for (auto [id, stock] : w.query<int, int>(query)) {
+			qta[id] = stock;
+		}
+		
+		w.commit();
+	} catch (const std::exception &e) {
+		cerr << e.what() << endl;
+	}
 
 	// Controlla se c'è la quantità di articoli necessaria.
 	map<int, int>::iterator it;
 	for (it = order.products.begin(); it != order.products.end(); it++) {
 		int productID = it-> first;
-		int quantityOrdered = it-> second;
+		int stockOrdered = it-> second;
 
 
 		// Controlla che ci sia la quantita' necessaria
-		if (qta[productID] < quantityOrdered) {
+		if (qta[productID] < stockOrdered) {
 			throw -1;
 		}
 		
 		// Aggiorna la quantità
-		qta[productID] -= quantityOrdered;
+		qta[productID] -= stockOrdered;
 	}
 
 	// Crea la spedizione (TODO Romina)
 	/*newShipping(order);*/
 
 	// Svuota il carrello
-	customer.cart.clear();
+	this->cart.clear();
 }
 
 
