@@ -1,4 +1,5 @@
 #include "rdutils.hpp"
+#include "pgutils.hpp"
 
 class RedisCache {
 public:
@@ -85,14 +86,10 @@ private:
     string fetchFromDatabase(const string& key) {
         try {
             // Connect to the PostgreSQL database
-            pqxx::connection conn("dbname=mydb user=myuser password=mypassword hostaddr=127.0.0.1 port=5432");
-            if (!conn.is_open()) {
-                cerr << "Can't open database" << endl;
-                return "";
-            }
+            std::unique_ptr<pqxx::connection> conn = getConnection();
 
             // Query the database for the value corresponding to the key
-            pqxx::work txn(conn);
+            pqxx::work txn(*conn);
             pqxx::result result = txn.exec("SELECT data FROM my_table WHERE key = '" + txn.quote(key) + "'");
 
             if (result.empty()) {
