@@ -5,7 +5,7 @@
 
 
 void populateDB(int n) {
-    pqxx::connection conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+    std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
 
     cout<<"[INFO]Populating Users"<<endl;
@@ -14,7 +14,7 @@ void populateDB(int n) {
     vector<string> surnames = getRandomSurnames(n);
 
     for (int i = 0; i < n; i++) {
-        pqxx::work w(conn);
+        pqxx::work w(*conn);
         try {
             string email = names[i] + surnames[i] + to_string(rand()%100) + "@GMAIL.COM";
             replace(email.begin(), email.end(), ' ', '_');
@@ -43,7 +43,7 @@ void populateDB(int n) {
         bool success = true;
         do {
             success = true;
-            pqxx::work w(conn);
+            pqxx::work w(*conn);
             try {
                 string query;
                 if (ruolo == 0) {
@@ -64,7 +64,7 @@ void populateDB(int n) {
             w.commit();
         } while(!success);
 
-        pqxx::work w(conn);
+        pqxx::work w(*conn);
     }
 
 
@@ -76,7 +76,7 @@ void populateDB(int n) {
 
     vector<int> suppliers;
     try {
-        pqxx::work w(conn);
+        pqxx::work w(*conn);
         for (auto [id] : w.query<int>("SELECT userID FROM suppliers")) {
             suppliers.push_back(id);
         }
@@ -85,7 +85,7 @@ void populateDB(int n) {
         cerr << e.what() << endl;
     }
     for (int i = 0; i < n; i++) {
-        pqxx::work w(conn);
+        pqxx::work w(*conn);
         try {
             double price =  (rand() % 20000) / 100.0; 
             string query = "INSERT INTO products (name, description, supplier, price, stock) VALUES ('" + 
@@ -108,7 +108,7 @@ void populateDB(int n) {
     // Riempimento orders
     vector<int> customers;
     try {
-        pqxx::work w(conn);
+        pqxx::work w(*conn);
         for (auto [id] : w.query<int>("SELECT userID FROM customers")) {
             customers.push_back(id);
         }
@@ -118,7 +118,7 @@ void populateDB(int n) {
     }
 
     for (int i = 0; i < n; i++) {
-        pqxx::work w(conn);
+        pqxx::work w(*conn);
 
         time_t start = 1388530800;  // 1 Gennaio 2014
         time_t end = 1704067200;    // 1 Gennaio 2024
@@ -144,7 +144,7 @@ void populateDB(int n) {
     // Riempimento orderProducts
     vector<int> products;
     try {
-        pqxx::work w(conn);
+        pqxx::work w(*conn);
         for (auto [id] : w.query<int>("SELECT id FROM products")) {
             products.push_back(id);
         }
@@ -155,7 +155,7 @@ void populateDB(int n) {
 
     vector<tuple<int, string>> orders;
     try {
-        pqxx::work w(conn);
+        pqxx::work w(*conn);
         for (auto [id, instant] : w.query<int, string>("SELECT id, instant FROM orders")) {
             orders.push_back(make_tuple(id, instant));
         }
@@ -172,7 +172,7 @@ void populateDB(int n) {
             bool success = true;
             do {
                 success = true;
-                pqxx::work w(conn);
+                pqxx::work w(*conn);
                 try {
                     string query = "INSERT INTO orderProducts (orderID, product, quantity) VALUES ('" + 
                                                 to_string(get<0>(orders[i])) + "', '" +
@@ -196,7 +196,7 @@ void populateDB(int n) {
     // Riempimento shippings
     vector<int> shippers;
     try {
-        pqxx::work w(conn);
+        pqxx::work w(*conn);
         for (auto [id] : w.query<int>("SELECT userID FROM shippers")) {
             shippers.push_back(id);
         }
@@ -224,7 +224,7 @@ void populateDB(int n) {
             stringstream randomTime;
             randomTime << put_time(tm, "%Y-%m-%d %H:%M:%S");
 
-            pqxx::work w(conn);
+            pqxx::work w(*conn);
 
             try {
                 string query = "INSERT INTO shippings (orderID, shipper, handlingtime, state) VALUES ('" + 
@@ -253,7 +253,7 @@ void populateDB(int n) {
             bool success = true;
             do {
                 success = true;
-                pqxx::work w(conn);
+                pqxx::work w(*conn);
                 try {
                     string query = "INSERT INTO carts (customer, product, quantity) VALUES ('" + 
                                                 to_string(customers[i]) + "', '" + 
@@ -277,8 +277,8 @@ void populateDB(int n) {
 void testCustomer() {
     string query = "SELECT cf, name, surname, email FROM users";
 
-    pqxx::connection conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
-    pqxx::work w(conn);
+    std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+    pqxx::work w(*conn);
 
     
     for (auto [cf, name, surname, email] : w.query<string, string, string, string>(query)) {
