@@ -2,7 +2,8 @@
 #include <cstdio>
 #include <string>
 #include <vector>
-
+#include <unistd.h>
+#include <termios.h>
 
 void populateDB(int n) {
     std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
@@ -287,19 +288,27 @@ void populateDB(int n) {
 }
 
 
-void testCustomer() {
-    string query = "SELECT cf, name, surname, email FROM users";
 
-    std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
-    pqxx::work w(*conn);
-
-    
-    for (auto [cf, name, surname, email] : w.query<string, string, string, string>(query)) {
-        /*cout << setw(30) << cf << ":" << name << " " << surname << " " << email << endl;*/
-    }
-    pqxx::result r = w.exec(query);
-    w.commit();
- }
+// Riscrizione della funzione getch
+char getch() {
+        char buf = 0;
+        struct termios old = {0};
+        if (tcgetattr(0, &old) < 0)
+                perror("tcsetattr()");
+        old.c_lflag &= ~ICANON;
+        old.c_lflag &= ~ECHO;
+        old.c_cc[VMIN] = 1;
+        old.c_cc[VTIME] = 0;
+        if (tcsetattr(0, TCSANOW, &old) < 0)
+                perror("tcsetattr ICANON");
+        if (read(0, &buf, 1) < 0)
+                perror ("read()");
+        old.c_lflag |= ICANON;
+        old.c_lflag |= ECHO;
+        if (tcsetattr(0, TCSADRAIN, &old) < 0)
+                perror ("tcsetattr ~ICANON");
+        return (buf);
+}
 
 void printMenu() {
     cout<<"Welcome to the E-Commerce Database"<<endl;
@@ -309,6 +318,48 @@ void printMenu() {
     cout<<"3. Test Functionalities"<<endl;
     cout<<"9. Exit"<<endl;
 
+}
+
+
+// Funzione per mostrare il menu con le checkbox
+void displayChoiceMenu(const std::vector<std::string> &options, const std::vector<bool> &selected, int current) {
+    std::system("clear || cls"); // Pulisce lo schermo (Linux: clear, Windows: cls)
+    std::cout << "Usa frecce SU/GIU per navigare, SPAZIO per selezionare, INVIO per confermare:\n\n";
+    for (size_t i = 0; i < options.size(); ++i) {
+        std::cout << (i == current ? " > " : "   "); // Indicatore della posizione corrente
+        std::cout << (selected[i] ? "[X] " : "[ ] ") << options[i] << "\n";
+    }
+}
+
+
+void chooseTestOptions(int n) {
+    std::vector<std::string> options = {"addProductToCart", "deleteProductFromCart", "buyCart", "getPastOrders"};
+    std::vector<bool> selected(options.size(), false);
+    int current = 0;
+
+    while (true) {
+        displayChoiceMenu(options, selected, current);
+        int ch = getch(); 
+
+        if (ch == '\033') { // Sequenza di escape (tasti freccia)
+            getch();        // Ignora '['
+            switch (getch()) {
+                case 'A': // Freccia SU
+                    current = (current == 0 ? options.size() - 1 : current - 1);
+                    break;
+                case 'B': // Freccia GIU
+                    current = (current == options.size() - 1 ? 0 : current + 1);
+                    break;
+            }
+        } else if (ch == ' ') { // Spazio per selezionare/deselezionare
+            selected[current] = !selected[current];
+        } else if (ch == '\n' || ch == '\r') { // Invio per confermare
+            break;
+        }
+
+    }
+
+    testCustomer(selected, n);
 }
 
 
@@ -331,15 +382,21 @@ int main() {
                 cout<<"Choose the number of elements to populate"<<endl;
                 cin>>n;
                 populateDB(n);
+                cout<<"Press any key to continue..."<<flush;
+                getch();
                 break;
             case 3:
                 cout<<"Testing Functionalities"<<endl;
                 cout<<"Choose the number of elements to test"<<endl;
                 cin>>n;
-                testCustomer(n);
+                chooseTestOptions(n);
+                cout<<"Press any key to continue..."<<flush;
+                getch();
                 break;
             case 9:
                 cout<<"Exiting"<<endl;
+                cout<<"Press any key to continue..."<<flush;
+                getch();
                 break;
             default:
                 cout<<"Invalid choice"<<endl;
