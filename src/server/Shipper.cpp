@@ -39,11 +39,11 @@ Trasportatore trasportatore_disponibile(pqxx::connection &conn) {
     pqxx::result r = w.exec("SELECT s.userID, u.piva, u.ragione_sociale, u.sede "
                             "FROM shippers s "
                             "JOIN users u ON s.userID = u.id "
-                            "WHERE NOT EXISTS (SELECT 1 FROM shippings WHERE shipper = s.userID AND state = FALSE) "
+                            "WHERE (SELECT COUNT(*) FROM shippings WHERE shipper = s.userID AND state = FALSE) < 10 " //Per verificare che il trasportatore abbia meno di 10 spedizioni in corso
                             "LIMIT 1");  // Per restituire al massimo un trasportatore
 
     if (r.empty()) {
-      cout << "No available shippers" << endl;
+      cout << "Nessun trasportatore disponibile" << endl;
       return t;  // Se non troviamo trasportatori, restituiamo un oggetto vuoto
     }
 
@@ -116,4 +116,60 @@ void newShipping(Order o, pqxx::connection &conn) {
     }
 }
 
+/*
+Funzione per assegnare automaticamente tutti gli ordini non ancora assegnati ad un trasportatore disponibile.
+ */
+void assignUnassignedOrders(pqxx::connection &conn) {
+    try {
+        pqxx::work w(conn);
+
+        // Recupera tutti gli ordini che non hanno una spedizione associata
+        pqxx::result unassignedOrders = w.exec(
+            "SELECT id FROM orders "
+            "WHERE id NOT IN (SELECT orderID FROM shippings)"
+        );
+
+        if (unassignedOrders.empty()) {
+            cout << "Nessun ordine non assegnato trovato." << endl;
+            return;
+        }
+
+        // Itera su ogni ordine non assegnato
+        for (auto orderRow : unassignedOrders) {
+            int orderId = orderRow[0].as<int>();
+
+            // Trova un trasportatore disponibile
+            Trasportatore t = trasportatore_disponibile(conn);
+
+            if (t.P_IVA.empty()) {
+                cerr << "Nessun trasportatore disponibile per l'ordine con ID: " << orderId << endl;
+                continue;
+            }
+
+            // Assegna l'ordine al trasportatore disponibile (crea un nuovo record nella tabella shippings)
+            try {
+                pqxx::result r = w.exec(
+                    "INSERT INTO shippings (orderID, shipper, handlingtime, state) "
+                    "VALUES (" + to_string(orderId) + ", " + to_string(t.ID) + ", NOW(), FALSE) "
+                    "RETURNING id"
+                );
+
+                int shippingId = r[0][0].as<int>(); //id della spedizione appena creata
+                cout << "Ordine ID: " << orderId << " Trasportatore con ID: " << t.ID
+                     << " Spedizione ID: " << shippingId << endl;
+
+            } catch (const std::exception &e) {
+                cerr << "Impossibile assegnare l'ordine con ID: " << orderId
+                     << " al trasportatore con ID: " << t.ID << " - " << e.what() << endl;
+            }
+        }
+
+        // Commit dell'operazione
+        w.commit();
+
+    } catch (const std::exception &e) {
+        cerr << "Errore in assignUnassignedOrders: " << e.what() << endl;
+        throw e;
+    }
+}
 
