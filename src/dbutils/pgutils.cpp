@@ -8,9 +8,9 @@
  * @param conn the connection object
  * @return the connection object
  */
-pqxx::connection getConnection(string dbname, string host, string user, string password) {
+std::unique_ptr<pqxx::connection> getConnection(string dbname, string host, string user, string password) {
     try {
-        pqxx::connection conn ("dbname=" + dbname + " user=" + user + " password=" + password + " host=" + host + " port=5432");
+        std::unique_ptr<pqxx::connection> conn = std::make_unique<pqxx::connection>("dbname=" + dbname + " user=" + user + " password=" + password + " host=" + host + " port=5432");
         return conn;
     } catch (const std::exception &e) {
         cerr << e.what() << std::endl;
@@ -24,10 +24,10 @@ pqxx::connection getConnection(string dbname, string host, string user, string p
  * @param conn the connection object
  * @param role the role to create
  */
-void createRole(pqxx::connection &conn, string role) {
+void createRole(std::unique_ptr<pqxx::connection> &conn, string role) {
     // Checks if the role already exists
     try {
-        pqxx::work w((conn));
+        pqxx::work w(*conn);
         pqxx::result r = w.exec("SELECT * FROM pg_roles WHERE rolname = '" + role + "'");
         w.commit();
         if (!r.empty()) {
@@ -43,7 +43,7 @@ void createRole(pqxx::connection &conn, string role) {
 
     // Creates a new role in the database
     try {
-        pqxx::work w((conn));
+        pqxx::work w(*conn);
         w.exec("CREATE ROLE " + role + " NOSUPERUSER CREATEDB NOCREATEROLE INHERIT LOGIN NOREPLICATION NOBYPASSRLS PASSWORD 'ecommerce'");
         w.commit();
     } catch (const std::exception &e) {
@@ -52,10 +52,10 @@ void createRole(pqxx::connection &conn, string role) {
     }
 }
 
-void dropRole(pqxx::connection &conn, string role) {
+void dropRole(std::unique_ptr<pqxx::connection> &conn, string role) {
     // Checks if the role already exists
     try {
-        pqxx::work w((conn));
+        pqxx::work w(*conn);
         pqxx::result r = w.exec("SELECT * FROM pg_roles WHERE rolname = '" + role + "'");
         if (r.empty()) {
             cout << "Role " + role + " does not exist" << endl;
@@ -68,7 +68,7 @@ void dropRole(pqxx::connection &conn, string role) {
 
     // Drops the role
     try {
-        pqxx::work w((conn));
+        pqxx::work w(*conn);
         w.exec("DROP ROLE " + role);
         w.commit();
     } catch (const std::exception &e) {
@@ -80,9 +80,9 @@ void dropRole(pqxx::connection &conn, string role) {
  * Creates all the tables in the database
  * @param conn the connection object
  */
-void createTables(pqxx::connection &conn) {
+void createTables(std::unique_ptr<pqxx::connection> &conn) {
     try {
-        pqxx::work w((conn));
+        pqxx::work w(*conn);
         w.exec("CREATE TABLE users (id SERIAL PRIMARY KEY, \
                                     cf VARCHAR(255) UNIQUE NOT NULL, \
                                     name VARCHAR(255) NOT NULL, \
@@ -102,6 +102,7 @@ void createTables(pqxx::connection &conn) {
         w.exec("CREATE TABLE products (id SERIAL PRIMARY KEY, \
                                         name VARCHAR(255) NOT NULL, \
                                         description VARCHAR(255) NOT NULL, \
+                                        supplier INTEGER NOT NULL references suppliers(userID), \
                                         price REAL NOT NULL, \
                                         stock INTEGER NOT NULL)");
 
@@ -165,10 +166,10 @@ void createTables(pqxx::connection &conn) {
 
 }
 
-void createDatabase(pqxx::connection &conn) {
+void createDatabase(std::unique_ptr<pqxx::connection> &conn) {
     // Checks if the database already exists
     try {
-        pqxx::work w((conn));
+        pqxx::work w(*conn);
         pqxx::result r = w.exec("SELECT 1 FROM pg_database WHERE datname = 'ecommerce'");
         if (r.size() > 0) {
             cout << "Database ecommerce already exists" << endl;
@@ -181,7 +182,7 @@ void createDatabase(pqxx::connection &conn) {
 
     // Creates a new database
     try {
-        pqxx::nontransaction w((conn));
+        pqxx::nontransaction w(*conn);
         w.exec("CREATE DATABASE ecommerce");
     } catch (const std::exception &e) {
         cerr << e.what() << std::endl;
@@ -193,10 +194,10 @@ void createDatabase(pqxx::connection &conn) {
  * Drops the database
  * @param conn the connection object
  */
-void dropDatabase(pqxx::connection &conn) {
+void dropDatabase(std::unique_ptr<pqxx::connection> &conn) {
     // Checks if the database already exists
     try {
-        pqxx::work w((conn));
+        pqxx::work w(*conn);
         pqxx::result r = w.exec("SELECT 1 FROM pg_database WHERE datname = 'ecommerce'");
         if (r.size() == 0) {
             cout << "Database ecommerce does not exist" << endl;
@@ -209,7 +210,7 @@ void dropDatabase(pqxx::connection &conn) {
 
     // Drops the database
     try {
-        pqxx::nontransaction w((conn));
+        pqxx::nontransaction w(*conn);
         w.exec("DROP DATABASE ecommerce");
     } catch (const std::exception &e) {
         cerr << e.what() << std::endl;
@@ -224,9 +225,9 @@ void dropDatabase(pqxx::connection &conn) {
 * @return 0 if success, -1 if error
 */
 void initDB() {
-    pqxx::connection conn = getConnection("postgres", "localhost", "postgres", "postgres");
+    std::unique_ptr<pqxx::connection> conn = getConnection("postgres", "localhost", "postgres", "postgres");
 
-    cout << "Dropping the database" << endl;
+    cout << "[INFO]Dropping the database" << endl;
     dropDatabase(conn);
     dropRole(conn, "ecommerce");
 

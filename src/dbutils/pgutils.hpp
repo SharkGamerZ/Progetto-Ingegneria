@@ -2,7 +2,7 @@
 #include "../server/utils.hpp"
 
 
-pqxx::connection getConnection(string dbname, string host, string user, string password);
+std::unique_ptr<pqxx::connection> getConnection(string dbname, string host, string user, string password);
 
 void createRole(pqxx::connection &conn, string role);
 void dropRole(pqxx::connection &conn, string role);

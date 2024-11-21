@@ -15,7 +15,17 @@ public:
     std::string name;
     std::string description;
     double price;
-    int quantity;
+    int stock;
+
+    Product (int ID, int supplierID, std::string name, std::string description, double price, int stock) {
+        this->ID = ID;
+        this->supplierID = supplierID;
+        this->name = name;
+        this->description = description;
+        this->price = price;
+        this->stock = stock;
+    }
+
 
     /** Funzione per aggiornare i dati di un prodotto
      * 
