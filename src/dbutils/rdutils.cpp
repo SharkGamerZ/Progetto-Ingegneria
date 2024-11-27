@@ -1,6 +1,10 @@
 #include "rdutils.hpp"
 #include "pgutils.hpp"
 
+/**
+ * Classe per la gestione della cache redis. 
+ * Si occupa di creare la connessione con redis, controllare se una tupla è presente in redis, effettuare get e/o set e infine distruggere il contesto.
+ */
 class RedisCache {
 public:
     RedisCache(const string& host = "127.0.0.1", int port = 6379) {
@@ -60,6 +64,8 @@ private:
     redisContext* context;
 };
 
+
+/**Classe che si occupa della gestione dei dati tra cache e db*/
 class DataService {
 public:
     DataService(RedisCache& cache) : cache(cache) {}
@@ -89,8 +95,8 @@ private:
             std::unique_ptr<pqxx::connection> conn = getConnection();
 
             // Query the database for the value corresponding to the key
-            pqxx::work txn(*conn);
-            pqxx::result result = txn.exec("SELECT data FROM my_table WHERE key = '" + txn.quote(key) + "'");
+            pqxx::work w(*conn);
+            pqxx::result result = w.exec("SELECT data FROM my_table WHERE key = '" + w.quote(key) + "'");
 
             if (result.empty()) {
                 cerr << "No data found for key: " << key << endl;
@@ -99,7 +105,7 @@ private:
 
             // Return the data from the query result
             string data = result[0][0].as<string>();
-            txn.commit();
+            w.commit();
             return data;
 
         } catch (const exception &e) {
