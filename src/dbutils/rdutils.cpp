@@ -12,6 +12,15 @@ RedisCache::RedisCache(const string& host = "127.0.0.1", int port = 6379) {
         }
         exit(1);  // Exit on error
     }
+
+    // Enstablish connection to DB and load the products table
+    unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+
+    pqxx::work w(*conn);
+    string query = "SELECT * FROM products";
+    for (auto [id, supplierID, name, description, price, stock] : w.query<string, string, string, string, string, string>(query)) {
+        set("products", id, supplierID + "_" + name + "_" + description + "_" + price + "_" + stock);
+    }
 }
 
 RedisCache::~RedisCache() {
@@ -92,7 +101,7 @@ string DataService::getData(const string& table, const string& ID) {
 string DataService::fetchFromDatabase(const string& table, const string& ID) {
     try {
         // Connect to the PostgreSQL database
-        std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+        unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
         // Query the database for the value corresponding to the key
         pqxx::work w(*conn);
