@@ -76,3 +76,18 @@ vector<Product> getProducts();
  */
 vector<Product> getFilteredProducts(int id);
 
+/** TODO @brief Function that updates the values of the product of ID "ID" to the values in the product passed
+ * @param ID Integer that indentifies a product
+ * @param mod A product that has the updated value 
+ */
+void updateProduct(int ID, const Product& mod);
+
+/** TODO @brief Function to get the state of an order
+ * @param ID Integer that identifies an order
+ * @return A boolean that indicates if the order has been shipped
+*/
+bool getOrderState(int ID);
+
+
+
+

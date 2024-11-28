@@ -1,18 +1,26 @@
 #include "Supplier.hpp"
 
+Supplier::Supplier(int ID, string CF, string name, string surname, string email, string P_IVA) {
+    this->ID = ID;
+    this->CF = CF;
+    this->name = name;
+    this->surname = surname;
+    this->email = email;
+    this->P_IVA = P_IVA;
+}
 
-void addProduct(Product a) {
+void Supplier::addProduct(Product a, int q) {
     bool exist = false; // TODO query per controllare se l'articolo è già presente
     if (!exist) {
         // TODO query per aggiungere l'articolo
     }
 }
 
-void setDiscontinuedProduct(Product a) {
+void Supplier::setDiscontinuedProduct(Product a) {
     // TODO
 }
 
-vector<Product> getPastOrders(Produttore p) {
+vector<Product> Supplier::getPastOrders() {
     // TODO
     return vector<Product>();
 }

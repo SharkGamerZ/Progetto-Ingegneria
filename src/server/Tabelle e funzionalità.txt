@@ -107,22 +107,22 @@ Possono:
 Produttori
 Hanno tutti bisogno di login.
 Possono:
-[ ]	- Mettere in vendita un nuovo articolo. (Aggiungere un nuovo prodotto o rimpizarne la quantità)
+[x]	- Mettere in vendita un nuovo articolo. (Aggiungere un nuovo prodotto o rimpizarne la quantità)
 		void addStock (Articolo a, Quantità q); produttori.cpp 
 			- In caso l'articolo a non esiste, lo crea e gli assegna la quantità q.
 			- In caso esista, prende la quantità q' di a, e gli assegna q + q'.
 
-[ ]	- Modificare proprietà di un articolo.
+[x]	- Modificare proprietà di un articolo.
 		void updateProduct(Articolo old, Articolo new); utils.cpp
 
 
-[ ]	- Vedere lo stato di una spedizione.
+[x]	- Vedere lo stato di una spedizione.
 		bool getOrderState(Ordine o); utils.cpp
 
-[ ]	- Marcare un prodotto come discontinuo.
+[x]	- Marcare un prodotto come discontinuo.
 		void setDiscontinuedProduct(Articolo a, Produttore p); produttori.cpp
 
-[ ]	- Visualizzare i propri articoli venduti.
+[x]	- Visualizzare i propri articoli venduti.
 		Ordine[] getPastOrders (Produttore p); produttori.cpp
 
 
