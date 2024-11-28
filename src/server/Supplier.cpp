@@ -1,14 +1,13 @@
 #include "Supplier.hpp"
 
-Supplier::Supplier(string P_IVA, string email, string pw, vector<int> ID_wh, int ID, string CF, string name, string surname) {
-        this->P_IVA = P_IVA;
-        this->email = email;
-        this->pw = pw;
-        this->ID_wh = ID_wh;
-        this->CF = CF;
-        this->name = name;
-        this->surname = surname;
-    }
+Supplier::Supplier(int ID, string CF, string name, string surname, string email, string P_IVA) {
+    this->ID = ID;
+    this->CF = CF;
+    this->name = name;
+    this->surname = surname;
+    this->email = email;
+    this->P_IVA = P_IVA;
+}
 
 void Supplier::addProduct(Product a, int q) {
     bool exist = false; // TODO query per controllare se l'articolo è già presente

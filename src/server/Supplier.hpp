@@ -14,8 +14,7 @@ public:
     string pw;
     vector<int> ID_wh;
     
-    Supplier(string P_IVA, string email, string pw, vector<int> ID_wh, int ID, string CF, string name, string surname);
-
+    Supplier(int ID, string CF, string name, string surname, string email, string P_IVA);
     /** Prototipo di funzione che aggiunge nel DB un nuovo articolo 
      * 
      * @param a Product da aggiungere
