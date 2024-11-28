@@ -1,10 +1,5 @@
 #include "rdutils.hpp"
-#include "pgutils.hpp"
 
-/**
- * Classe per la gestione della cache redis. 
- * Si occupa di creare la connessione con redis, controllare se una tupla è presente in redis, effettuare get e/o set e infine distruggere il contesto.
- */
 class RedisCache {
 public:
     RedisCache(const string& host = "127.0.0.1", int port = 6379) {
@@ -27,8 +22,12 @@ public:
         }
     }
 
-    // Check if the key exists in the cache
-    bool exists(const string& key) {
+    bool exists(const string& table, const string& ID) {
+        string key = "";
+
+        key.append(ID);
+        key.append(table);
+
         redisReply* reply = (redisReply*)redisCommand(context, "EXISTS %s", key.c_str());
         if (!reply) {
             cerr << "Failed to execute EXISTS command" << endl;
@@ -39,8 +38,12 @@ public:
         return exists;
     }
 
-    // Get the value from the cache
-    string get(const string& key) {
+    string get(const string& table, const string& ID) {
+        string key = "";
+
+        key.append(ID);
+        key.append(table);
+
         redisReply* reply = (redisReply*)redisCommand(context, "GET %s", key.c_str());
         if (!reply || reply->type != REDIS_REPLY_STRING) {
             freeReplyObject(reply);
@@ -51,8 +54,13 @@ public:
         return value;
     }
 
-    // Set the value in the cache
-    void set(const string& key, const string& value) {
+    void set(const string& table, const string& ID, const string& value) {
+        string key = "";
+
+        key.append(ID);
+        key.append(table);
+
+
         redisReply* reply = (redisReply*)redisCommand(context, "SET %s %s", key.c_str(), value.c_str());
         if (!reply || reply->type != REDIS_REPLY_STATUS || string(reply->str) != "OK") {
             cerr << "Failed to set cache" << endl;
@@ -71,8 +79,13 @@ public:
     DataService(RedisCache& cache) : cache(cache) {}
 
     // Implementing the Cache-Aside pattern
-    string getData(const string& key) {
+    string getData(const string& table, const string& ID) {
         // Check if the data exists in the cache
+        string key = "";
+
+        key.append(table);
+        key.append(ID);
+
         if (cache.exists(key)) {
             cout << "Cache hit for key: " << key << endl;
             return cache.get(key);
