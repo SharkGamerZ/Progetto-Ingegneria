@@ -7,14 +7,14 @@ Funzione con la quale il trasportatore ottiene le spedizioni a proprio carico.
 
 Dal database prendere tutte le spedizioni affidate al Trasportatore t (?)
  */
-vector<Shipment> getShippings(Trasportatore t){
+vector<Shipping> getShippings(Trasportatore t){
     return t.spedizioni_assegnate;
   };
 
 /*
 Aggiorna lo stato di una spedizione.
  */
-void updateShipping(Shipment old_sped, Shipment new_sped){
+void updateShipping(Shipping old_sped, Shipping new_sped){
 
     if (old_sped.ID == new_sped.ID) { //aggiorno sse è la stessa spedizione
       old_sped.state= new_sped.state;
@@ -85,11 +85,11 @@ void newShipping(Order o, pqxx::connection &conn) {
             "RETURNING id");  // Restituiamo l'ID della spedizione appena inserita
 
         // Otteniamo l'ID della spedizione appena creata
-        int shipmentID = r[0][0].as<int>();
+        int shippingID = r[0][0].as<int>();
 
-        // Creiamo un oggetto Shipment in memoria e lo popoliamo
-        Shipment new_sped;
-        new_sped.ID = shipmentID;  // ID assegnato dal database
+        // Creiamo un oggetto Shipping in memoria e lo popoliamo
+        Shipping new_sped;
+        new_sped.ID = shippingID;  // ID assegnato dal database
         new_sped.orderID = o.ID;   // Associa l'ID dell'ordine
         new_sped.shipperID = t.ID; // ID del trasportatore
         new_sped.handlingTime = time(nullptr); // Tempo di gestione della spedizione
@@ -99,16 +99,16 @@ void newShipping(Order o, pqxx::connection &conn) {
         t.spedizioni_assegnate.push_back(new_sped);
 
         // Aggiorniamo l'ordine con l'ID della spedizione nel database
-        w.exec("UPDATE orders SET shipping = " + to_string(shipmentID) + " WHERE id = " + to_string(o.ID));
+        w.exec("UPDATE orders SET shipping = " + to_string(shippingID) + " WHERE id = " + to_string(o.ID));
 
         // Aggiorniamo la relazione tra trasportatore e spedizione nel database (tabella intermedia)
         w.exec("INSERT INTO shipper_shippings (shipperID, shippingID) VALUES (" +
-               to_string(t.ID) + ", " + to_string(shipmentID) + ")");
+               to_string(t.ID) + ", " + to_string(shippingID) + ")");
 
         // Commit dell'operazione
         w.commit();
 
-        cout << "Nuova spedizione creata con ID: " << shipmentID << endl;
+        cout << "Nuova spedizione creata con ID: " << shippingID << endl;
 
     } catch (const std::exception &e) {
         cerr << "Error in newShipping: " << e.what() << endl;

@@ -11,39 +11,51 @@
  * 
  */
 void Customer::addProductToCart(Product p, int qta) {
-	map<int,int> cart = this->cart;
-	
 	// Controlla la disponibilità dell'articolo
 	if (p.stock < qta) {
-		throw -1;
+		cerr<<"[ERROR] Error adding product to cart.\n\tProduct "<<p.name<<" has "<<p.stock<< " elements in stock, but "<<qta<<" where requested."<<endl;
+		return;
 	}
 	
 	// Controlla se l'articolo è già presente nel carrello
-	if (cart.find(p.ID) != cart.end()) {
-		cart[p.ID] += qta;
+	if (this->cart.find(p) != this->cart.end()) {
+		this->cart[p] += qta;
+		cout<<"[INFO] "<<qta<<" elements of product with ID "<<p.ID<<" added to the cart of "<<this->ID<<endl;
 	} else {
-		cart[p.ID] = qta;
+		this->cart[p] = qta;
+		cout<<"[INFO] Product with ID "<<p.ID<<" added to the cart of "<<this->ID<<endl;
 	}
 
 	// TODO le cose per salvarlo su redis
 }
 
 void Customer::removeProductFromCart(Product p, int qta) {
-	map<int,int> cart = this->cart;
+	// Print cart
+	for (auto [p,qta] : this->cart) {
+		cout<<p.ID<<" "<<qta<<endl;
+	}
+	
 	
 	// Controlla se l'articolo è presente nel carrello
 	// e se la quantità da rimuovere è minore o uguale a quella presente
-	if (cart.find(p.ID) == cart.end() || cart[p.ID] < qta) {
-		throw -1;
+	if (this->cart.count(p) == 0) {
+		cerr<<"[ERROR] Error removing product from cart\n\tProduct with ID "<<p.ID<<" not found in the cart of "<<this->ID<<endl;
+		return;
 	}
 
-	if (cart[p.ID] == qta) {
-		cart.erase(p.ID);
+	if (this->cart[p] < qta) {
+		cerr<<"[ERROR] Error removing product from cart\n\tProduct with ID "<<p.ID<<" has "<<this->cart[p]<<" elements in the cart, but "<<qta<<" where requested to remove."<<endl;
+		return;
+	}
+
+	if (this->cart[p] == qta) {
+		this->cart.erase(p);
+		cout<<"[INFO] Product with ID "<<p.ID<<" removed from the cart of "<<this->ID<<endl;
 	} else {
-		cart[p.ID] -= qta;
-
-
+		this->cart[p] -= qta;
+		cout<<"[INFO] "<<qta<<" elements of product with ID "<<p.ID<<" removed from the cart of "<<this->ID<<endl;
 	}
+
 		// TODO le cose per salvarlo su redis
 }
 
@@ -87,12 +99,16 @@ void Customer::buyCart() {
 
 		// Controlla che ci sia la quantita' necessaria
 		if (qta[productID] < stockOrdered) {
-			throw -1;
+			cerr<<"[ERROR] Error buying the cart"<<endl;
+			return;
 		}
 		
 		// Aggiorna la quantità
 		qta[productID] -= stockOrdered;
 	}
+
+	// Aggiunge l'ordine al db
+	
 
 	// Crea la spedizione (TODO Romina)
 	/*newShipping(order);*/
@@ -105,6 +121,9 @@ void Customer::buyCart() {
 
 Order* getPastOrders (Customer c) {
 	// TODO query per prendere gli ordini passati
+	Order* orders;
+
+	return orders;
 }
 
 
