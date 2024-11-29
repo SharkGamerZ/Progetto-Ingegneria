@@ -156,14 +156,15 @@ void testCustomer(std::vector<bool> selected, int n, vector<int> customersID, ve
         for (int i = 0; i < n; i++) {
             if (customersID.size() == 0) break;
             int randomCustomerID = customersID[rand() % customersID.size()];
-            vector<string> randomCustomerString = ds.getData("customers", to_string(randomCustomerID));
+
+            // Costruisco l'oggetto Customer
             Customer c;
-            c.ID = stoi(randomCustomerString[0]);
+            c.ID = randomCustomerID; 
+            /*c.cart = ds.getCart(c.ID); // TODO aspettare Thomas*/
 
             for (int j = 0; j < 5; j++) {
                 int randomProductID = productIDs[rand() % productIDs.size()];
-                Product p = products[rand() % products.size()];
-                c.addProductToCart(p, rand() % 10 + 1);
+                c.addProductToCart(randomProductID, rand() % 10 + 1);
             }
         }
     }
@@ -173,11 +174,16 @@ void testCustomer(std::vector<bool> selected, int n, vector<int> customersID, ve
     if (selected[1]) {
         cout<<"[INFO]Testing removeProductFromCart"<<endl;
         for (int i = 0; i < n; i++) {
-            if (customers.size() == 0) break;
-            Customer c = customers[rand() % customers.size()];
+            if (customersID.size() == 0) break;
+            int randomCustomerID = customersID[rand() % customersID.size()];
+
+            // Costruisco l'oggetto Customer
+            Customer c;
+            c.ID = randomCustomerID;
+            /*c.cart = ds.getCart(c.ID); // TODO aspettare Thomas*/
             for (int j = 0; j < 5; j++) {
-                Product p = products[rand() % products.size()];
-                c.removeProductFromCart(p, rand() % 5 + 1);
+                int randomProductID = productIDs[rand() % productIDs.size()];
+                c.removeProductFromCart(randomProductID, rand() % 5 + 1);
             }
         }
     }
@@ -187,8 +193,13 @@ void testCustomer(std::vector<bool> selected, int n, vector<int> customersID, ve
     if (selected[2]) {
         cout<<"[INFO]Testing buyCart"<<endl;
         for (int i = 0; i < n; i++) {
-            if (customers.size() == 0) break;
-            Customer c = customers[rand() % customers.size()];
+            if (customersID.size() == 0) break;
+            int randomCustomerID = customersID[rand() % customersID.size()];
+
+            Customer c;
+            c.ID = randomCustomerID;
+            /*c.cart = ds.getCart(c.ID); // TODO aspettare Thomas*/
+
             c.buyCart();
         }
     }

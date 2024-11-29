@@ -10,6 +10,7 @@ set(SOURCE_FILES
     src/server/Shipper.cpp
     src/server/Supplier.cpp
     src/dbutils/pgutils.cpp
+    src/dbutils/rdutils.cpp
     src/test-generator/generator.cpp
 )
 

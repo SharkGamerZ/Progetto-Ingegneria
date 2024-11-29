@@ -17,4 +17,5 @@ vector<string> getRandomProductNames(int n);
 vector<string> getRandomAdjectives(int n);
 
 
-void testCustomer(std::vector<bool> selected, int n);
+void testCustomer(std::vector<bool> selected, int n, vector<int> customersID, vector<int> suppliersID, vector<int> productIDs);
+

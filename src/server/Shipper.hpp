@@ -1,3 +1,4 @@
+#pragma once
 #include "utils.hpp"
 #include "User.hpp"
 #include "../dbutils/pgutils.hpp"
@@ -23,13 +24,15 @@ class Shipper : public User {
 
     // Both functions return the ids of the shippings
     std::vector<int> getShippings();
-    std::vector<int> getActiveShippings(pqxx::connection& conn);
+    std::vector<int> getActiveShippings();
 
-    static Shipper trasportatore_disponibile(pqxx::connection &conn);
+    static Shipper trasportatore_disponibile();
 
     static void updateShipping(Shipping old_sped, Shipping new_sped);
 
-    static void newShipping(Order o, pqxx::connection &conn);
+    /*static void newShipping(Order o, pqxx::connection &conn);*/
 
-    static void assignUnassignedOrders(pqxx::connection &conn);
 };
+
+void newShipping(int orderID);
+void assignUnassignedOrders();

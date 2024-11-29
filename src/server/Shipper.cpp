@@ -15,11 +15,12 @@ std::vector<int> Shipper::getShippings() {
 /*
  Funzione che restituisce le spedizioni che devono essere ancora completate.
  */
-std::vector<int> Shipper::getActiveShippings(pqxx::connection &conn) {
+std::vector<int> Shipper::getActiveShippings() {
+    std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
     std::vector<int> activeShippings;
 
     try {
-        pqxx::work w(conn);
+        pqxx::work w(*conn);
         pqxx::result r = w.exec(
             "SELECT s.id, s.orderID, s.shipper, s.handlingtime, s.state "
             "FROM shippings s "
@@ -58,10 +59,11 @@ Questa funzione cerca un trasportatore disponibile,che si può ottenere dalla ta
 Per "disponibile", si intende un trasportatore che non ha spedizioni attualmente
 in corso (il campo state della spedizione è FALSE).
  */
-static int trasportatore_disponibile(pqxx::connection &conn) {
+static int trasportatore_disponibile() {
+    std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
   try {
     // Selezioniamo un trasportatore che non ha spedizioni in corso (stato FALSE)
-    pqxx::work w(conn);
+    pqxx::work w(*conn);
     pqxx::result r = w.exec("SELECT s.userID, u.piva, u.ragione_sociale, u.sede "
                             "FROM shippers s "
                             "JOIN users u ON s.userID = u.id "
@@ -87,9 +89,11 @@ static int trasportatore_disponibile(pqxx::connection &conn) {
   creare un record nella tabella shippings con i dettagli della spedizione e aggiornare l'ordine per associare
   l'ID della spedizione.
  */
-void newShipping(int orderID, pqxx::connection &conn) {
+void newShipping(int orderID) {
+    std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+
     // Troviamo un trasportatore disponibile
-    int shipperID = trasportatore_disponibile(conn);
+    int shipperID = trasportatore_disponibile();
 
     // Se non troviamo un trasportatore disponibile
     // TODO
@@ -99,7 +103,7 @@ void newShipping(int orderID, pqxx::connection &conn) {
     /*}*/
 
     try {
-        pqxx::work w(conn);
+        pqxx::work w(*conn);
 
         // Creiamo la nuova spedizione nel database
         int shippingID = -1; // Variabile per memorizzare l'ID della spedizione
@@ -146,9 +150,10 @@ void newShipping(int orderID, pqxx::connection &conn) {
 /*
 Funzione per assegnare automaticamente tutti gli ordini non ancora assegnati ad un trasportatore disponibile.
  */
-void assignUnassignedOrders(pqxx::connection &conn) {
+void assignUnassignedOrders() {
+    std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
     try {
-        pqxx::work w(conn);
+        pqxx::work w(*conn);
 
         // Recupera tutti gli ordini che non hanno una spedizione associata
         pqxx::result unassignedOrders = w.exec(
@@ -166,7 +171,7 @@ void assignUnassignedOrders(pqxx::connection &conn) {
             int orderId = orderRow[0].as<int>();
 
             // Trova un trasportatore disponibile
-            int shipperID = trasportatore_disponibile(conn);
+            int shipperID = trasportatore_disponibile();
 
             // TODO
             /*if (shipperID.P_IVA.empty()) {*/
