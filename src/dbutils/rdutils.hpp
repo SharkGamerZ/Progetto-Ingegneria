@@ -53,6 +53,7 @@ public:
      * The function before checks if the searched data are in the redis cache, if it is it returns it, otherwise it performs a select on the DB, loads the data in the cache and then returns it. 
      * @param table The table in which is going to be searched the ID
      * @param ID The ID of the search tuple
+     * @return A vector of strings that contains the returner values
     */
     vector<string> getData(const string& table, const string& ID);
     // TODO se ID = asterisco funzione di romina trasportatoreDisponibile()

@@ -125,8 +125,10 @@ vector<string> DataService::getData(const string& table, const string& ID) {
 }
 
 vector<string> DataService::getAvailableShipper() {
-    unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+    vector<string> res;
 
+    unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+    
     try {
         // Selezioniamo un trasportatore che non ha spedizioni in corso (stato FALSE)
         pqxx::work w(*conn);
@@ -134,8 +136,8 @@ vector<string> DataService::getAvailableShipper() {
 
         if (r.empty()) {
         cout << "Nessun trasportatore disponibile" << endl;
-        return t;  // Se non troviamo trasportatori, restituiamo un oggetto vuoto
-    }
+        return ;  // Se non troviamo trasportatori, restituiamo un oggetto vuoto
+        }
 
     // Assegniamo i dati del trasportatore trovato
     t.ID = r[0][0].as<int>();  // userID
@@ -164,8 +166,15 @@ string DataService::fetchFromDatabase(const string& table, const string& ID) {
             return "";
         }
 
+        string data;
+        pqxx::row const row = result[0];
+        std::size_t const num_cols = result.columns();
+
         // Return the data from the query result
-        string data = result[0][0].as<string>();
+        for(std::size_t col=0u; col < num_cols; ++col) {
+            pqxx::field const field = row[col];
+            data += field.as<string>();
+        }
         w.commit();
         return data;
 
