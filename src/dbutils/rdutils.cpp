@@ -92,18 +92,17 @@ vector<string> RedisCache::getShippers() {
                 string key = "";
                 
                 for (size_t i = 0; i < reply->element[1]->elements; i++) {
-                    string value = "";
                     key = reply->element[1]->element[i]->str;
                     id = key.substr(8, string::npos);
-
                     
+                    shippers.insert(shippers.end(), get("shipper", id));
                 }
+                return shippers;
             }
         } else {
-            printf("Error: Unexpected reply structure or empty result.\n");
+            printf("[ERRORE]Unexpected reply structure.\n");
             freeReplyObject(reply);
-            redisFree(c);
-            return 1;
+            return shippers;
         }
 
         freeReplyObject(reply);
@@ -190,7 +189,6 @@ void DataService::addCart(const string& ID, const string& prod, const string& qn
             value += to_string(prod) + "_" + to_string(qnt) + "_";
         }
         value.pop_back();
-
     }
     else{
         for (auto [prod, qnt] : old) {
