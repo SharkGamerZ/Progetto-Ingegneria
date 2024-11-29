@@ -15,6 +15,9 @@ public:
     /** @brief Closes the connection to redis. */
     ~RedisCache();
 
+    /** @brief Populates the cache with the needed tables (products) */
+    bool initCache();
+
     /** @brief Checks the existence of the key inside redis
      * @param table The table in the DB
      * @param ID The primary key of the tuple in the DB
@@ -51,12 +54,12 @@ public:
      * @param table The table in which is going to be searched the ID
      * @param ID The ID of the search tuple
     */
-    string getData(const string& table, const string& ID);
-    // TODO ritorna vettore di stringhe
+    vector<string> getData(const string& table, const string& ID);
     // TODO se ID = asterisco funzione di romina trasportatoreDisponibile()
     // da vedere se fare funzione o mettere set in codice
     //void setData(const string& table, const vector<any>& values);
 
+    vector<string> getAvailableShipper(); 
     //getFilteredProducts()    
 
 private:
