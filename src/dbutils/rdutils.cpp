@@ -73,22 +73,22 @@ string RedisCache::get(const string& table, const string& ID) {
     return value;
 }
 
-string RedisCache::getShippers() {
-    unsigned long long cursor = 0;
-    
-    redisReply* reply = (redisReply*) redisCommand(context, "SCAN %llu MATCH shippers*", cursor);
-
-    if (reply->type == REDIS_REPLY_ARRAY) {
-        //update cursor
-        cursor = strtoull(reply->element[0]->str, NULL, 10);
-
-        if (reply->element[1]->type == REDIS_REPLY_ARRAY) {
-            for (size_t i = 0; i < reply->element[1]->elements; i++) {
-                
-            }
-        }
-    }
-}
+/*string RedisCache::getShippers() {*/
+/*    unsigned long long cursor = 0;*/
+/**/
+/*    redisReply* reply = (redisReply*) redisCommand(context, "SCAN %llu MATCH shippers*", cursor);*/
+/**/
+/*    if (reply->type == REDIS_REPLY_ARRAY) {*/
+/*        //update cursor*/
+/*        cursor = strtoull(reply->element[0]->str, NULL, 10);*/
+/**/
+/*        if (reply->element[1]->type == REDIS_REPLY_ARRAY) {*/
+/*            for (size_t i = 0; i < reply->element[1]->elements; i++) {*/
+/**/
+/*            }*/
+/*        }*/
+/*    }*/
+/*}*/
 
 
 void RedisCache::set(const string& table, const string& ID, const string& value) {
@@ -124,7 +124,6 @@ vector<string> DataService::getData(const string& table, const string& ID) {
         cout << "Cache hit for key: " << key << endl;
         string data = cache.get(table, ID);
 
-        cout<<data<<endl;
         
         //Splits on delimiter
         while ((pos = data.find(delimiter)) != std::string::npos) {
@@ -134,7 +133,6 @@ vector<string> DataService::getData(const string& table, const string& ID) {
         }
         res.push_back(data);
 
-        cout<<"[INFO]Data found in cache"<<endl;
 
         return res;
     } else {
@@ -152,9 +150,6 @@ vector<string> DataService::getData(const string& table, const string& ID) {
         }
         res.push_back(data);
 
-        for (int i = 0; i < res.size(); i++) {
-            cout << res[i] << endl;
-        }
         return res;
     }
 }
@@ -184,26 +179,16 @@ map<int,int> DataService::getCart(const string& ID) {
         string data = cache.get("carts", ID);
         
         if (data == "") {
-            cout << "No data found in cache" << endl;
             return res;
         }
         //Splits on delimiter
-        cout<<data<<endl;
         while ((pos = data.find(delimiter)) != std::string::npos) {
             value = data.substr(0, pos);
             vals.push_back(value);
             data.erase(0, pos + delimiter.length());
         }
-        cout << "Finished splitting" << endl;
         vals.push_back(data);
 
-
-        for(int i = 0; i<vals.size(); i+=2) {
-            cout << "Product: " << vals[i] << " Quantity: " << vals[i+1] << endl;
-            res[stoi(vals[i])] = stoi(vals[i+1]); 
-        }
-
-        cout<<"[INFO] Finished splitting 2"<<endl;
         return res;
     } else {
         cout << "Cache miss for customer key: " << ID << endl;
@@ -213,13 +198,9 @@ map<int,int> DataService::getCart(const string& ID) {
             cout << "No data found in db" << endl;
             return res;
         }
-        cout<<data<<endl;
         // Store the data in the cache
         cache.set("carts", ID, data);
-        cout<<"[INFO]Data set in cache"<<endl;
         
-        cout<<data<<endl;
-
         string delimiter = "_";
         string prod;
         // Splits on delimiter
@@ -229,42 +210,39 @@ map<int,int> DataService::getCart(const string& ID) {
             if ((pos = data.find(delimiter) != std::string::npos)) {
                 string qnt = data.substr(0, pos);
                 data.erase(0, pos + delimiter.length());
-                cout << "Product: " << prod << " Quantity: " << qnt << "Pos" << pos << endl; 
-                cout << "Data: " << data << endl;
                 res[stoi(prod)] = stoi(qnt);
             }
         }
         res[stoi(prod)] = stoi(data);
-        cout << "Finished splitting 3" << endl;
 
         return res;
     }
 }
 // ATTENZIONE per fare query su dati dei Shipper vuol dire che quelli presenti in cache devono essere correttamente aggiornati
-vector<string> DataService::getAvailableShipper() {    
-    vector<string> res;
-
-    if(cache.exist()){}
-    unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
-    try {        
-        // Selezioniamo un trasportatore che non ha spedizioni in corso (stato FALSE)        
-        pqxx::work w(*conn);     
-        pqxx::result r = w.exec("SELECT s.userID, u.piva, u.ragione_sociale, u.sede FROM shippers s JOIN users u ON s.userID = u.id WHERE (SELECT COUNT(*) FROM shippings WHERE shipper = s.userID AND state = FALSE) < 10 LIMIT 1");  // Per restituire al massimo un trasportatore        
-        if (r.empty()) {        
-            cout << "Nessun trasportatore disponibile" << endl;      
-            return ;  // Se non troviamo trasportatori, restituiamo un oggetto vuoto        
-        }    
-        // Assegniamo i dati del trasportatore trovato    
-        res.append(r[0][0].as<string>());  // userID    
-        t.P_IVA = r[0][1].as<string>();  // P_IVA    
-        t.ragione_sociale = r[0][2].as<string>();  // ragione_sociale    
-        t.sede = r[0][3].as<string>();  // sede    
-        return t;  
-    } 
-    catch (const std::exception &e) {  //per catturare le eccezioni lanciate dal blocco try    
-        cerr << "Error in trasportatore_disponibile: " << e.what() << endl;    throw e;  
-    }
-}
+/*vector<string> DataService::getAvailableShipper() {    */
+/*    vector<string> res;*/
+/**/
+/*    if(cache.exist()){}*/
+/*    unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");*/
+/*    try {        */
+/*        // Selezioniamo un trasportatore che non ha spedizioni in corso (stato FALSE)        */
+/*        pqxx::work w(*conn);     */
+/*        pqxx::result r = w.exec("SELECT s.userID, u.piva, u.ragione_sociale, u.sede FROM shippers s JOIN users u ON s.userID = u.id WHERE (SELECT COUNT(*) FROM shippings WHERE shipper = s.userID AND state = FALSE) < 10 LIMIT 1");  // Per restituire al massimo un trasportatore        */
+/*        if (r.empty()) {        */
+/*            cout << "Nessun trasportatore disponibile" << endl;      */
+/*            return ;  // Se non troviamo trasportatori, restituiamo un oggetto vuoto        */
+/*        }    */
+/*        // Assegniamo i dati del trasportatore trovato    */
+/*        res.append(r[0][0].as<string>());  // userID    */
+/*        t.P_IVA = r[0][1].as<string>();  // P_IVA    */
+/*        t.ragione_sociale = r[0][2].as<string>();  // ragione_sociale    */
+/*        t.sede = r[0][3].as<string>();  // sede    */
+/*        return t;  */
+/*    } */
+/*    catch (const std::exception &e) {  //per catturare le eccezioni lanciate dal blocco try    */
+/*        cerr << "Error in trasportatore_disponibile: " << e.what() << endl;    throw e;  */
+/*    }*/
+/*}*/
 
 string DataService::fetchCartFromDatabase(const string& ID) {
     try {

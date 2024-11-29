@@ -64,7 +64,7 @@ static int trasportatore_disponibile() {
   try {
     // Selezioniamo un trasportatore che non ha spedizioni in corso (stato FALSE)
     pqxx::work w(*conn);
-    pqxx::result r = w.exec("SELECT s.userID, u.piva, u.ragione_sociale, u.sede "
+    pqxx::result r = w.exec("SELECT s.userID "
                             "FROM shippers s "
                             "JOIN users u ON s.userID = u.id "
                             "WHERE (SELECT COUNT(*) FROM shippings WHERE shipper = s.userID AND state = FALSE) < 10 " //Per verificare che il trasportatore abbia meno di 10 spedizioni in corso
@@ -112,7 +112,7 @@ void newShipping(int orderID) {
             pqxx::result r = w.exec(
                 "INSERT INTO shippings (shipper, handlingtime, state) "
                 "VALUES (" + to_string(shipperID) + ", NOW(), FALSE) "
-                "RETURNING id"); // Restituiamo l'ID della spedizione appena inserita
+                "RETURNING orderID"); // Restituiamo l'ID della spedizione appena inserita
 
             // Otteniamo l'ID della spedizione appena creata
             shippingID = r[0][0].as<int>();
@@ -184,7 +184,7 @@ void assignUnassignedOrders() {
                 pqxx::result r = w.exec(
                     "INSERT INTO shippings (orderID, shipper, handlingtime, state) "
                     "VALUES (" + to_string(orderId) + ", " + to_string(shipperID) + ", NOW(), FALSE) "
-                    "RETURNING id"
+                    "RETURNING orderID"
                 );
 
                 int shippingId = r[0][0].as<int>(); // id della spedizione appena creata

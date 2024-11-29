@@ -18,10 +18,7 @@ void Customer::addProductToCart(int productID, int qta) {
 	cout<<"[INFO] Adding product with ID "<<productID<<" to the cart of "<<this->ID<<endl;
 	vector<string> productString = ds.getData("products", to_string(productID));
 	Product p;
-	cout<<"[INFO] Product found"<<endl;
-	for (int i = 0; i < productString.size(); i++) {
-		cout << productString[i] << endl;
-	}
+
 	p.ID = stoi(productString[0]);
 	p.name = productString[1];
 	p.description = productString[2];
@@ -35,10 +32,6 @@ void Customer::addProductToCart(int productID, int qta) {
 	}
 	
 	cart = ds.getCart(to_string(this->ID));
-	cout<<"[INFO] Cart of "<<this->ID<<endl;
-	for (auto const& [key, val] : cart) {
-		cout << key << " " << val << endl;
-	}
 	string query;
 	// Controlla se l'articolo è già presente nel carrello
 	if (cart.find(productID) != cart.end()) {
@@ -63,7 +56,7 @@ void Customer::addProductToCart(int productID, int qta) {
 	}
 
 	// Salva su redis
-	rc.set("carts", to_string(this->ID), to_string(p.ID) + "_" + to_string(qta));
+	ds.addCart(to_string(this->ID), to_string(productID), to_string(qta));
 	
 }
 
@@ -150,7 +143,7 @@ void Customer::buyCart() {
 
 	pqxx::work w(*conn);
 	try {
-		w.exec("INSERT INTO orders (customer, date) VALUES (" + to_string(order.customerID) + ", NOW())");
+		w.exec("INSERT INTO orders (customer, instant) VALUES (" + to_string(order.customerID) + ", NOW())");
 	} catch (const std::exception &e) {
 		cerr << e.what() << endl;
 	}
