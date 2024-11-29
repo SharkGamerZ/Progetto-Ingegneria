@@ -153,7 +153,7 @@ map<int,int> DataService::getCart(const string& ID) {
         }
         vals.push_back(data);
 
-        for(int i = 0; i<vals.size(); i+2) {
+        for(int i = 0; i<vals.size(); ) {
             res[stoi(vals[i])] = stoi(vals[i+1]); 
         }
         return res;
@@ -165,17 +165,18 @@ map<int,int> DataService::getCart(const string& ID) {
         cache.set("carts", ID, data);
         
         string delimiter = "_";
+        string prod;
         // Splits on delimiter
         while ((pos = data.find(delimiter)) != std::string::npos) {
-            string prod = data.substr(0, pos);
+            prod = data.substr(0, pos);
             data.erase(0, pos + delimiter.length());
             if (pos = data.find(delimiter) != std::string::npos) {
                 string qnt = data.substr(0, pos);
                 data.erase(0, pos + delimiter.length());
                 res[stoi(prod)] = stoi(qnt);
             }
-            res[stoi(prod)] = stoi(data);
         }
+        res[stoi(prod)] = stoi(data);
 
         return res;
     }
@@ -183,8 +184,11 @@ map<int,int> DataService::getCart(const string& ID) {
 // ATTENZIONE per fare query su dati dei Shipper vuol dire che quelli presenti in cache devono essere correttamente aggiornati
 vector<string> DataService::getAvailableShipper() {    
     vector<string> res;
+
+    if(cache.exist()){}
     unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
-    try {        // Selezioniamo un trasportatore che non ha spedizioni in corso (stato FALSE)        
+    try {        
+        // Selezioniamo un trasportatore che non ha spedizioni in corso (stato FALSE)        
         pqxx::work w(*conn);     
         pqxx::result r = w.exec("SELECT s.userID, u.piva, u.ragione_sociale, u.sede FROM shippers s JOIN users u ON s.userID = u.id WHERE (SELECT COUNT(*) FROM shippings WHERE shipper = s.userID AND state = FALSE) < 10 LIMIT 1");  // Per restituire al massimo un trasportatore        
         if (r.empty()) {        
@@ -196,10 +200,11 @@ vector<string> DataService::getAvailableShipper() {
         t.P_IVA = r[0][1].as<string>();  // P_IVA    
         t.ragione_sociale = r[0][2].as<string>();  // ragione_sociale    
         t.sede = r[0][3].as<string>();  // sede    
-        return t;  } 
-        catch (const std::exception &e) {  //per catturare le eccezioni lanciate dal blocco try    
-            cerr << "Error in trasportatore_disponibile: " << e.what() << endl;    throw e;  
-        }
+        return t;  
+    } 
+    catch (const std::exception &e) {  //per catturare le eccezioni lanciate dal blocco try    
+        cerr << "Error in trasportatore_disponibile: " << e.what() << endl;    throw e;  
+    }
 }
 
 string DataService::fetchCartFromDatabase(const string& ID) {
