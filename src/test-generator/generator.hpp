@@ -9,18 +9,6 @@
 
 using namespace std;
 
-
-vector<User> users;
-
-vector<Customer> customers;
-vector<Shipper> shippers;
-vector<Supplier> suppliers;
-
-
-vector<Product> products;
-vector<Order> orders;
-vector<Shipping> shippings;
-
 vector<string> getRandomNames(int n); 
 vector<string> getRandomSurnames(int n); 
 vector<string> getRandomCities(int n); 

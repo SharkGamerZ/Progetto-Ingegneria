@@ -8,19 +8,22 @@ class Shipper : public User {
     string P_IVA;
     string ragione_sociale;
     string sede;            //sarebbe l'indirizzo (da aggiustare)
-    vector<Shipping> spedizioni_assegnate;
+    vector<int> spedizioni_assegnate; //ShipmentIDs
 
-    Shipper(int ID,string CF, string name, string surname, string email) {
+    Shipper(int ID,string CF, string name, string surname, string email, string P_IVA, string ragione_sociale, string sede) {
         this->ID = ID;
         this->CF = CF;
         this->name = name;
         this->surname = surname;
         this->email = email;
+        this->P_IVA = P_IVA;
+        this->ragione_sociale = ragione_sociale;
+        this->sede = sede;
     }
 
-    std::vector<Shipping> getShippings();
-
-    std::vector<Shipping> getActiveShippings(pqxx::connection& conn);
+    // Both functions return the ids of the shippings
+    std::vector<int> getShippings();
+    std::vector<int> getActiveShippings(pqxx::connection& conn);
 
     static Shipper trasportatore_disponibile(pqxx::connection &conn);
 
