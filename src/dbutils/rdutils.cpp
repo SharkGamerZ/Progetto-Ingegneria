@@ -64,6 +64,7 @@ string RedisCache::get(const string& table, const string& ID) {
 
     redisReply* reply = (redisReply*)redisCommand(context, "GET %s", key.c_str());
     if (!reply || reply->type != REDIS_REPLY_STRING) {
+        cout<<"[INFO]Data not found in cache"<<endl;
         freeReplyObject(reply);
         return "";
     }
@@ -182,6 +183,10 @@ map<int,int> DataService::getCart(const string& ID) {
         cout << "Cache hit for customer key: " << ID << endl;
         string data = cache.get("carts", ID);
         
+        if (data == "") {
+            cout << "No data found in cache" << endl;
+            return res;
+        }
         //Splits on delimiter
         cout<<data<<endl;
         while ((pos = data.find(delimiter)) != std::string::npos) {
@@ -204,6 +209,10 @@ map<int,int> DataService::getCart(const string& ID) {
         cout << "Cache miss for customer key: " << ID << endl;
         // Simulate fetching data from a PostgreSQL database
         string data = fetchCartFromDatabase(ID);
+        if (data == "") {
+            cout << "No data found in db" << endl;
+            return res;
+        }
         cout<<data<<endl;
         // Store the data in the cache
         cache.cache.("carts", ID, data);
@@ -220,7 +229,7 @@ map<int,int> DataService::getCart(const string& ID) {
             if ((pos = data.find(delimiter) != std::string::npos)) {
                 string qnt = data.substr(0, pos);
                 data.erase(0, pos + delimiter.length());
-                cout << "Product: " << prod << " Quantity: " << qnt << endl;
+                cout << "Product: " << prod << " Quantity: " << qnt << "Pos" << pos << endl; 
                 cout << "Data: " << data << endl;
                 res[stoi(prod)] = stoi(qnt);
             }
