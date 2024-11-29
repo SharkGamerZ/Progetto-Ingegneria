@@ -215,7 +215,7 @@ map<int,int> DataService::getCart(const string& ID) {
         }
         cout<<data<<endl;
         // Store the data in the cache
-        cache.cache.("carts", ID, data);
+        cache.set("carts", ID, data);
         cout<<"[INFO]Data set in cache"<<endl;
         
         cout<<data<<endl;
