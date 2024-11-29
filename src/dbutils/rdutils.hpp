@@ -32,7 +32,7 @@ public:
      */
     string get(const string& table, const string& ID);
 
-    string getShippers();
+    vector<string> getShippers();
 
     /** @brief Set an element in the redis cache
      * @param table The table in the DB

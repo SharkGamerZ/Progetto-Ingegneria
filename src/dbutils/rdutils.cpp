@@ -73,23 +73,6 @@ string RedisCache::get(const string& table, const string& ID) {
     return value;
 }
 
-/*string RedisCache::getShippers() {*/
-/*    unsigned long long cursor = 0;*/
-/**/
-/*    redisReply* reply = (redisReply*) redisCommand(context, "SCAN %llu MATCH shippers*", cursor);*/
-/**/
-/*    if (reply->type == REDIS_REPLY_ARRAY) {*/
-/*        //update cursor*/
-/*        cursor = strtoull(reply->element[0]->str, NULL, 10);*/
-/**/
-/*        if (reply->element[1]->type == REDIS_REPLY_ARRAY) {*/
-/*            for (size_t i = 0; i < reply->element[1]->elements; i++) {*/
-/**/
-/*            }*/
-/*        }*/
-/*    }*/
-/*}*/
-
 
 void RedisCache::set(const string& table, const string& ID, const string& value) {
     string key = "";
@@ -157,10 +140,21 @@ vector<string> DataService::getData(const string& table, const string& ID) {
 void DataService::addCart(const string& ID, const string& prod, const string& qnt) {
     map<int,int> old = getCart(ID);
     string value = "";
-    for (auto [prod, qnt] : old) {
-        value += to_string(prod) + "_" + to_string(qnt) + "_";
+
+    if (old.find(stoi(prod)) != old.end()) {
+        old[stoi(prod)] += stoi(qnt);
+        string value = "";
+        for (auto [prod, qnt] : old) {
+            value += to_string(prod) + "_" + to_string(qnt) + "_";
+        }
+        value.pop_back();
     }
-    value += prod + "_" + qnt;
+    else{
+        for (auto [prod, qnt] : old) {
+            value += to_string(prod) + "_" + to_string(qnt) + "_";
+        }
+        value += prod + "_" + qnt;
+    }
     cache.set("carts", ID, value);
 }
 
@@ -218,31 +212,7 @@ map<int,int> DataService::getCart(const string& ID) {
         return res;
     }
 }
-// ATTENZIONE per fare query su dati dei Shipper vuol dire che quelli presenti in cache devono essere correttamente aggiornati
-/*vector<string> DataService::getAvailableShipper() {    */
-/*    vector<string> res;*/
-/**/
-/*    if(cache.exist()){}*/
-/*    unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");*/
-/*    try {        */
-/*        // Selezioniamo un trasportatore che non ha spedizioni in corso (stato FALSE)        */
-/*        pqxx::work w(*conn);     */
-/*        pqxx::result r = w.exec("SELECT s.userID, u.piva, u.ragione_sociale, u.sede FROM shippers s JOIN users u ON s.userID = u.id WHERE (SELECT COUNT(*) FROM shippings WHERE shipper = s.userID AND state = FALSE) < 10 LIMIT 1");  // Per restituire al massimo un trasportatore        */
-/*        if (r.empty()) {        */
-/*            cout << "Nessun trasportatore disponibile" << endl;      */
-/*            return ;  // Se non troviamo trasportatori, restituiamo un oggetto vuoto        */
-/*        }    */
-/*        // Assegniamo i dati del trasportatore trovato    */
-/*        res.append(r[0][0].as<string>());  // userID    */
-/*        t.P_IVA = r[0][1].as<string>();  // P_IVA    */
-/*        t.ragione_sociale = r[0][2].as<string>();  // ragione_sociale    */
-/*        t.sede = r[0][3].as<string>();  // sede    */
-/*        return t;  */
-/*    } */
-/*    catch (const std::exception &e) {  //per catturare le eccezioni lanciate dal blocco try    */
-/*        cerr << "Error in trasportatore_disponibile: " << e.what() << endl;    throw e;  */
-/*    }*/
-/*}*/
+
 
 string DataService::fetchCartFromDatabase(const string& ID) {
     try {
