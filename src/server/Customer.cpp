@@ -11,7 +11,8 @@
  * 
  */
 void Customer::addProductToCart(int productID, int qta) {
-	DataService ds(new RedisCache());
+	RedisCache rc = RedisCache();
+	DataService ds(rc);
 
 	// Controlla la disponibilità dell'articolo
 	vector<string> productString = ds.getData("products", to_string(productID));
@@ -65,10 +66,10 @@ void Customer::removeProductFromCart(int productID, int qta) {
 
 	if (this->cart[productID] == qta) {
 		this->cart.erase(productID);
-		cout<<"[INFO] Product with ID "<<productID.ID<<" removed from the cart of "<<this->ID<<endl;
+		cout<<"[INFO] Product with ID "<<productID<<" removed from the cart of "<<this->ID<<endl;
 	} else {
 		this->cart[productID] -= qta;
-		cout<<"[INFO] "<<qta<<" elements of product with ID "<<productID.ID<<" removed from the cart of "<<this->ID<<endl;
+		cout<<"[INFO] "<<qta<<" elements of product with ID "<<productID<<" removed from the cart of "<<this->ID<<endl;
 	}
 
 	// Aggiorniamo il DB
@@ -100,48 +101,48 @@ void Customer::removeProductFromCart(int productID, int qta) {
  * ad un trasportatore e poi svuota il carrello.
  * 
  */
-void Customer::buyCart() {
-	Order order;
-	
-	order.customerID = this->ID;
-	order.products = this->cart;
-
-	// La query dovra' tornare una mappa ProductID->stock
-	map <int, int> productStock;
-	DataService ds(new RedisCache());
-	// TODO Aspettare Thomas
-	vector<vector<string>> products = ds.getFilteredProducts(",,");
-	for (int i = 0; i < products.size(); i += 6) {
-		productStock[stoi(products[i])] = stoi(products[i + 5]);
-	}
-
-
-	// Controlla se c'è la quantità di articoli necessaria.
-	map<int, int>::iterator it;
-	for (it = order.products.begin(); it != order.products.end(); it++) {
-		int productID = it-> first;
-		int stockOrdered = it-> second;
-
-
-		// Controlla che ci sia la quantita' necessaria
-		if (productStock[productID] < stockOrdered) {
-			cerr<<"[ERROR] Error buying the cart"<<endl;
-			return;
-		}
-		
-		// Aggiorna la quantità
-		productStock[productID] -= stockOrdered;
-	}
-
-	// Aggiunge l'ordine al db
-	
-
-	// Crea la spedizione (TODO Romina)
+/*void Customer::buyCart() {*/
+/*	Order order;*/
+/**/
+/*	order.customerID = this->ID;*/
+/*	order.products = this->cart;*/
+/**/
+/*	// La query dovra' tornare una mappa ProductID->stock*/
+/*	map <int, int> productStock;*/
+/*	DataService ds(new RedisCache());*/
+/*	// TODO Aspettare Thomas*/
+/*	vector<vector<string>> products = ds.getFilteredProducts(",,");*/
+/*	for (int i = 0; i < products.size(); i += 6) {*/
+/*		productStock[stoi(products[i])] = stoi(products[i + 5]);*/
+/*	}*/
+/**/
+/**/
+/*	// Controlla se c'è la quantità di articoli necessaria.*/
+/*	map<int, int>::iterator it;*/
+/*	for (it = order.products.begin(); it != order.products.end(); it++) {*/
+/*		int productID = it-> first;*/
+/*		int stockOrdered = it-> second;*/
+/**/
+/**/
+/*		// Controlla che ci sia la quantita' necessaria*/
+/*		if (productStock[productID] < stockOrdered) {*/
+/*			cerr<<"[ERROR] Error buying the cart"<<endl;*/
+/*			return;*/
+/*		}*/
+/**/
+/*		// Aggiorna la quantità*/
+/*		productStock[productID] -= stockOrdered;*/
+/*	}*/
+/**/
+/*	// Aggiunge l'ordine al db*/
+/**/
+/**/
+/*	// Crea la spedizione (TODO Romina)*/
 	/*newShipping(order);*/
-
-	// Svuota il carrello
-	this->cart.clear();
-}
+/**/
+/*	// Svuota il carrello*/
+/*	this->cart.clear();*/
+/*}*/
 
 
 

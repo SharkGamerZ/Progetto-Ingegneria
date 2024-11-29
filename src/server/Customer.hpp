@@ -7,7 +7,7 @@
 class Customer : public User {
 public:
     map<int, int> cart;         // Maps ProductIDs to quantities
-    vector<Order> pastOrders;
+    vector<int> pastOrders;     // List of past orders IDS
 
     Customer(int ID, string CF, string name, string surname, string email) {
         this->ID = ID;

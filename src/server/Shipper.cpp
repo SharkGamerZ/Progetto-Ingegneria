@@ -44,7 +44,7 @@ void updateShipping(int oldSpedID, int newSpedID){
 
     if (oldSpedID == newSpedID) { //aggiorno sse è la stessa spedizione
         // TODO
-      oldSpedID.state= newSpedID.state;
+      /*oldSpedID.state= newSpedID.state;*/
     }
    /*
      Aggiorno solo lo stato perchè considero che la spedizione venga fatta solo dallo stesso trasportatore ??
@@ -93,10 +93,10 @@ void newShipping(int orderID, pqxx::connection &conn) {
 
     // Se non troviamo un trasportatore disponibile
     // TODO
-    if (t.P_IVA.empty()) {
-        cerr << "Nessun trasportatore disponibile!" << endl;
-        return;
-    }
+    /*if (t.P_IVA.empty()) {*/
+    /*    cerr << "Nessun trasportatore disponibile!" << endl;*/
+    /*    return;*/
+    /*}*/
 
     try {
         pqxx::work w(conn);
@@ -118,7 +118,7 @@ void newShipping(int orderID, pqxx::connection &conn) {
         }
         // Aggiungiamo la spedizione alla lista di spedizioni del trasportatore in memoria
         // TODO
-        t.spedizioni_assegnate.push_back(shippingID);
+        /*t.spedizioni_assegnate.push_back(shippingID);*/
 
         try {
             // Aggiorniamo l'ordine con l'ID della spedizione nel database
@@ -169,10 +169,10 @@ void assignUnassignedOrders(pqxx::connection &conn) {
             int shipperID = trasportatore_disponibile(conn);
 
             // TODO
-            if (shipperID.P_IVA.empty()) {
-                cerr << "Nessun trasportatore disponibile per l'ordine con ID: " << orderId << endl;
-                continue;
-            }
+            /*if (shipperID.P_IVA.empty()) {*/
+            /*    cerr << "Nessun trasportatore disponibile per l'ordine con ID: " << orderId << endl;*/
+            /*    continue;*/
+            /*}*/
 
             try {
                 // Creazione della spedizione
