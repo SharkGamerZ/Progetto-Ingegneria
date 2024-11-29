@@ -12,7 +12,16 @@ RedisCache::RedisCache(const string& host = "127.0.0.1", int port = 6379) {
         }
         exit(1);  // Exit on error
     }
+}
 
+RedisCache::~RedisCache() {
+    if (context) {
+        redisFree(context);
+    }
+}
+
+//da richiamare solo nel main
+bool RedisCache::initCache() {
     // Enstablish connection to DB and load the products table
     unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
@@ -20,12 +29,6 @@ RedisCache::RedisCache(const string& host = "127.0.0.1", int port = 6379) {
     string query = "SELECT * FROM products";
     for (auto [id, supplierID, name, description, price, stock] : w.query<string, string, string, string, string, string>(query)) {
         set("products", id, supplierID + "_" + name + "_" + description + "_" + price + "_" + stock);
-    }
-}
-
-RedisCache::~RedisCache() {
-    if (context) {
-        redisFree(context);
     }
 }
 
@@ -78,23 +81,46 @@ void RedisCache::set(const string& table, const string& ID, const string& value)
 DataService::DataService(RedisCache& cache) : cache(cache) {}
 
 // Implementing the Cache-Aside pattern
-string DataService::getData(const string& table, const string& ID) {
+vector<string> DataService::getData(const string& table, const string& ID) {
     // Check if the data exists in the cache
     string key = "";
+    vector<string> res;
+    string value;
+    int pos = 0;
+    string delimiter = "_";
 
     key.append(table);
     key.append(ID);
 
     if (cache.exist(table, ID)) {
         cout << "Cache hit for key: " << key << endl;
-        return cache.get(table, ID);
+        string data = cache.get(table, ID);
+        
+        //Splits on delimiter
+        while ((pos = data.find(delimiter)) != std::string::npos) {
+            value = data.substr(0, pos);
+            res.push_back(value);
+            data.erase(0, pos + delimiter.length());
+        }
+        res.push_back(data);
+
+        return res;
     } else {
         cout << "Cache miss for key: " << key << endl;
         // Simulate fetching data from a PostgreSQL database
         string data = fetchFromDatabase(table, ID);
         // Store the data in the cache
         cache.set(table, ID, data);
-        return data;
+        
+        // Splits on delimiter
+        while ((pos = data.find(delimiter)) != std::string::npos) {
+            value = data.substr(0, pos);
+            res.push_back(value);
+            data.erase(0, pos + delimiter.length());
+        }
+        res.push_back(data);
+
+        return res;
     }
 }
 
