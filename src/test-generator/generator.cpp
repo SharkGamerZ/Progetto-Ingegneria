@@ -160,7 +160,9 @@ void testCustomer(std::vector<bool> selected, int n, vector<int> customersID, ve
             // Costruisco l'oggetto Customer
             Customer c;
             c.ID = randomCustomerID; 
-            /*c.cart = ds.getCart(c.ID); // TODO aspettare Thomas*/
+            cout<<"[INFO]Customer ID: "<<c.ID<<endl;
+            c.cart = ds.getCart(to_string(c.ID)); 
+            cout<<"[INFO]Cart: "<<c.cart.size()<<endl;
 
             for (int j = 0; j < 5; j++) {
                 int randomProductID = productIDs[rand() % productIDs.size()];
@@ -180,7 +182,7 @@ void testCustomer(std::vector<bool> selected, int n, vector<int> customersID, ve
             // Costruisco l'oggetto Customer
             Customer c;
             c.ID = randomCustomerID;
-            /*c.cart = ds.getCart(c.ID); // TODO aspettare Thomas*/
+            c.cart = ds.getCart(to_string(c.ID)); 
             for (int j = 0; j < 5; j++) {
                 int randomProductID = productIDs[rand() % productIDs.size()];
                 c.removeProductFromCart(randomProductID, rand() % 5 + 1);
@@ -198,7 +200,7 @@ void testCustomer(std::vector<bool> selected, int n, vector<int> customersID, ve
 
             Customer c;
             c.ID = randomCustomerID;
-            /*c.cart = ds.getCart(c.ID); // TODO aspettare Thomas*/
+            c.cart = ds.getCart(to_string(c.ID)); 
 
             c.buyCart();
         }

@@ -106,6 +106,8 @@ vector<string> DataService::getData(const string& table, const string& ID) {
         }
         res.push_back(data);
 
+        cout<<"[INFO]Data found in cache"<<endl;
+
         return res;
     } else {
         cout << "Cache miss for key: " << key << endl;
