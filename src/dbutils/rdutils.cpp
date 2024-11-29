@@ -169,12 +169,14 @@ map<int,int> DataService::getCart(const string& ID) {
         while ((pos = data.find(delimiter)) != std::string::npos) {
             string prod = data.substr(0, pos);
             data.erase(0, pos + delimiter.length());
-            pos = data.find(delimiter);
-            string qnt = data.substr(0, pos);
-            data.erase(0, pos + delimiter.length());
-            res[stoi(prod)] = stoi(qnt);
+            if (pos = data.find(delimiter) != std::string::npos) {
+                string qnt = data.substr(0, pos);
+                data.erase(0, pos + delimiter.length());
+                res[stoi(prod)] = stoi(qnt);
+            }
+            res[stoi(prod)] = stoi(data);
         }
-        
+
         return res;
     }
 }
