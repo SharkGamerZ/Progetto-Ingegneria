@@ -259,7 +259,7 @@ void populateDB(int n) {
                 pqxx::work w(*conn);
                 try {
                     int randomProductID = productIDs[rand()%productIDs.size()];
-                    int qty = rand()%10+1;
+                    int qty = rand()%9+1;
 
                     string query = "INSERT INTO carts (customer, product, quantity) VALUES ('" + 
                                                 to_string(customersID[i]) + "', '" + 

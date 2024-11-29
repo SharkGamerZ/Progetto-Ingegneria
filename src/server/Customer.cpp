@@ -34,12 +34,17 @@ void Customer::addProductToCart(int productID, int qta) {
 		return;
 	}
 	
+	cart = ds.getCart(to_string(this->ID));
+	cout<<"[INFO] Cart of "<<this->ID<<endl;
+	for (auto const& [key, val] : cart) {
+		cout << key << " " << val << endl;
+	}
 	string query;
 	// Controlla se l'articolo è già presente nel carrello
-	if (this->cart.find(productID) != this->cart.end()) {
+	if (cart.find(productID) != cart.end()) {
 		this->cart[productID] += qta;
 		cout<<"[INFO] "<<qta<<" elements of product with ID "<<p.ID<<" added to the cart of "<<this->ID<<endl;
-		query = "UPDATE carts SET quantity = " + to_string(this->cart[productID]) + " WHERE customer = " + to_string(this->ID) + " AND product = " + to_string(p.ID);
+		query = "UPDATE carts SET quantity = " + to_string(cart[productID]) + " WHERE customer = " + to_string(this->ID) + " AND product = " + to_string(p.ID);
 	} else {
 		this->cart[productID] = qta;
 		cout<<"[INFO] Product with ID "<<p.ID<<" added to the cart of "<<this->ID<<endl;
@@ -56,6 +61,9 @@ void Customer::addProductToCart(int productID, int qta) {
 	} catch (const std::exception &e) {
 		cerr << e.what() << endl;
 	}
+
+	// Salva su redis
+	rc.set("carts", to_string(this->ID), to_string(p.ID) + "_" + to_string(qta));
 	
 }
 

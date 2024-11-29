@@ -166,7 +166,7 @@ void testCustomer(std::vector<bool> selected, int n, vector<int> customersID, ve
 
             for (int j = 0; j < 5; j++) {
                 int randomProductID = productIDs[rand() % productIDs.size()];
-                c.addProductToCart(randomProductID, rand() % 10 + 1);
+                c.addProductToCart(randomProductID, rand() % 9 + 1);
             }
         }
     }
