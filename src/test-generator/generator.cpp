@@ -145,40 +145,23 @@ vector<string> getRandomAdjectives(int n) {
 
 
 
-void testCustomer(std::vector<bool> selected, int n) {
+void testCustomer(std::vector<bool> selected, int n, vector<int> customersID, vector<int> suppliersID, vector<int> productIDs) {
     std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
-    // Ci prendiamo customers e products
-    cout<<"[INFO]Getting Customers"<<endl;
-    try {
-        pqxx::work w(*conn);
-        for (auto [id, CF, name, surname, email] : w.query<int, string, string, string, string>("SELECT id, CF, name, surname, email FROM customers, users WHERE users.id=customers.userID")) {
-            customers.push_back(Customer(id, CF, name, surname, email));
-        }
-        w.commit();
-    } catch (const std::exception &e) {
-        cerr << e.what() << endl;
-    }
-
-    cout<<"[INFO]Getting Products"<<endl;
-    try {
-        pqxx::work w(*conn);
-        for (auto [id, supplierID, name, description, price, stock] : w.query<int, int, string, string, double, int>("SELECT id, supplier, name, description, price, stock FROM products")) {
-            products.push_back(Product(id, supplierID, name, description, price, stock));
-        }
-        w.commit();
-    } catch (const std::exception &e) {
-        cerr << e.what() << endl;
-    }
-
-
+    RedisCache cache;
+    DataService ds(cache);
     // addProductToCart test
     if (selected[0]) {
         cout<<"[INFO]Testing addProductToCart"<<endl;
         for (int i = 0; i < n; i++) {
-            if (customers.size() == 0) break;
-            Customer c = customers[rand() % customers.size()];
+            if (customersID.size() == 0) break;
+            int randomCustomerID = customersID[rand() % customersID.size()];
+            vector<string> randomCustomerString = ds.getData("customers", to_string(randomCustomerID));
+            Customer c;
+            c.ID = stoi(randomCustomerString[0]);
+
             for (int j = 0; j < 5; j++) {
+                int randomProductID = productIDs[rand() % productIDs.size()];
                 Product p = products[rand() % products.size()];
                 c.addProductToCart(p, rand() % 10 + 1);
             }

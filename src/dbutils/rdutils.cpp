@@ -1,6 +1,8 @@
 #include "rdutils.hpp"
 
-RedisCache::RedisCache(const string& host = "127.0.0.1", int port = 6379) {
+RedisCache::RedisCache() {
+    string host = "127.0.0.1";
+    int port = 6379;
     // Establish a connection to Redis
     context = redisConnect(host.c_str(), port);
     if (context == nullptr || context->err) {

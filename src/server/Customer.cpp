@@ -10,53 +10,87 @@
  * @param c Customer a cui aggiungere gli articoli nel carrello.
  * 
  */
-void Customer::addProductToCart(Product p, int qta) {
+void Customer::addProductToCart(int productID, int qta) {
+	RedisCache rc = RedisCache();
+	DataService ds(rc);
+
 	// Controlla la disponibilità dell'articolo
+	vector<string> productString = ds.getData("products", to_string(productID));
+	Product p;
+	p.ID = stoi(productString[0]);
+	p.name = productString[1];
+	p.description = productString[2];
+	p.supplierID = stoi(productString[3]);
+	p.price = stof(productString[4]);
+	p.stock = stoi(productString[5]);
+
 	if (p.stock < qta) {
 		cerr<<"[ERROR] Error adding product to cart.\n\tProduct "<<p.name<<" has "<<p.stock<< " elements in stock, but "<<qta<<" where requested."<<endl;
 		return;
 	}
 	
 	// Controlla se l'articolo è già presente nel carrello
-	if (this->cart.find(p) != this->cart.end()) {
-		this->cart[p] += qta;
+	if (this->cart.find(productID) != this->cart.end()) {
+		this->cart[productID] += qta;
 		cout<<"[INFO] "<<qta<<" elements of product with ID "<<p.ID<<" added to the cart of "<<this->ID<<endl;
 	} else {
-		this->cart[p] = qta;
+		this->cart[productID] = qta;
 		cout<<"[INFO] Product with ID "<<p.ID<<" added to the cart of "<<this->ID<<endl;
 	}
 
-	// TODO le cose per salvarlo su redis
+	// Salva la modifica sul DB
+	std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+
+	pqxx::work w(*conn);
+	try {
+		w.exec("INSERT INTO carts (customer, product, quantity) VALUES (" + to_string(this->ID) + ", " + to_string(p.ID) + ", " + to_string(qta) + ")");
+		w.commit();
+	} catch (const std::exception &e) {
+		cerr << e.what() << endl;
+	}
+	
 }
 
-void Customer::removeProductFromCart(Product p, int qta) {
-	// Print cart
-	for (auto [p,qta] : this->cart) {
-		cout<<p.ID<<" "<<qta<<endl;
-	}
-	
-	
+void Customer::removeProductFromCart(int productID, int qta) {
 	// Controlla se l'articolo è presente nel carrello
 	// e se la quantità da rimuovere è minore o uguale a quella presente
-	if (this->cart.count(p) == 0) {
-		cerr<<"[ERROR] Error removing product from cart\n\tProduct with ID "<<p.ID<<" not found in the cart of "<<this->ID<<endl;
+	if (this->cart.count(productID) == 0) {
+		cerr<<"[ERROR] Error removing product from cart\n\tProduct with ID "<<productID<<" not found in the cart of "<<this->ID<<endl;
 		return;
 	}
 
-	if (this->cart[p] < qta) {
-		cerr<<"[ERROR] Error removing product from cart\n\tProduct with ID "<<p.ID<<" has "<<this->cart[p]<<" elements in the cart, but "<<qta<<" where requested to remove."<<endl;
+	if (this->cart[productID] < qta) {
+		cerr<<"[ERROR] Error removing product from cart\n\tProduct with ID "<<productID<<" has "<<this->cart[productID]<<" elements in the cart, but "<<qta<<" where requested to remove."<<endl;
 		return;
 	}
 
-	if (this->cart[p] == qta) {
-		this->cart.erase(p);
-		cout<<"[INFO] Product with ID "<<p.ID<<" removed from the cart of "<<this->ID<<endl;
+	if (this->cart[productID] == qta) {
+		this->cart.erase(productID);
+		cout<<"[INFO] Product with ID "<<productID<<" removed from the cart of "<<this->ID<<endl;
 	} else {
-		this->cart[p] -= qta;
-		cout<<"[INFO] "<<qta<<" elements of product with ID "<<p.ID<<" removed from the cart of "<<this->ID<<endl;
+		this->cart[productID] -= qta;
+		cout<<"[INFO] "<<qta<<" elements of product with ID "<<productID<<" removed from the cart of "<<this->ID<<endl;
 	}
 
-		// TODO le cose per salvarlo su redis
+	// Aggiorniamo il DB
+	std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+
+	pqxx::work w(*conn);
+	if (this->cart.count(productID) == 0) {
+		try {
+			w.exec("DELETE FROM carts WHERE customer = " + to_string(this->ID) + " AND product = " + to_string(productID));
+			w.commit();
+		} catch (const std::exception &e) {
+			cerr << e.what() << endl;
+		}
+	} else {
+		try {
+			w.exec("UPDATE carts SET quantity = " + to_string(this->cart[productID]) + " WHERE customer = " + to_string(this->ID) + " AND product = " + to_string(productID));
+			w.commit();
+		} catch (const std::exception &e) {
+			cerr << e.what() << endl;
+		}
+	}
 }
 
 
@@ -67,55 +101,48 @@ void Customer::removeProductFromCart(Product p, int qta) {
  * ad un trasportatore e poi svuota il carrello.
  * 
  */
-void Customer::buyCart() {
-	Order order;
-	
-	order.customerID = this->ID;
-	order.products = this->cart;
-
-	// TODO Fare query che restituisce quantita' dei vari prodotti
-	// La query dovra' tornare una mappa ProductID->stock
-	map <int, int> qta;
-	try {
-		std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
-
-		pqxx::work w(*conn);
-		string query = "SELECT id, stock FROM products";
-		for (auto [id, stock] : w.query<int, int>(query)) {
-			qta[id] = stock;
-		}
-		
-		w.commit();
-	} catch (const std::exception &e) {
-		cerr << e.what() << endl;
-	}
-
-	// Controlla se c'è la quantità di articoli necessaria.
-	map<int, int>::iterator it;
-	for (it = order.products.begin(); it != order.products.end(); it++) {
-		int productID = it-> first;
-		int stockOrdered = it-> second;
-
-
-		// Controlla che ci sia la quantita' necessaria
-		if (qta[productID] < stockOrdered) {
-			cerr<<"[ERROR] Error buying the cart"<<endl;
-			return;
-		}
-		
-		// Aggiorna la quantità
-		qta[productID] -= stockOrdered;
-	}
-
-	// Aggiunge l'ordine al db
-	
-
-	// Crea la spedizione (TODO Romina)
+/*void Customer::buyCart() {*/
+/*	Order order;*/
+/**/
+/*	order.customerID = this->ID;*/
+/*	order.products = this->cart;*/
+/**/
+/*	// La query dovra' tornare una mappa ProductID->stock*/
+/*	map <int, int> productStock;*/
+/*	DataService ds(new RedisCache());*/
+/*	// TODO Aspettare Thomas*/
+/*	vector<vector<string>> products = ds.getFilteredProducts(",,");*/
+/*	for (int i = 0; i < products.size(); i += 6) {*/
+/*		productStock[stoi(products[i])] = stoi(products[i + 5]);*/
+/*	}*/
+/**/
+/**/
+/*	// Controlla se c'è la quantità di articoli necessaria.*/
+/*	map<int, int>::iterator it;*/
+/*	for (it = order.products.begin(); it != order.products.end(); it++) {*/
+/*		int productID = it-> first;*/
+/*		int stockOrdered = it-> second;*/
+/**/
+/**/
+/*		// Controlla che ci sia la quantita' necessaria*/
+/*		if (productStock[productID] < stockOrdered) {*/
+/*			cerr<<"[ERROR] Error buying the cart"<<endl;*/
+/*			return;*/
+/*		}*/
+/**/
+/*		// Aggiorna la quantità*/
+/*		productStock[productID] -= stockOrdered;*/
+/*	}*/
+/**/
+/*	// Aggiunge l'ordine al db*/
+/**/
+/**/
+/*	// Crea la spedizione (TODO Romina)*/
 	/*newShipping(order);*/
-
-	// Svuota il carrello
-	this->cart.clear();
-}
+/**/
+/*	// Svuota il carrello*/
+/*	this->cart.clear();*/
+/*}*/
 
 
 

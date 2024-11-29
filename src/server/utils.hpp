@@ -17,6 +17,7 @@ public:
     double price;
     int stock;
 
+    Product() {}
     Product (int ID, int supplierID, std::string name, std::string description, double price, int stock) {
         this->ID = ID;
         this->supplierID = supplierID;
@@ -44,6 +45,7 @@ public:
     time_t orderTime;
 
 
+    Order () {}
     Order (int ID, int customerID, time_t orderTime) {
         this->ID = ID;
         this->customerID = customerID;

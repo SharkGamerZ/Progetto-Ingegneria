@@ -10,7 +10,7 @@
 class RedisCache{
 public:
     /** @brief Connects to redis, and load the full Products table in the cache. */
-    RedisCache(const string& host, int port);
+    RedisCache();
 
     /** @brief Closes the connection to redis. */
     ~RedisCache();
