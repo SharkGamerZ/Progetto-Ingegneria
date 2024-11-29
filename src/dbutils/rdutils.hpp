@@ -16,7 +16,7 @@ public:
     ~RedisCache();
 
     /** @brief Populates the cache with the needed tables (products) */
-    bool initCache();
+    void initCache();
 
     /** @brief Checks the existence of the key inside redis
      * @param table The table in the DB
@@ -56,9 +56,11 @@ public:
      * @return A vector of strings that contains the returner values
     */
     vector<string> getData(const string& table, const string& ID);
-    // TODO se ID = asterisco funzione di romina trasportatoreDisponibile()
     // da vedere se fare funzione o mettere set in codice
     //void setData(const string& table, const vector<any>& values);
+
+    map<int, int> getCart(const string& ID);
+
 
     vector<string> getAvailableShipper(); 
     //getFilteredProducts()    
@@ -73,6 +75,9 @@ private:
      * @param ID The ID of the search tuple
      */
     string fetchFromDatabase(const string& table, const string& ID);
+
+    string fetchCartFromDatabase(const string& ID);
 };
 
-#endif
+
+#endif;
