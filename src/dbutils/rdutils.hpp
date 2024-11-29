@@ -52,9 +52,12 @@ public:
      * @param ID The ID of the search tuple
     */
     string getData(const string& table, const string& ID);
-
+    // TODO ritorna vettore di stringhe
+    // TODO se ID = asterisco funzione di romina trasportatoreDisponibile()
     // da vedere se fare funzione o mettere set in codice
     //void setData(const string& table, const vector<any>& values);
+
+    //getFilteredProducts()    
 
 private:
     RedisCache& cache;
