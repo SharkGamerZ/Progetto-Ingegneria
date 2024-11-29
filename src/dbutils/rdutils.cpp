@@ -73,21 +73,41 @@ string RedisCache::get(const string& table, const string& ID) {
     return value;
 }
 
-string RedisCache::getShippers() {
+vector<string> RedisCache::getShippers() {
     unsigned long long cursor = 0;
-    
-    redisReply* reply = (redisReply*) redisCommand(context, "SCAN %llu MATCH shippers*", cursor);
+    vector<string> shippers;
+    do {
+        redisReply *reply = (redisReply*) redisCommand(context, "SCAN %llu MATCH Shipper*", cursor);
+        if (reply->type == REDIS_REPLY_ARRAY && reply->elements == 2) {
+            // Update the cursor
+            cursor = strtoull(reply->element[0]->str, NULL, 10);
 
-    if (reply->type == REDIS_REPLY_ARRAY) {
-        //update cursor
-        cursor = strtoull(reply->element[0]->str, NULL, 10);
-
-        if (reply->element[1]->type == REDIS_REPLY_ARRAY) {
-            for (size_t i = 0; i < reply->element[1]->elements; i++) {
+            // Check if the keys list is empty
+            if (reply->element[1]->type == REDIS_REPLY_ARRAY && reply->element[1]->elements == 0) {
+                printf("No shippers in cache.\n");
+                return shippers;
+            } else {
+                // Get the data from the key
+                string id = "";
+                string key = "";
                 
+                for (size_t i = 0; i < reply->element[1]->elements; i++) {
+                    string value = "";
+                    key = reply->element[1]->element[i]->str;
+                    id = key.substr(8, string::npos);
+
+                    
+                }
             }
+        } else {
+            printf("Error: Unexpected reply structure or empty result.\n");
+            freeReplyObject(reply);
+            redisFree(c);
+            return 1;
         }
-    }
+
+        freeReplyObject(reply);
+    } while (cursor != 0);
 }
 
 
@@ -162,10 +182,22 @@ vector<string> DataService::getData(const string& table, const string& ID) {
 void DataService::addCart(const string& ID, const string& prod, const string& qnt) {
     map<int,int> old = getCart(ID);
     string value = "";
-    for (auto [prod, qnt] : old) {
-        value += to_string(prod) + "_" + to_string(qnt) + "_";
+
+    if (old.find(stoi(prod)) != old.end()) {
+        old[stoi(prod)] += stoi(qnt);
+        string value = "";
+        for (auto [prod, qnt] : old) {
+            value += to_string(prod) + "_" + to_string(qnt) + "_";
+        }
+        value.pop_back();
+
     }
-    value += prod + "_" + qnt;
+    else{
+        for (auto [prod, qnt] : old) {
+            value += to_string(prod) + "_" + to_string(qnt) + "_";
+        }
+        value += prod + "_" + qnt;
+    }
     cache.set("carts", ID, value);
 }
 
