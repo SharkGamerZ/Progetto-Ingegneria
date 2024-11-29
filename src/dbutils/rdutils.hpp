@@ -32,6 +32,8 @@ public:
      */
     string get(const string& table, const string& ID);
 
+    string getShippers();
+
     /** @brief Set an element in the redis cache
      * @param table The table in the DB
      * @param ID The primary key of the tuple in the DB
@@ -58,6 +60,8 @@ public:
     vector<string> getData(const string& table, const string& ID);
     // da vedere se fare funzione o mettere set in codice
     //void setData(const string& table, const vector<any>& values);
+
+    void addCart(const string& ID, const string& prod, const string& qnt);
 
     map<int, int> getCart(const string& ID);
 

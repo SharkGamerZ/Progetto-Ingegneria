@@ -27,10 +27,16 @@ void RedisCache::initCache() {
     // Enstablish connection to DB and load the products table
     unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
-    pqxx::work w(*conn);
-    string query = "SELECT * FROM products";
-    for (auto [id, supplierID, name, description, price, stock] : w.query<string, string, string, string, string, string>(query)) {
-        set("products", id, supplierID + "_" + name + "_" + description + "_" + price + "_" + stock);
+    try {
+        pqxx::work w(*conn);
+        string query = "SELECT * FROM products";
+        for (auto [id, supplierID, name, description, price, stock] : w.query<string, string, string, string, string, string>(query)) {
+            set("products", id, supplierID + "_" + name + "_" + description + "_" + price + "_" + stock);
+        }
+        w.commit();
+    } catch (const std::exception &e) {
+        cerr << e.what() << std::endl;
+        throw e;
     }
 }
 
@@ -66,6 +72,24 @@ string RedisCache::get(const string& table, const string& ID) {
     return value;
 }
 
+string RedisCache::getShippers() {
+    unsigned long long cursor = 0;
+    
+    redisReply* reply = (redisReply*) redisCommand(context, "SCAN %llu MATCH shippers*", cursor);
+
+    if (reply->type == REDIS_REPLY_ARRAY) {
+        //update cursor
+        cursor = strtoull(reply->element[0]->str, NULL, 10);
+
+        if (reply->element[1]->type == REDIS_REPLY_ARRAY) {
+            for (size_t i = 0; i < reply->element[1]->elements; i++) {
+                
+            }
+        }
+    }
+}
+
+
 void RedisCache::set(const string& table, const string& ID, const string& value) {
     string key = "";
 
@@ -79,6 +103,7 @@ void RedisCache::set(const string& table, const string& ID, const string& value)
     }
     freeReplyObject(reply);
 }
+
 
 DataService::DataService(RedisCache& cache) : cache(cache) {}
 
@@ -133,6 +158,16 @@ vector<string> DataService::getData(const string& table, const string& ID) {
     }
 }
 
+void DataService::addCart(const string& ID, const string& prod, const string& qnt) {
+    map<int,int> old = getCart(ID);
+    string value = "";
+    for (auto [prod, qnt] : old) {
+        value += to_string(prod) + "_" + to_string(qnt) + "_";
+    }
+    value += prod + "_" + qnt;
+    cache.set("carts", ID, value);
+}
+
 // Implementing the Cache-Aside pattern
 map<int,int> DataService::getCart(const string& ID) {
     // Check if the data exists in the cache
@@ -171,7 +206,7 @@ map<int,int> DataService::getCart(const string& ID) {
         string data = fetchCartFromDatabase(ID);
         cout<<data<<endl;
         // Store the data in the cache
-        cache.set("carts", ID, data);
+        cache.cache.("carts", ID, data);
         cout<<"[INFO]Data set in cache"<<endl;
         
         cout<<data<<endl;
@@ -195,7 +230,7 @@ map<int,int> DataService::getCart(const string& ID) {
 
         return res;
     }
-} 
+}
 // ATTENZIONE per fare query su dati dei Shipper vuol dire che quelli presenti in cache devono essere correttamente aggiornati
 vector<string> DataService::getAvailableShipper() {    
     vector<string> res;
