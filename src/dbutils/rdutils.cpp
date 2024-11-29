@@ -37,8 +37,8 @@ void RedisCache::initCache() {
 bool RedisCache::exist(const string& table, const string& ID) {
     string key = "";
 
-    key.append(ID);
     key.append(table);
+    key.append(ID);
 
     redisReply* reply = (redisReply*)redisCommand(context, "EXISTS %s", key.c_str());
     if (!reply) {
@@ -53,8 +53,8 @@ bool RedisCache::exist(const string& table, const string& ID) {
 string RedisCache::get(const string& table, const string& ID) {
     string key = "";
 
-    key.append(ID);
     key.append(table);
+    key.append(ID);
 
     redisReply* reply = (redisReply*)redisCommand(context, "GET %s", key.c_str());
     if (!reply || reply->type != REDIS_REPLY_STRING) {
@@ -69,8 +69,8 @@ string RedisCache::get(const string& table, const string& ID) {
 void RedisCache::set(const string& table, const string& ID, const string& value) {
     string key = "";
 
-    key.append(ID);
     key.append(table);
+    key.append(ID);
 
 
     redisReply* reply = (redisReply*)redisCommand(context, "SET %s %s", key.c_str(), value.c_str());
@@ -97,6 +97,8 @@ vector<string> DataService::getData(const string& table, const string& ID) {
     if (cache.exist(table, ID)) {
         cout << "Cache hit for key: " << key << endl;
         string data = cache.get(table, ID);
+
+        cout<<data<<endl;
         
         //Splits on delimiter
         while ((pos = data.find(delimiter)) != std::string::npos) {
@@ -146,36 +148,50 @@ map<int,int> DataService::getCart(const string& ID) {
         string data = cache.get("carts", ID);
         
         //Splits on delimiter
+        cout<<data<<endl;
         while ((pos = data.find(delimiter)) != std::string::npos) {
             value = data.substr(0, pos);
             vals.push_back(value);
             data.erase(0, pos + delimiter.length());
         }
+        cout << "Finished splitting" << endl;
         vals.push_back(data);
 
-        for(int i = 0; i<vals.size(); i+2) {
+
+        for(int i = 0; i<vals.size(); i+=2) {
+            cout << "Product: " << vals[i] << " Quantity: " << vals[i+1] << endl;
             res[stoi(vals[i])] = stoi(vals[i+1]); 
         }
+
+        cout<<"[INFO] Finished splitting 2"<<endl;
         return res;
     } else {
         cout << "Cache miss for customer key: " << ID << endl;
         // Simulate fetching data from a PostgreSQL database
         string data = fetchCartFromDatabase(ID);
+        cout<<data<<endl;
         // Store the data in the cache
         cache.set("carts", ID, data);
+        cout<<"[INFO]Data set in cache"<<endl;
         
+        cout<<data<<endl;
+
         string delimiter = "_";
+        string prod;
         // Splits on delimiter
         while ((pos = data.find(delimiter)) != std::string::npos) {
-            string prod = data.substr(0, pos);
+            prod = data.substr(0, pos);
             data.erase(0, pos + delimiter.length());
-            if (pos = data.find(delimiter) != std::string::npos) {
+            if ((pos = data.find(delimiter) != std::string::npos)) {
                 string qnt = data.substr(0, pos);
                 data.erase(0, pos + delimiter.length());
+                cout << "Product: " << prod << " Quantity: " << qnt << endl;
+                cout << "Data: " << data << endl;
                 res[stoi(prod)] = stoi(qnt);
             }
-            res[stoi(prod)] = stoi(data);
         }
+        res[stoi(prod)] = stoi(data);
+        cout << "Finished splitting 3" << endl;
 
         return res;
     }

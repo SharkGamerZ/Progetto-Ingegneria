@@ -17,8 +17,8 @@ void Customer::addProductToCart(int productID, int qta) {
 	// Controlla la disponibilità dell'articolo
 	cout<<"[INFO] Adding product with ID "<<productID<<" to the cart of "<<this->ID<<endl;
 	vector<string> productString = ds.getData("products", to_string(productID));
-	cout<<"[INFO] Product found: "<<productString[1]<<endl;
 	Product p;
+	cout<<"[INFO] Product found"<<endl;
 	for (int i = 0; i < productString.size(); i++) {
 		cout << productString[i] << endl;
 	}
