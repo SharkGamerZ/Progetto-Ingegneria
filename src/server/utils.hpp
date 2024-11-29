@@ -39,13 +39,19 @@ class Order {
 public:
     int ID;
     int customerID;
-    int shipmentID;
-    map<int, int> products;
+    int ShippingID;
+    map <int, int> products; // Maps productsID to quantities
     time_t orderTime;
 
+
+    Order (int ID, int customerID, time_t orderTime) {
+        this->ID = ID;
+        this->customerID = customerID;
+        this->orderTime = orderTime;
+    }
 };
 
-class Shipment {
+class Shipping {
 public:
     int ID;
     int orderID;
@@ -53,11 +59,21 @@ public:
     time_t handlingTime;
     bool state;
 
+    Shipping() {}
+
+    Shipping (int ID, int orderID, int shipperID, time_t handlingTime, bool state) {
+        this->ID = ID;
+        this->orderID = orderID;
+        this->shipperID = shipperID;
+        this->handlingTime = handlingTime;
+        this->state = state;
+    }
+
     /** Funzione per controllare lo stato di una spedizione
      *
      *  @return true se la spedizione è stata consegnata, false altrimenti
      */
-    bool getShipmentState();
+    bool getShippingState();
 };
 
 /** TODO Prototipo di funzione per ricercare i prodotti in vendita.

@@ -71,8 +71,8 @@ Possono:
 		Articolo[] getProducts(); utils.cpp
 
 [x]	- Ricercare un prodotto con vari filtri.
-		Articolo[] getFilteredProducts(Filters f); utils.cpp	
-
+		Articolo[] getFilteredProducts(Filters f); utils.cpp	USA REDIS INSIEME A QUELLA PRIMA, passando i filtri, eventualmente vuoti come ",,"
+												PRENDENDO SupplierId, Name, Price Filtri:"=43,,<20.0"
 [x]	-  Aggiungere un prodotto al proprio carrello.
 		void addProductToCart(Articolo x, Customer c); customers.cpp
 			- Fare un check che l'articolo aggiunto sia effettivamente disponibile
@@ -87,7 +87,7 @@ Possono:
 			- Svuotare il carrello
 
 
-[x]	- Visualizzare tracciamento pacco. (Da estendere dopo)
+[x]	- Visualizzare tracciamento pacco. (Da estendere dopo)				USA REDIS, con la funzione getKey("43","Orders","State")
 		- bool getOrderState(Ordine o); utils.cpp
 
 		

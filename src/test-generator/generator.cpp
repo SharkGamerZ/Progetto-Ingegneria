@@ -3,6 +3,9 @@
 #include <string>
 
 
+
+
+
 vector<string> getRandomNames(int n) {
     srand(time(NULL));
 
@@ -142,12 +145,11 @@ vector<string> getRandomAdjectives(int n) {
 
 
 
-void testCustomer(int n) {
+void testCustomer(std::vector<bool> selected, int n) {
     std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
     // Ci prendiamo customers e products
     cout<<"[INFO]Getting Customers"<<endl;
-    vector<Customer> customers;
     try {
         pqxx::work w(*conn);
         for (auto [id, CF, name, surname, email] : w.query<int, string, string, string, string>("SELECT id, CF, name, surname, email FROM customers, users WHERE users.id=customers.userID")) {
@@ -159,7 +161,6 @@ void testCustomer(int n) {
     }
 
     cout<<"[INFO]Getting Products"<<endl;
-    vector<Product> products;
     try {
         pqxx::work w(*conn);
         for (auto [id, supplierID, name, description, price, stock] : w.query<int, int, string, string, double, int>("SELECT id, supplier, name, description, price, stock FROM products")) {
@@ -172,32 +173,40 @@ void testCustomer(int n) {
 
 
     // addProductToCart test
-    cout<<"[INFO]Testing addProductToCart"<<endl;
-    for (int i = 0; i < n; i++) {
-        Customer c = customers[rand() % customers.size()];
-        for (int j = 0; j < 5; j++) {
-            Product p = products[rand() % products.size()];
-            c.addProductToCart(p, rand() % 10 + 1);
+    if (selected[0]) {
+        cout<<"[INFO]Testing addProductToCart"<<endl;
+        for (int i = 0; i < n; i++) {
+            if (customers.size() == 0) break;
+            Customer c = customers[rand() % customers.size()];
+            for (int j = 0; j < 5; j++) {
+                Product p = products[rand() % products.size()];
+                c.addProductToCart(p, rand() % 10 + 1);
+            }
         }
     }
 
+
     // removeProductFromCart test
-    cout<<"[INFO]Testing removeProductFromCart"<<endl;
-    for (int i = 0; i < n; i++) {
-        Customer c = customers[rand() % customers.size()];
-        for (int j = 0; j < 5; j++) {
-            Product p = products[rand() % products.size()];
-            c.removeProductFromCart(p, rand() % 5 + 1);
+    if (selected[1]) {
+        cout<<"[INFO]Testing removeProductFromCart"<<endl;
+        for (int i = 0; i < n; i++) {
+            if (customers.size() == 0) break;
+            Customer c = customers[rand() % customers.size()];
+            for (int j = 0; j < 5; j++) {
+                Product p = products[rand() % products.size()];
+                c.removeProductFromCart(p, rand() % 5 + 1);
+            }
         }
     }
 
 
     // buyCart test
-    cout<<"[INFO]Testing buyCart"<<endl;
-    for (int i = 0; i < n; i++) {
-        Customer c = customers[rand() % customers.size()];
-        c.buyCart();
-
+    if (selected[2]) {
+        cout<<"[INFO]Testing buyCart"<<endl;
+        for (int i = 0; i < n; i++) {
+            if (customers.size() == 0) break;
+            Customer c = customers[rand() % customers.size()];
+            c.buyCart();
+        }
     }
-
 }

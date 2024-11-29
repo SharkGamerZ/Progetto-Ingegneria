@@ -7,7 +7,7 @@ Funzione con la quale il trasportatore ottiene le spedizioni a proprio carico.
 
 Dal database prendere tutte le spedizioni affidate al Trasportatore t (?)
  */
-std::vector<Shipment> Shipper::getShippings() {
+std::vector<Shipping> Shipper::getShippings() {
     return spedizioni_assegnate;
 }
 
@@ -15,8 +15,8 @@ std::vector<Shipment> Shipper::getShippings() {
 /*
  Funzione che restituisce le spedizioni che devono essere ancora completate.
  */
-std::vector<Shipment> Shipper::getActiveShippings(pqxx::connection &conn) {
-    std::vector<Shipment> activeShippings;
+std::vector<Shipping> Shipper::getActiveShippings(pqxx::connection &conn) {
+    std::vector<Shipping> activeShippings;
 
     try {
         pqxx::work w(conn);
@@ -26,7 +26,7 @@ std::vector<Shipment> Shipper::getActiveShippings(pqxx::connection &conn) {
             "WHERE s.shipper = " + std::to_string(this->ID) + " AND s.state = FALSE");
 
         for (auto row : r) {
-            Shipment s;
+            Shipping s;
             s.ID = row[0].as<int>();
             s.orderID = row[1].as<int>();
             s.shipperID = row[2].as<int>();
@@ -42,11 +42,10 @@ std::vector<Shipment> Shipper::getActiveShippings(pqxx::connection &conn) {
     return activeShippings;
 }
 
-
 /*
 Aggiorna lo stato di una spedizione.
  */
-void updateShipping(Shipment old_sped, Shipment new_sped){
+void updateShipping(Shipping old_sped, Shipping new_sped){
 
     if (old_sped.ID == new_sped.ID) { //aggiorno sse è la stessa spedizione
       old_sped.state= new_sped.state;
@@ -63,7 +62,7 @@ Questa funzione cerca un trasportatore disponibile,che si può ottenere dalla ta
 Per "disponibile", si intende un trasportatore che non ha spedizioni attualmente
 in corso (il campo state della spedizione è FALSE).
  */
-Shipper Shipper::trasportatore_disponibile(pqxx::connection &conn) {
+static Shipper trasportatore_disponibile(pqxx::connection &conn) {
   Shipper t(0, "", "", "", "");  // Oggetto Shipper vuoto come valore di ritorno di default
   try {
     // Selezioniamo un trasportatore che non ha spedizioni in corso (stato FALSE)
@@ -88,7 +87,7 @@ Shipper Shipper::trasportatore_disponibile(pqxx::connection &conn) {
     return t;
   } catch (const std::exception &e) {  //per catturare le eccezioni lanciate dal blocco try
     cerr << "Error in trasportatore_disponibile: " << e.what() << endl;
-    return;
+    throw e;
   }
 }
 
@@ -111,7 +110,7 @@ void newShipping(Order o, pqxx::connection &conn) {
         pqxx::work w(conn);
 
         // Creiamo la nuova spedizione nel database
-        int shipmentID = -1; // Variabile per memorizzare l'ID della spedizione
+        int shippingID = -1; // Variabile per memorizzare l'ID della spedizione
         try {
             // Creiamo la nuova spedizione nel database
             pqxx::result r = w.exec(
@@ -120,14 +119,14 @@ void newShipping(Order o, pqxx::connection &conn) {
                 "RETURNING id"); // Restituiamo l'ID della spedizione appena inserita
 
             // Otteniamo l'ID della spedizione appena creata
-            shipmentID = r[0][0].as<int>();
+            shippingID = r[0][0].as<int>();
         } catch (const std::exception &e) {
             cerr << "Errore durante l'inserimento della nuova spedizione: " << e.what() << endl;
             return;
         }
-        // Creiamo un oggetto Shipment in memoria e lo popoliamo
-        Shipment new_sped;
-        new_sped.ID = shipmentID;  // ID assegnato dal database
+        // Creiamo un oggetto Shipping in memoria e lo popoliamo
+        Shipping new_sped;
+        new_sped.ID = shippingID;  // ID assegnato dal database
         new_sped.orderID = o.ID;   // Associa l'ID dell'ordine
         new_sped.shipperID = t.ID; // ID del trasportatore
         new_sped.handlingTime = time(nullptr); // Tempo di gestione della spedizione
@@ -138,11 +137,11 @@ void newShipping(Order o, pqxx::connection &conn) {
 
         try {
             // Aggiorniamo l'ordine con l'ID della spedizione nel database
-            w.exec("UPDATE orders SET shipping = " + to_string(shipmentID) + " WHERE id = " + to_string(o.ID));
+            w.exec("UPDATE orders SET shipping = " + to_string(shippingID) + " WHERE id = " + to_string(o.ID));
 
             // Aggiorniamo la relazione tra trasportatore e spedizione nel database (tabella intermedia)
             w.exec("INSERT INTO shipper_shippings (shipperID, shippingID) VALUES (" +
-                   to_string(t.ID) + ", " + to_string(shipmentID) + ")");
+                   to_string(t.ID) + ", " + to_string(shippingID) + ")");
         } catch (const std::exception &e) {
             cerr << "Errore durante l'aggiornamento dei dati: " << e.what() << endl;
             return;
@@ -151,7 +150,7 @@ void newShipping(Order o, pqxx::connection &conn) {
         // Commit dell'operazione
         w.commit();
 
-        cout << "Nuova spedizione creata con ID: " << shipmentID << endl;
+        cout << "Nuova spedizione creata con ID: " << shippingID << endl;
 
     } catch (const std::exception &e) {
         cerr << "Error in newShipping: " << e.what() << endl;
