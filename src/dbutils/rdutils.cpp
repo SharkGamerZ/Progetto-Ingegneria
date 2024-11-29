@@ -325,7 +325,8 @@ vector<string> DataService::getAvailableShipper() {
                 return res;  
             } 
             catch (const std::exception &e) {  //per catturare le eccezioni lanciate dal blocco try    
-                cerr << "Error in trasportatore_disponibile: " << e.what() << endl;    throw e;  
+                cerr << "Error in trasportatore_disponibile: " << e.what() << endl;    
+                throw e;  
             }
 
     }
