@@ -6,9 +6,10 @@
 #include "../server/utils.hpp"
 #include "pgutils.hpp"
 
+/** @brief Class that creates the redis cache and operates on it */
 class RedisCache{
 public:
-    /** @brief Connects to redis. */
+    /** @brief Connects to redis, and load the full Products table in the cache. */
     RedisCache(const string& host, int port);
 
     /** @brief Closes the connection to redis. */
@@ -39,16 +40,32 @@ private:
     redisContext* context;
 };
 
+/** @brief Class that is used as interface with RedisCache */
 class DataService{
 public:
     DataService(RedisCache& cache);
 
-    string getData(const string& key);
+    /** @brief Given the table and ID of a tuple in the db, returns the values in a string.
+     * 2
+     * The function before checks if the searched data are in the redis cache, if it is it returns it, otherwise it performs a select on the DB, loads the data in the cache and then returns it. 
+     * @param table The table in which is going to be searched the ID
+     * @param ID The ID of the search tuple
+    */
+    string getData(const string& table, const string& ID);
+
+    // da vedere se fare funzione o mettere set in codice
+    //void setData(const string& table, const vector<any>& values);
 
 private:
     RedisCache& cache;
 
-    //da vedere fetchFromDatabase se va tenuto
+    /** @brief Performs a select on the DB
+     * 
+     * The function is a private function called from the function getData in the case the pair table-ID is not found as a key in the redis cache.
+     * @param table The table in which is going to be searched the ID
+     * @param ID The ID of the search tuple
+     */
+    string fetchFromDatabase(const string& table, const string& ID);
 };
 
 #endif

@@ -59,6 +59,7 @@ public:
     time_t handlingTime;
     bool state;
 
+    Shipping() {}
 
     Shipping (int ID, int orderID, int shipperID, time_t handlingTime, bool state) {
         this->ID = ID;
