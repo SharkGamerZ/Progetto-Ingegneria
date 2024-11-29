@@ -23,7 +23,7 @@ RedisCache::~RedisCache() {
 }
 
 
-bool RedisCache::initCache() {
+void RedisCache::initCache() {
     // Enstablish connection to DB and load the products table
     unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
@@ -122,37 +122,40 @@ vector<string> DataService::getData(const string& table, const string& ID) {
         }
         res.push_back(data);
 
+        for (int i = 0; i < res.size(); i++) {
+            cout << res[i] << endl;
+        }
         return res;
     }
 }
 
-vector<string> DataService::getAvailableShipper() {
-    vector<string> res;
-
-    unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
-    
-    try {
-        // Selezioniamo un trasportatore che non ha spedizioni in corso (stato FALSE)
-        pqxx::work w(*conn);
-        pqxx::result r = w.exec("SELECT s.userID, u.piva, u.ragione_sociale, u.sede FROM shippers s JOIN users u ON s.userID = u.id WHERE (SELECT COUNT(*) FROM shippings WHERE shipper = s.userID AND state = FALSE) < 10 LIMIT 1");  // Per restituire al massimo un trasportatore
-
-        if (r.empty()) {
-        cout << "Nessun trasportatore disponibile" << endl;
-        return ;  // Se non troviamo trasportatori, restituiamo un oggetto vuoto
-        }
-
-    // Assegniamo i dati del trasportatore trovato
-    t.ID = r[0][0].as<int>();  // userID
-    t.P_IVA = r[0][1].as<string>();  // P_IVA
-    t.ragione_sociale = r[0][2].as<string>();  // ragione_sociale
-    t.sede = r[0][3].as<string>();  // sede
-
-    return t;
-  } catch (const std::exception &e) {  //per catturare le eccezioni lanciate dal blocco try
-    cerr << "Error in trasportatore_disponibile: " << e.what() << endl;
-    throw e;
-  }
-}
+/*vector<string> DataService::getAvailableShipper() {*/
+/*    vector<string> res;*/
+/**/
+/*    unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");*/
+/**/
+/*    try {*/
+/*        // Selezioniamo un trasportatore che non ha spedizioni in corso (stato FALSE)*/
+/*        pqxx::work w(*conn);*/
+/*        pqxx::result r = w.exec("SELECT s.userID, u.piva, u.ragione_sociale, u.sede FROM shippers s JOIN users u ON s.userID = u.id WHERE (SELECT COUNT(*) FROM shippings WHERE shipper = s.userID AND state = FALSE) < 10 LIMIT 1");  // Per restituire al massimo un trasportatore*/
+/**/
+/*        if (r.empty()) {*/
+/*            cout << "Nessun trasportatore disponibile" << endl;*/
+/*            return ;  // Se non troviamo trasportatori, restituiamo un oggetto vuoto*/
+/*        }*/
+/**/
+/*    // Assegniamo i dati del trasportatore trovato*/
+/*    t.ID = r[0][0].as<int>();  // userID*/
+/*    t.P_IVA = r[0][1].as<string>();  // P_IVA*/
+/*    t.ragione_sociale = r[0][2].as<string>();  // ragione_sociale*/
+/*    t.sede = r[0][3].as<string>();  // sede*/
+/**/
+/*    return t;*/
+/*  } catch (const std::exception &e) {  //per catturare le eccezioni lanciate dal blocco try*/
+/*    cerr << "Error in trasportatore_disponibile: " << e.what() << endl;*/
+/*    throw e;*/
+/*  }*/
+/*}*/
 
 string DataService::fetchFromDatabase(const string& table, const string& ID) {
     try {
@@ -161,7 +164,7 @@ string DataService::fetchFromDatabase(const string& table, const string& ID) {
 
         // Query the database for the value corresponding to the key
         pqxx::work w(*conn);
-        pqxx::result result = w.exec("SELECT * FROM " + w.quote(table) + " WHERE ID = " + w.quote(ID) + "");
+        pqxx::result result = w.exec("SELECT * FROM " + table + " WHERE ID = " + w.quote(ID) + "");
 
         if (result.empty()) {
             cerr << "No data found for ID in db: " << ID << endl;

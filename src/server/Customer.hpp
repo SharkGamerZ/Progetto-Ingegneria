@@ -1,5 +1,6 @@
 #include "utils.hpp"
 #include "User.hpp"
+#include "Shipper.hpp"
 #include "../dbutils/pgutils.hpp"
 #include "../dbutils/rdutils.hpp"
 
@@ -8,6 +9,8 @@ class Customer : public User {
 public:
     map<int, int> cart;         // Maps ProductIDs to quantities
     vector<int> pastOrders;     // List of past orders IDS
+
+    Customer () {}
 
     Customer(int ID, string CF, string name, string surname, string email) {
         this->ID = ID;

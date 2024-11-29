@@ -16,7 +16,7 @@ public:
     ~RedisCache();
 
     /** @brief Populates the cache with the needed tables (products) */
-    bool initCache();
+    void initCache();
 
     /** @brief Checks the existence of the key inside redis
      * @param table The table in the DB

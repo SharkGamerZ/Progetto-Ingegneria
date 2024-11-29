@@ -29,13 +29,16 @@ void Customer::addProductToCart(int productID, int qta) {
 		return;
 	}
 	
+	string query;
 	// Controlla se l'articolo è già presente nel carrello
 	if (this->cart.find(productID) != this->cart.end()) {
 		this->cart[productID] += qta;
 		cout<<"[INFO] "<<qta<<" elements of product with ID "<<p.ID<<" added to the cart of "<<this->ID<<endl;
+		query = "UPDATE carts SET quantity = " + to_string(this->cart[productID]) + " WHERE customer = " + to_string(this->ID) + " AND product = " + to_string(p.ID);
 	} else {
 		this->cart[productID] = qta;
 		cout<<"[INFO] Product with ID "<<p.ID<<" added to the cart of "<<this->ID<<endl;
+		query = "INSERT INTO carts (customer, product, quantity) VALUES (" + to_string(this->ID) + ", " + to_string(p.ID) + ", " + to_string(qta) + ")";
 	}
 
 	// Salva la modifica sul DB
@@ -43,7 +46,7 @@ void Customer::addProductToCart(int productID, int qta) {
 
 	pqxx::work w(*conn);
 	try {
-		w.exec("INSERT INTO carts (customer, product, quantity) VALUES (" + to_string(this->ID) + ", " + to_string(p.ID) + ", " + to_string(qta) + ")");
+		w.exec(query);
 		w.commit();
 	} catch (const std::exception &e) {
 		cerr << e.what() << endl;
@@ -101,48 +104,64 @@ void Customer::removeProductFromCart(int productID, int qta) {
  * ad un trasportatore e poi svuota il carrello.
  * 
  */
-/*void Customer::buyCart() {*/
-/*	Order order;*/
-/**/
-/*	order.customerID = this->ID;*/
-/*	order.products = this->cart;*/
-/**/
-/*	// La query dovra' tornare una mappa ProductID->stock*/
-/*	map <int, int> productStock;*/
-/*	DataService ds(new RedisCache());*/
-/*	// TODO Aspettare Thomas*/
-/*	vector<vector<string>> products = ds.getFilteredProducts(",,");*/
-/*	for (int i = 0; i < products.size(); i += 6) {*/
-/*		productStock[stoi(products[i])] = stoi(products[i + 5]);*/
-/*	}*/
-/**/
-/**/
-/*	// Controlla se c'è la quantità di articoli necessaria.*/
-/*	map<int, int>::iterator it;*/
-/*	for (it = order.products.begin(); it != order.products.end(); it++) {*/
-/*		int productID = it-> first;*/
-/*		int stockOrdered = it-> second;*/
-/**/
-/**/
-/*		// Controlla che ci sia la quantita' necessaria*/
-/*		if (productStock[productID] < stockOrdered) {*/
-/*			cerr<<"[ERROR] Error buying the cart"<<endl;*/
-/*			return;*/
-/*		}*/
-/**/
-/*		// Aggiorna la quantità*/
-/*		productStock[productID] -= stockOrdered;*/
-/*	}*/
-/**/
-/*	// Aggiunge l'ordine al db*/
-/**/
-/**/
-/*	// Crea la spedizione (TODO Romina)*/
-	/*newShipping(order);*/
-/**/
-/*	// Svuota il carrello*/
-/*	this->cart.clear();*/
-/*}*/
+void Customer::buyCart() {
+	RedisCache rc = RedisCache();
+	DataService ds(rc);
+
+	// Creazione dell'ordine
+	Order order;
+
+	order.customerID = this->ID;
+	order.products = this->cart;
+
+	// La query dovra' tornare una mappa ProductID->stock
+	map <int, int> productStock;
+
+	// Cicla sui prodotti nel carrello e prende la quantità in stock
+	map<int, int>::iterator it;
+	for (it = order.products.begin(); it != order.products.end(); it++) {
+		int productID = it-> first;
+		vector<string> productString = ds.getData("products", to_string(productID));
+
+		Product p;
+		p.ID = stoi(productString[0]);
+		p.stock = stoi(productString[5]);
+
+		productStock[p.ID] = p.stock;
+	}
+
+
+
+	// Aggiunge l'ordine al db
+	std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+
+	pqxx::work w(*conn);
+	try {
+		w.exec("INSERT INTO orders (customer, date) VALUES (" + to_string(order.customerID) + ", NOW())");
+	} catch (const std::exception &e) {
+		cerr << e.what() << endl;
+	}
+
+	// Aggiunge i vari prodotti all'ordine
+	for (it = order.products.begin(); it != order.products.end(); it++) {
+		int productID = it-> first;
+		int qta = it-> second;
+
+		try {
+			// Aggiunge all'ultimo ordine inserito il prodotto
+			w.exec("INSERT INTO order_products (orderID, productID, quantity) VALUES ((SELECT MAX(ID) FROM orders), " + to_string(productID) + ", " + to_string(qta) + ")");
+		} catch (const std::exception &e) {
+			cerr << e.what() << endl;
+		}
+	}
+
+
+	// Crea la spedizione (TODO Romina)
+	newShipping(order.ID);
+
+	// Svuota il carrello
+	this->cart.clear();
+}
 
 
 

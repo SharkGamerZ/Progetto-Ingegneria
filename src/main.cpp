@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <termios.h>
 
+vector<int> customersID, shippersID, suppliersID; // ID degli utenti
 void populateDB(int n) {
     std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
@@ -40,7 +41,6 @@ void populateDB(int n) {
     cout<<"[INFO]Populating Customers, Shippers, Suppliers"<<endl;
     // Riempimento customers, shippers, suppliers
     string ruoli[3] = {"customers", "shippers", "suppliers"};
-    vector<int> customersID, shippersID, suppliersID; // ID degli utenti
     for (int i = 0; i < n; i++) {
         int ruolo = rand() % 3;
 
@@ -353,7 +353,7 @@ void chooseTestOptions(int n) {
 
     }
 
-    testCustomer(selected, n);
+    testCustomer(selected, n, customersID, suppliersID, shippersID);
 }
 
 
