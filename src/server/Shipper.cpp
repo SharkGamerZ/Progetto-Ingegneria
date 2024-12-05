@@ -8,6 +8,7 @@ Funzione con la quale il trasportatore ottiene le spedizioni a proprio carico.
 Dal database prendere tutte le spedizioni affidate al Trasportatore t (?)
  */
 std::vector<int> Shipper::getShippings() {
+    // TODO ROMINA Implementare la funzione andando ad usare una query, senza usare redis
     return spedizioni_assegnate;
 }
 
@@ -41,16 +42,9 @@ std::vector<int> Shipper::getActiveShippings() {
 /*
 Aggiorna lo stato di una spedizione.
  */
-void updateShipping(int oldSpedID, int newSpedID){
-
-    if (oldSpedID == newSpedID) { //aggiorno sse è la stessa spedizione
-        // TODO
-      /*oldSpedID.state= newSpedID.state;*/
-    }
-   /*
-     Aggiorno solo lo stato perchè considero che la spedizione venga fatta solo dallo stesso trasportatore ??
-     Nel caso in cui venga presa in carico da diversi trasportatori modifica!
-    */
+void shippingDelivered(int shippingID){
+    // Prima prendi la spedizione dal database con quell'id e controlli che non sia stata gia' consegnata
+    // Se non e' stata consegnata, aggiorna lo stato della spedizione a TRUE
   };
 
 
@@ -94,13 +88,12 @@ void newShipping(int orderID) {
 
     // Troviamo un trasportatore disponibile
     int shipperID = trasportatore_disponibile();
-
+    
     // Se non troviamo un trasportatore disponibile
-    // TODO
-    /*if (t.P_IVA.empty()) {*/
-    /*    cerr << "Nessun trasportatore disponibile!" << endl;*/
-    /*    return;*/
-    /*}*/
+    if (shipperID == -1) {
+        cerr << "Nessun trasportatore disponibile!" << endl;
+        return;
+    }
 
     try {
         pqxx::work w(*conn);

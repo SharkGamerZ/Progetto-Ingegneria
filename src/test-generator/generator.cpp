@@ -206,3 +206,5 @@ void testCustomer(std::vector<bool> selected, int n, vector<int> customersID, ve
         }
     }
 }
+
+
