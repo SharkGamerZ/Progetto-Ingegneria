@@ -8,6 +8,32 @@ Funzione con la quale il trasportatore ottiene le spedizioni a proprio carico.
 Dal database prendere tutte le spedizioni affidate al Trasportatore t (?)
  */
 std::vector<int> Shipper::getShippings() {
+    std::vector<int> spedizioni_assegnate;
+
+    try {
+        // Connessione al database "ecommerce"
+        std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+
+        // Creazione della transazione per eseguire la query
+        pqxx::work w(*conn);
+
+        // Query per ottenere gli orderID associati allo Shipper (userID)
+        std::string query = "SELECT orderID FROM shippings WHERE shipper = " + w.quote(userID);
+
+        pqxx::result result = w.exec(query);
+
+        // Estrapoliamo gli orderID dalla risposta della query e li aggiungiamo al vector
+        for (const auto& row : result) {
+            spedizioni_assegnate.push_back(row["orderID"].as<int>());
+        }
+
+        // Completamento della transazione
+        w.commit();
+    } catch (const std::exception &e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+        // In caso di errore ritorniamo un vettore vuoto
+    }
+
     return spedizioni_assegnate;
 }
 
@@ -40,18 +66,42 @@ std::vector<int> Shipper::getActiveShippings() {
 
 /*
 Aggiorna lo stato di una spedizione.
- */
-void updateShipping(int oldSpedID, int newSpedID){
+Se la spedizione non è già stata consegnata, aggiorna il suo stato a TRUE.
+*/
+void shippingDelivered(int shippingID) {
+    // Creazione della connessione al database
+    std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
-    if (oldSpedID == newSpedID) { //aggiorno sse è la stessa spedizione
-        // TODO
-      /*oldSpedID.state= newSpedID.state;*/
+    try {
+        pqxx::work w(*conn);
+
+        // Controlla se la spedizione è già stata consegnata
+        pqxx::result r = w.exec(
+            "SELECT state FROM shippings WHERE id = " + std::to_string(shippingID));
+
+        if (r.empty()) {
+            std::cerr << "Errore: spedizione con ID " << shippingID << " non trovata." << std::endl;
+            return;
+        }
+
+        bool state = r[0][0].as<bool>();
+        if (state) {
+            std::cerr << "La spedizione con ID " << shippingID << " è già stata consegnata." << std::endl;
+            return;
+        }
+
+        // Aggiorna lo stato della spedizione a TRUE
+        w.exec(
+            "UPDATE shippings SET state = TRUE WHERE id = " + std::to_string(shippingID));
+
+        // Commit delle modifiche
+        w.commit();
+        std::cout << "La spedizione con ID " << shippingID << " è stata segnata come consegnata." << std::endl;
+
+    } catch (const std::exception &e) {
+        std::cerr << "Errore in shippingDelivered: " << e.what() << std::endl;
     }
-   /*
-     Aggiorno solo lo stato perchè considero che la spedizione venga fatta solo dallo stesso trasportatore ??
-     Nel caso in cui venga presa in carico da diversi trasportatori modifica!
-    */
-  };
+}
 
 
 /*
@@ -72,7 +122,7 @@ static int trasportatore_disponibile() {
 
     if (r.empty()) {
       cout << "Nessun trasportatore disponibile" << endl;
-      return -1;  // Se non troviamo trasportatori, restituiamo -1 
+      return -1;  // Se non troviamo trasportatori, restituiamo -1
     }
 
     // Assegniamo i dati del trasportatore trovato
@@ -96,11 +146,10 @@ void newShipping(int orderID) {
     int shipperID = trasportatore_disponibile();
 
     // Se non troviamo un trasportatore disponibile
-    // TODO
-    /*if (t.P_IVA.empty()) {*/
-    /*    cerr << "Nessun trasportatore disponibile!" << endl;*/
-    /*    return;*/
-    /*}*/
+    if (shipperID == -1) {
+        cerr << "Nessun trasportatore disponibile!" << endl;
+        return;
+    }
 
     try {
         pqxx::work w(*conn);
@@ -212,5 +261,6 @@ void assignUnassignedOrders() {
         cerr << "Errore generale in assignUnassignedOrders: " << e.what() << endl;
     }
 }
+
 
 
