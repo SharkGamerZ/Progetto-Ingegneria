@@ -25,14 +25,11 @@ class Shipper : public User {
     // Both functions return the ids of the shippings
     std::vector<int> getShippings();
     std::vector<int> getActiveShippings();
-
-    static Shipper trasportatore_disponibile();
-
+    static void shippingDelivered(int shippingID);
+    static int trasportatore_disponibile();
     static void updateShipping(Shipping old_sped, Shipping new_sped);
-
-    /*static void newShipping(Order o, pqxx::connection &conn);*/
+    static void newShipping(int orderID);
+    static void assignUnassignedOrders();
 
 };
 
-void newShipping(int orderID);
-void assignUnassignedOrders();
