@@ -143,8 +143,6 @@ vector<string> getRandomAdjectives(int n) {
 
 
 
-
-
 void testCustomer(std::vector<bool> selected, int n, vector<int> customersID, vector<int> suppliersID, vector<int> productIDs) {
     std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
@@ -203,6 +201,112 @@ void testCustomer(std::vector<bool> selected, int n, vector<int> customersID, ve
             c.cart = ds.getCart(to_string(c.ID)); 
 
             c.buyCart();
+        }
+    }
+}
+
+void testShipper(std::vector<bool> selected, int n, vector<int> shipperIDs, vector<int> orderIDs) {
+    // Connessione al database
+    std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+
+    RedisCache cache;
+    DataService ds(cache);
+
+    // Test assignUnassignedOrders
+    if (selected[0]) {
+        std::cout << "[INFO] Testing assignUnassignedOrders" << std::endl;
+        for (int i = 0; i < n; i++) {
+            if (shipperIDs.empty()) break;
+
+            int randomShipperID = shipperIDs[rand() % shipperIDs.size()];
+            Shipper shipper;
+            shipper.ID = randomShipperID;
+
+            std::cout << "[INFO] Shipper ID: " << shipper.ID << std::endl;
+            shipper.assignUnassignedOrders();
+        }
+    }
+
+    // Test newShipping
+    if (selected[1]) {
+        std::cout << "[INFO] Testing newShipping" << std::endl;
+        for (int i = 0; i < n; i++) {
+            if (shipperIDs.empty() || orderIDs.empty()) break;
+
+            int randomShipperID = shipperIDs[rand() % shipperIDs.size()];
+            int randomOrderID = orderIDs[rand() % orderIDs.size()];
+
+            Shipper shipper;
+            shipper.ID = randomShipperID;
+
+            std::cout << "[INFO] Shipper ID: " << shipper.ID << " creating shipping for Order ID: " << randomOrderID << std::endl;
+            shipper.newShipping(randomOrderID);
+        }
+    }
+
+    // Test trasportatore_disponibile
+    if (selected[2]) {
+        std::cout << "[INFO] Testing trasportatore_disponibile" << std::endl;
+        for (int i = 0; i < n; i++) {
+            if (shipperIDs.empty()) break;
+
+            int randomShipperID = shipperIDs[rand() % shipperIDs.size()];
+            Shipper shipper;
+            shipper.ID = randomShipperID;
+
+            bool isAvailable = shipper.trasportatore_disponibile();
+            std::cout << "[INFO] Shipper ID: " << shipper.ID << " Availability: " << (isAvailable ? "Available" : "Not Available") << std::endl;
+        }
+    }
+
+    // Test shippingDelivered
+    if (selected[3]) {
+        std::cout << "[INFO] Testing shippingDelivered" << std::endl;
+        for (int i = 0; i < n; i++) {
+            if (shipperIDs.empty()) break;
+
+            int randomShippingID = rand() % 100 + 1; // Assumiamo che gli ID delle spedizioni siano in un certo intervallo
+            std::cout << "[INFO] Marking Shipping ID " << randomShippingID << " as Delivered" << std::endl;
+
+            shippingDelivered(randomShippingID);
+        }
+    }
+
+    // Test getActiveShippings
+    if (selected[4]) {
+        std::cout << "[INFO] Testing getActiveShippings" << std::endl;
+        for (int i = 0; i < n; i++) {
+            if (shipperIDs.empty()) break;
+
+            int randomShipperID = shipperIDs[rand() % shipperIDs.size()];
+            Shipper shipper;
+            shipper.ID = randomShipperID;
+
+            std::cout << "[INFO] Shipper ID: " << shipper.ID << " Active Shippings: " << std::endl;
+            auto activeShippings = shipper.getActiveShippings();
+
+            for (const auto& shipping : activeShippings) {
+                std::cout << "Shipping ID: " << shipping.first << ", Order ID: " << shipping.second << std::endl;
+            }
+        }
+    }
+
+    // Test getShippings
+    if (selected[5]) {
+        std::cout << "[INFO] Testing getShippings" << std::endl;
+        for (int i = 0; i < n; i++) {
+            if (shipperIDs.empty()) break;
+
+            int randomShipperID = shipperIDs[rand() % shipperIDs.size()];
+            Shipper shipper;
+            shipper.ID = randomShipperID;
+
+            std::cout << "[INFO] Shipper ID: " << shipper.ID << " All Shippings: " << std::endl;
+            auto shippings = shipper.getShippings();
+
+            for (const auto& shipping : shippings) {
+                std::cout << "Shipping ID: " << shipping.first << ", State: " << (shipping.second ? "Delivered" : "Pending") << std::endl;
+            }
         }
     }
 }
