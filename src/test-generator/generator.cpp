@@ -242,7 +242,7 @@ void testShipper(std::vector<bool> selected, int n, vector<int> shipperIDs, vect
             shipper.ID = randomShipperID;
 
             std::cout << "[INFO] Shipper ID: " << shipper.ID << " creating shipping for Order ID: " << randomOrderID << std::endl;
-            shipper.newShipping(randomOrderID);
+            Shipper::newShipping(randomOrderID);
         }
     }
 
@@ -256,7 +256,7 @@ void testShipper(std::vector<bool> selected, int n, vector<int> shipperIDs, vect
             Shipper shipper;
             shipper.ID = randomShipperID;
 
-            bool isAvailable = shipper.trasportatore_disponibile();
+            bool isAvailable = Shipper::trasportatore_disponibile();
             std::cout << "[INFO] Shipper ID: " << shipper.ID << " Availability: " << (isAvailable ? "Available" : "Not Available") << std::endl;
         }
     }
@@ -270,7 +270,7 @@ void testShipper(std::vector<bool> selected, int n, vector<int> shipperIDs, vect
             int randomShippingID = rand() % 100 + 1; // Assumiamo che gli ID delle spedizioni siano in un certo intervallo
             std::cout << "[INFO] Marking Shipping ID " << randomShippingID << " as Delivered" << std::endl;
 
-            shippingDelivered(randomShippingID);
+            Shipper::shippingDelivered(randomShippingID);
         }
     }
 
@@ -288,7 +288,7 @@ void testShipper(std::vector<bool> selected, int n, vector<int> shipperIDs, vect
             auto activeShippings = shipper.getActiveShippings();
 
             for (const auto& shipping : activeShippings) {
-                std::cout << "Shipping ID: " << shipping.first << ", Order ID: " << shipping.second << std::endl;
+                std::cout << "Shipping ID: " << shipping << std::endl;
             }
         }
     }
@@ -307,7 +307,7 @@ void testShipper(std::vector<bool> selected, int n, vector<int> shipperIDs, vect
             auto shippings = shipper.getShippings();
 
             for (const auto& shipping : shippings) {
-                std::cout << "Shipping ID: " << shipping.first << ", State: " << (shipping.second ? "Delivered" : "Pending") << std::endl;
+                std::cout << "Shipping ID: " << shipping << std::endl;
             }
         }
     }

@@ -10,6 +10,8 @@ class Shipper : public User {
     string ragione_sociale;
     string sede;            //sarebbe l'indirizzo (da aggiustare)
     vector<int> spedizioni_assegnate; //ShipmentIDs
+    
+    Shipper() {}
 
     Shipper(int ID,string CF, string name, string surname, string email, string P_IVA, string ragione_sociale, string sede) {
         this->ID = ID;
@@ -27,7 +29,6 @@ class Shipper : public User {
     std::vector<int> getActiveShippings();
     static void shippingDelivered(int shippingID);
     static int trasportatore_disponibile();
-    static void updateShipping(Shipping old_sped, Shipping new_sped);
     static void newShipping(int orderID);
     static void assignUnassignedOrders();
 

@@ -326,7 +326,7 @@ void displayChoiceMenu(const std::vector<std::string> &options, const std::vecto
 }
 
 
-void chooseTestOptions(int n) {
+void chooseTestCustomersOptions(int n) {
     std::vector<std::string> options = {"addProductToCart", "deleteProductFromCart", "buyCart", "getPastOrders"};
     std::vector<bool> selected(options.size(), false);
     int current = 0;
@@ -386,7 +386,7 @@ int main() {
                 cout<<"Testing Functionalities"<<endl;
                 cout<<"Choose the number of elements to test"<<endl;
                 cin>>n;
-                chooseTestOptions(n);
+                chooseTestCustomersOptions(n);
                 cout<<"Press any key to continue..."<<flush;
                 getch();
                 break;

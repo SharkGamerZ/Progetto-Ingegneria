@@ -8,6 +8,7 @@ set(SOURCE_FILES
     src/main.cpp
     src/server/Customer.cpp
     src/server/Shipper.cpp
+    src/server/Shipper.hpp
     src/server/Supplier.cpp
     src/dbutils/pgutils.cpp
     src/dbutils/rdutils.cpp

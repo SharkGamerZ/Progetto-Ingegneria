@@ -163,7 +163,7 @@ void Customer::buyCart() {
 
 
 	// Crea la spedizione (TODO Romina)
-	newShipping(order.ID);
+	Shipper::newShipping(order.ID);
 
 	// Svuota il carrello
 	this->cart.clear();
