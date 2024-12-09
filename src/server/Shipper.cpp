@@ -73,11 +73,12 @@ void Shipper::shippingDelivered(int shippingID) {
     // Creazione della connessione al database
     std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
+    pqxx::result r;
     try {
         pqxx::work w(*conn);
 
         // Controlla se la spedizione è già stata consegnata
-        pqxx::result r = w.exec(
+        r = w.exec(
             "SELECT state FROM shippings WHERE id = " + std::to_string(shippingID));
 
         if (r.empty()) {
@@ -90,6 +91,13 @@ void Shipper::shippingDelivered(int shippingID) {
             std::cerr << "La spedizione con ID " << shippingID << " è già stata consegnata." << std::endl;
             return;
         }
+    } catch (const std::exception &e) {
+        std::cerr << "Errore durante la verifica dello stato della spedizione: " << e.what() << std::endl;
+        return;
+    }
+
+    try {
+        pqxx::work w(*conn);
 
         // Aggiorna lo stato della spedizione a TRUE
         w.exec(
@@ -100,9 +108,10 @@ void Shipper::shippingDelivered(int shippingID) {
         std::cout << "La spedizione con ID " << shippingID << " è stata segnata come consegnata." << std::endl;
 
     } catch (const std::exception &e) {
-        std::cerr << "Errore in shippingDelivered: " << e.what() << std::endl;
+        std::cerr << "Errore durante l'aggiornamento dello stato della spedizione: " << e.what() << std::endl;
     }
 }
+
 
 
 /*
@@ -262,3 +271,5 @@ void Shipper::assignUnassignedOrders() {
         cerr << "Errore generale in assignUnassignedOrders: " << e.what() << endl;
     }
 }
+
+
