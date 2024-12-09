@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <termios.h>
 
-vector<int> customersID, shippersID, suppliersID; // ID degli utenti
+vector<int> customersID, shippersID, suppliersID, shipperIDs, orderIDs; // ID degli utenti
 void populateDB(int n) {
     std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
@@ -355,6 +355,38 @@ void chooseTestCustomersOptions(int n) {
 
     testCustomer(selected, n, customersID, suppliersID, shippersID);
 }
+
+
+void chooseTestShipperOptions(int n) {
+    std::vector<std::string> options = {"newShipping", "trasportatore_disponibile", "shippingDelivered", "getActiveShippings", "getShippings"};
+    std::vector<bool> selected(options.size(), false);
+    int current = 0;
+
+    while (true) {
+        displayChoiceMenu(options, selected, current);
+        int ch = getch();
+
+        if (ch == '\033') { // Sequenza di escape (tasti freccia)
+            getch();        // Ignora '['
+            switch (getch()) {
+                case 'A': // Freccia SU
+                    current = (current == 0 ? options.size() - 1 : current - 1);
+                break;
+                case 'B': // Freccia GIU
+                    current = (current == options.size() - 1 ? 0 : current + 1);
+                break;
+            }
+        } else if (ch == ' ') { // Spazio per selezionare/deselezionare
+            selected[current] = !selected[current];
+        } else if (ch == '\n' || ch == '\r') { // Invio per confermare
+            break;
+        }
+
+    }
+
+    testShipper(selected, n, shipperIDs, orderIDs);
+}
+
 
 
 int main() {
