@@ -25,3 +25,4 @@ vector<string> getRandomAdjectives(int n);
 
 void testCustomer(std::vector<bool> selected, int n, vector<int> customersID, vector<int> suppliersID, vector<int> productIDs);
 
+void testShipper(std::vector<bool> selected, int n, vector<int> shipperIDs, vector<int> orderIDs);
