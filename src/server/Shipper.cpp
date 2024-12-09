@@ -113,6 +113,7 @@ void Shipper::shippingDelivered(int shippingID) {
 }
 
 
+
 /*
 Questa funzione cerca un trasportatore disponibile,che si può ottenere dalla tabella shippers.
 Per "disponibile", si intende un trasportatore che non ha spedizioni attualmente
