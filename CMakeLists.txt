@@ -16,4 +16,4 @@ set(SOURCE_FILES
 )
 
 add_executable(ing ${SOURCE_FILES})
-target_link_libraries(ing PRIVATE -lhiredis -lpqxx)
+target_link_libraries(ing PRIVATE -lhiredis -lpqxx -lpq)
