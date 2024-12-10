@@ -66,8 +66,10 @@ public:
     map<int, int> getCart(const string& ID);
 
 
-    vector<string> getAvailableShipper(); 
-    //getFilteredProducts()    
+    vector<string> getAvailableShipper();
+
+    
+    vector<string> getFilteredProducts(const string& filters);    
 
 private:
     RedisCache& cache;
