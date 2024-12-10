@@ -326,7 +326,7 @@ void displayChoiceMenu(const std::vector<std::string> &options, const std::vecto
 }
 
 
-void chooseTestCustomersOptions(int n) {
+void chooseTestCustomersOptions() {
     std::vector<std::string> options = {"addProductToCart", "deleteProductFromCart", "buyCart", "getPastOrders"};
     std::vector<bool> selected(options.size(), false);
     int current = 0;
@@ -353,12 +353,15 @@ void chooseTestCustomersOptions(int n) {
 
     }
 
+    cout << "Choose the number of elements to test" << endl;
+    int n;
+    cin >> n;
     testCustomer(selected, n, customersID, suppliersID, shippersID);
 }
 
 
-void chooseTestShipperOptions(int n) {
-    std::vector<std::string> options = {"newShipping", "trasportatore_disponibile", "shippingDelivered", "getActiveShippings", "getShippings"};
+void chooseTestShipperOptions() {
+    std::vector<std::string> options = {"assignUnassignedOrders", "newShipping", "trasportatore_disponibile", "shippingDelivered", "getActiveShippings", "getShippings"};
     std::vector<bool> selected(options.size(), false);
     int current = 0;
 
@@ -384,6 +387,9 @@ void chooseTestShipperOptions(int n) {
 
     }
 
+    cout << "Choose the number of elements to test" << endl;
+    int n;
+    cin >> n;
     testShipper(selected, n, shipperIDs, orderIDs);
 }
 
@@ -416,9 +422,24 @@ int main() {
                 break;
             case 3:
                 cout<<"Testing Functionalities"<<endl;
-                cout<<"Choose the number of elements to test"<<endl;
-                cin>>n;
-                chooseTestCustomersOptions(n);
+                cout<<"Choose the functionality to test"<<endl;
+                cout<<"1. Customers"<<endl;
+                cout<<"2. Shippers"<<endl;
+                cout<<"3. Suppliers"<<endl;
+                cin>>choice;
+                switch(choice) {
+                    case 1:
+                        chooseTestCustomersOptions();
+                        break;
+                    case 2:
+                        chooseTestShipperOptions();
+                        break;
+                    case 3:
+                        cout<<"Not implemented yet"<<endl;
+                        break;
+                    default:
+                        cout<<"Invalid choice"<<endl;
+                }
                 cout<<"Press any key to continue..."<<flush;
                 getch();
                 break;

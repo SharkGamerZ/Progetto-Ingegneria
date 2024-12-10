@@ -265,7 +265,7 @@ void testShipper(std::vector<bool> selected, int n, vector<int> shipperIDs, vect
     if (selected[3]) {
         std::cout << "[INFO] Testing shippingDelivered" << std::endl;
         for (int i = 0; i < n; i++) {
-            if (shipperIDs.empty()) break;
+            /*if (shipperIDs.empty()) break;*/
 
             int randomShippingID = rand() % 100 + 1; // Assumiamo che gli ID delle spedizioni siano in un certo intervallo
             std::cout << "[INFO] Marking Shipping ID " << randomShippingID << " as Delivered" << std::endl;
