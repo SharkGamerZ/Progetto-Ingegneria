@@ -93,7 +93,8 @@ vector<string> RedisCache::getShippers() {
     unsigned long long cursor = 0;
     vector<string> shippers;
     do {
-        redisReply *reply = (redisReply*) redisCommand(context, "SCAN %llu MATCH Shipper*", cursor);
+        // You can experiment with different COUNT (batch size) in the SCAN
+        redisReply *reply = (redisReply*) redisCommand(context, "SCAN %llu MATCH shippers*", cursor);
         if (reply->type == REDIS_REPLY_ARRAY && reply->elements == 2) {
             // Update the cursor
             cursor = strtoull(reply->element[0]->str, NULL, 10);
@@ -111,7 +112,7 @@ vector<string> RedisCache::getShippers() {
                     key = reply->element[1]->element[i]->str;
                     id = key.substr(8, string::npos);
                     
-                    shippers.insert(shippers.end(), get("shipper", id));
+                    shippers.insert(shippers.end(), get("shippers", id));
                 }
                 return shippers;
             }
@@ -119,6 +120,42 @@ vector<string> RedisCache::getShippers() {
             printf("[ERRORE]Unexpected reply structure.\n");
             freeReplyObject(reply);
             return shippers;
+        }
+
+        freeReplyObject(reply);
+    } while (cursor != 0);
+}
+
+vector<string> RedisCache::getProducts() {
+    unsigned long long cursor = 0;
+    vector<string> products;
+    do {
+        redisReply *reply = (redisReply*) redisCommand(context, "SCAN %llu MATCH products*", cursor);
+        if (reply->type == REDIS_REPLY_ARRAY && reply->elements == 2) {
+            // Update the cursor
+            cursor = strtoull(reply->element[0]->str, NULL, 10);
+
+            // Check if the keys list is empty
+            if (reply->element[1]->type == REDIS_REPLY_ARRAY && reply->element[1]->elements == 0) {
+                printf("No products in cache.\n");
+                return products;
+            } else {
+                // Get the data from the key
+                string id = "";
+                string key = "";
+                
+                for (size_t i = 0; i < reply->element[1]->elements; i++) {
+                    key = reply->element[1]->element[i]->str;
+                    id = key.substr(8, string::npos);
+                    
+                    products.insert(products.end(), get("products", id));
+                }
+                return products;
+            }
+        } else {
+            printf("[ERRORE]Unexpected reply structure.\n");
+            freeReplyObject(reply);
+            return products;
         }
 
         freeReplyObject(reply);
@@ -205,7 +242,7 @@ map<int,int> DataService::getCart(const string& ID) {
 
 
     if (cache.exist("carts", ID)) {
-        cout << "Cache hit for customer key: " << ID << endl;
+        cout << "Cache hit for cart key: " << ID << endl;
         string data = cache.get("carts", ID);
         
         if (data == "") {
@@ -313,6 +350,7 @@ vector<string> DataService::getAvailableShipper() {
 vector<string> DataService::getFilteredProducts(const string& filters) {
     
 }
+
 
 string DataService::fetchCartFromDatabase(const string& ID) {
     try {

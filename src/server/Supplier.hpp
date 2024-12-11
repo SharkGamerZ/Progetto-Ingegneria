@@ -21,8 +21,8 @@ public:
      */
     void addProduct(Product a, int q);
 
-    /** Prototipo di funzione che permette di marcare un prodotto come discontinuo
-     * 
+    /** @brief Funzione che permette di marcare un prodotto come discontinuo
+     * Questa funzione prende in input l'ID di un prodotto 
      * @param a Product da marcare come discontinuo
     */
     void setDiscontinuedProduct(Product a);

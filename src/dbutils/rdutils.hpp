@@ -34,6 +34,8 @@ public:
 
     vector<string> getShippers();
 
+    vector<string> getProducts();
+
     /** @brief Set an element in the redis cache
      * @param table The table in the DB
      * @param ID The primary key of the tuple in the DB
