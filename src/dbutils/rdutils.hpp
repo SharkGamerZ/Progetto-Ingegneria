@@ -71,7 +71,7 @@ public:
     vector<string> getAvailableShipper();
 
     
-    vector<string> getFilteredProducts(const string& filters);    
+    vector<string> getFilteredProducts(string& filters);    
 
 private:
     RedisCache& cache;

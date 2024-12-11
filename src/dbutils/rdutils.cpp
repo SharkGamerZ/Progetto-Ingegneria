@@ -112,13 +112,13 @@ vector<string> RedisCache::getShippers() {
                     key = reply->element[1]->element[i]->str;
                     id = key.substr(8, string::npos);
                     
-                    // Contains only the value of the redis element (not the key or table)
-                    shippers.insert(shippers.end(), get("shippers", id));
+                    string shipper = id + "_" + get("shippers", id);
+                    shippers.insert(shippers.end(), shipper);
                 }
             }
         } 
         else {
-            printf("[ERRORE]Unexpected reply structure.\n");
+            printf("[ERROR]Unexpected reply structure.\n");
             freeReplyObject(reply);
             
             // Return an empty array
@@ -157,7 +157,8 @@ vector<string> RedisCache::getProducts() {
                     key = reply->element[1]->element[i]->str;
                     id = key.substr(8, string::npos);
                     // Contains only the value of the redis element (not the key or table)
-                    products.insert(products.end(), get("products", id));
+                    string product = id + "_" + get("products", id);
+                    products.insert(products.end(), product);
                 }
             }
         } 
@@ -282,7 +283,6 @@ map<int,int> DataService::getCart(const string& ID) {
         // Store the data in the cache
         cache.set("carts", ID, data);
         
-        string delimiter = "_";
         string prod;
         // Splits on delimiter
         while ((pos = data.find(delimiter)) != std::string::npos) {
@@ -361,10 +361,99 @@ vector<string> DataService::getAvailableShipper() {
     }
 }
 
-vector<string> DataService::getFilteredProducts(const string& filters) {
-    // TODO separare filtri
+vector<string> DataService::getFilteredProducts(string& filters) {
+    /* [ID],[nome],[=N,>N,<N,<=N,>=N] */
+    vector<string> filt, products;
+    int pos = 0;
+    string delimiter = ",";
+    string token;
+    // Splits on delimiter
+    while ((pos = filters.find(delimiter)) != std::string::npos) {
+        token = filters.substr(0, pos);
+        filters.erase(0, pos + delimiter.length());
+        filt.insert(filt.end(), token);
+    }
+    filt.insert(filt.end(), filters);
+
+    products = cache.getProducts();
     // getProducts()
-    // filtrare prodotti
+
+    int len = products.size();
+    string product, id, name, des, suppl;
+    int price, stock;
+
+    delimiter = "_";
+    pos = 0;
+    for (int i = len-1; i >= 0; i++) {
+        product = products[i];
+        pos = product.find(delimiter);
+        id = product.substr(0, pos);
+        product.erase(0, pos + delimiter.length());
+        
+        pos = product.find(delimiter);
+        name = product.substr(0, pos);
+        product.erase(0, pos + delimiter.length());
+
+        pos = product.find(delimiter);
+        des = product.substr(0, pos);
+        product.erase(0, pos + delimiter.length());
+
+        pos = product.find(delimiter);
+        suppl = product.substr(0, pos);
+        product.erase(0, pos + delimiter.length());
+
+        pos = product.find(delimiter);
+        price = stoi(product.substr(0, pos));
+        product.erase(0, pos + delimiter.length());
+
+        stock = stoi(product);
+
+        if (filt[0] == id && filt[0] != "") {
+            vector<string> res;
+            res.insert(res.end(), products[i]);
+            return res;
+        }
+
+        if (!name.contains(filt[1]) && filt[1] != "") {
+            products.pop_back();
+            continue;
+        }
+
+        if (filt[2] != "") {
+            if (filt[2].length() == 2) {
+                string comp = filt[2].substr(0, 1);
+                int priceFilter = stof(filt[2].substr(1, filt[2].length()));
+
+                if (comp == "=" && price != priceFilter) {
+                    product.pop_back();
+                    continue;
+                }
+                else if (comp == ">" && price <= priceFilter) {
+                    product.pop_back();
+                    continue;
+                } 
+                else if (comp == "<" && price >= priceFilter) {
+                    product.pop_back();
+                    continue;
+                }
+            }
+            else {
+                // Same code as before because since we know that the len is 3 we just need to check the first char (just as before)
+                string comp = filt[2].substr(0, 1);
+                int priceFilter = stof(filt[2].substr(2, filt[2].length()));
+
+                if (comp == ">" && price < priceFilter) {
+                    product.pop_back();
+                    continue;
+                } 
+                else if (comp == "<" && price > priceFilter) {
+                    product.pop_back();
+                    continue;
+                }
+            }     
+        }
+    }
+    return products;
 }
 
 
