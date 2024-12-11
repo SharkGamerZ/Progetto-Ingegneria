@@ -2,3 +2,4 @@
 - [ ] Funzione generica per mostrare le opzioni di test
 - [x] Mostrare la scelta dei diversi test nel main
 - [ ] Fare i monitor (file di log)
+- [ ] Fare la popolazione del DB selettivamente
