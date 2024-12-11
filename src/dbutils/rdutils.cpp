@@ -103,7 +103,8 @@ vector<string> RedisCache::getShippers() {
             if (reply->element[1]->type == REDIS_REPLY_ARRAY && reply->element[1]->elements == 0) {
                 printf("No shippers in cache.\n");
                 return shippers;
-            } else {
+            } 
+            else {
                 // Get the data from the key
                 string id = "";
                 string key = "";
@@ -114,21 +115,27 @@ vector<string> RedisCache::getShippers() {
                     
                     shippers.insert(shippers.end(), get("shippers", id));
                 }
-                return shippers;
             }
-        } else {
+        } 
+        else {
             printf("[ERRORE]Unexpected reply structure.\n");
             freeReplyObject(reply);
+            
+            // Return an empty array
             return shippers;
         }
 
         freeReplyObject(reply);
     } while (cursor != 0);
+
+    // Returns the tuples of the shippers
+    return shippers;
 }
 
 vector<string> RedisCache::getProducts() {
     unsigned long long cursor = 0;
     vector<string> products;
+    // Iterates over the batches (cursor) of keys
     do {
         redisReply *reply = (redisReply*) redisCommand(context, "SCAN %llu MATCH products*", cursor);
         if (reply->type == REDIS_REPLY_ARRAY && reply->elements == 2) {
@@ -138,6 +145,7 @@ vector<string> RedisCache::getProducts() {
             // Check if the keys list is empty
             if (reply->element[1]->type == REDIS_REPLY_ARRAY && reply->element[1]->elements == 0) {
                 printf("No products in cache.\n");
+                // Return an empy array
                 return products;
             } else {
                 // Get the data from the key
@@ -150,16 +158,21 @@ vector<string> RedisCache::getProducts() {
                     
                     products.insert(products.end(), get("products", id));
                 }
-                return products;
             }
-        } else {
+        } 
+        else {
             printf("[ERRORE]Unexpected reply structure.\n");
             freeReplyObject(reply);
+            // Returns an empty array
             return products;
         }
 
         freeReplyObject(reply);
+    // Loop stops when cursor loops back to 0
     } while (cursor != 0);
+
+    // Return array of strings containing the products tuples
+    return products;
 }
 
 DataService::DataService(RedisCache& cache) : cache(cache) {}
