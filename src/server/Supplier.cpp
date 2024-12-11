@@ -9,14 +9,14 @@ Supplier::Supplier(int ID, string CF, string name, string surname, string email,
     this->P_IVA = P_IVA;
 }
 
-void Supplier::addProduct(Product a, int q) {
+void Supplier::addProduct(int ID, int q) {
     bool exist = false; // TODO query per controllare se l'articolo è già presente
     if (!exist) {
         // TODO query per aggiungere l'articolo
     }
 }
 
-void Supplier::setDiscontinuedProduct(Product a) {
+void Supplier::setDiscontinuedProduct(int ID) {
     // TODO
 }
 

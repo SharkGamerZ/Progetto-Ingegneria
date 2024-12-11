@@ -81,7 +81,6 @@ void RedisCache::set(const string& table, const string& ID, const string& value)
     key.append(table);
     key.append(ID);
 
-
     redisReply* reply = (redisReply*)redisCommand(context, "SET %s %s", key.c_str(), value.c_str());
     if (!reply || reply->type != REDIS_REPLY_STATUS || string(reply->str) != "OK") {
         cerr << "Failed to set cache" << endl;
@@ -113,6 +112,7 @@ vector<string> RedisCache::getShippers() {
                     key = reply->element[1]->element[i]->str;
                     id = key.substr(8, string::npos);
                     
+                    // Contains only the value of the redis element (not the key or table)
                     shippers.insert(shippers.end(), get("shippers", id));
                 }
             }
@@ -147,7 +147,8 @@ vector<string> RedisCache::getProducts() {
                 printf("No products in cache.\n");
                 // Return an empy array
                 return products;
-            } else {
+            } 
+            else {
                 // Get the data from the key
                 string id = "";
                 string key = "";
@@ -155,7 +156,7 @@ vector<string> RedisCache::getProducts() {
                 for (size_t i = 0; i < reply->element[1]->elements; i++) {
                     key = reply->element[1]->element[i]->str;
                     id = key.substr(8, string::npos);
-                    
+                    // Contains only the value of the redis element (not the key or table)
                     products.insert(products.end(), get("products", id));
                 }
             }
@@ -361,7 +362,9 @@ vector<string> DataService::getAvailableShipper() {
 }
 
 vector<string> DataService::getFilteredProducts(const string& filters) {
-    
+    // TODO separare filtri
+    // getProducts()
+    // filtrare prodotti
 }
 
 

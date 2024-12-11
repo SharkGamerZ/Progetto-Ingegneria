@@ -19,13 +19,13 @@ public:
      * 
      * @param a Product da aggiungere
      */
-    void addProduct(Product a, int q);
+    void addProduct(int ID, int q);
 
     /** @brief Funzione che permette di marcare un prodotto come discontinuo
      * Questa funzione prende in input l'ID di un prodotto 
      * @param a Product da marcare come discontinuo
     */
-    void setDiscontinuedProduct(Product a);
+    void setDiscontinuedProduct(int ID);
 
     /** Prototipo di funzione che ritorna i propri articoli venduti
      * 
