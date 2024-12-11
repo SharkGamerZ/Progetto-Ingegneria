@@ -69,10 +69,21 @@ public:
     // da vedere se fare funzione o mettere set in codice
     //void setData(const string& table, const vector<any>& values);
     
-    /** @brief  */
+    /** @brief Adds product to a cart
+     * This function gets the cart of a user then adds a product to the cart. If the product is already in the cart it updates the old quantity for that product
+     * 
+     * @param ID The ID of the user owner of the cart
+     * @param prod The ID of a product to add to the cart
+     * @param qnt The quantity of the product to add to the cart
+     */
     void addCart(const string& ID, const string& prod, const string& qnt);
 
-    /** @brief */
+    /** @brief Gets the cart for an ID of a customer
+     * This function gets a string that is the ID of a customer and returns a map<productID, quantity>
+     * 
+     * @param ID The ID of a customer
+     * @return A map<productID, quantity> that represent a cart
+    */
     map<int, int> getCart(const string& ID);
 
 

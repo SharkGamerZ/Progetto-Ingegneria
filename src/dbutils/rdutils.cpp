@@ -229,9 +229,10 @@ void DataService::addCart(const string& ID, const string& prod, const string& qn
     map<int,int> old = getCart(ID);
     string value = "";
 
+    // Checks if the product is already in the cart
     if (old.find(stoi(prod)) != old.end()) {
+        // Updates the quantity of the product already in the cart
         old[stoi(prod)] += stoi(qnt);
-        string value = "";
         for (auto [prod, qnt] : old) {
             value += to_string(prod) + "_" + to_string(qnt) + "_";
         }
@@ -241,6 +242,7 @@ void DataService::addCart(const string& ID, const string& prod, const string& qn
         for (auto [prod, qnt] : old) {
             value += to_string(prod) + "_" + to_string(qnt) + "_";
         }
+        // Adds the new product to the cart
         value += prod + "_" + qnt;
     }
     cache.set("carts", ID, value);
@@ -263,7 +265,7 @@ map<int,int> DataService::getCart(const string& ID) {
         if (data == "") {
             return res;
         }
-        //Splits on delimiter
+        //Splits on delimiter following the format of the data for carts (productID_quantity ...)
         while ((pos = data.find(delimiter)) != std::string::npos) {
             prod = data.substr(0, pos);
             data.erase(0, pos + delimiter.length());
@@ -274,12 +276,12 @@ map<int,int> DataService::getCart(const string& ID) {
             }
         }
         res[stoi(prod)] = stoi(data);
-
-
+        
         return res;
-    } else {
+    } 
+    else {
         cout << "Cache miss for customer key: " << ID << endl;
-        // Simulate fetching data from a PostgreSQL database
+        // Fetching data from a PostgreSQL database
         string data = fetchCartFromDatabase(ID);
         if (data == "") {
             cout << "No data found in db" << endl;
@@ -288,7 +290,7 @@ map<int,int> DataService::getCart(const string& ID) {
         // Store the data in the cache
         cache.set("carts", ID, data);
         
-        // Splits on delimiter
+        //Splits on delimiter following the format of the data for carts (productID_quantity ...)
         while ((pos = data.find(delimiter)) != std::string::npos) {
             prod = data.substr(0, pos);
             data.erase(0, pos + delimiter.length());
