@@ -120,28 +120,33 @@ Per "disponibile", si intende un trasportatore che non ha spedizioni attualmente
 in corso (il campo state della spedizione è FALSE).
  */
 int Shipper::trasportatore_disponibile() {
-    std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
-  try {
-    // Selezioniamo un trasportatore che non ha spedizioni in corso (stato FALSE)
-    pqxx::work w(*conn);
-    pqxx::result r = w.exec("SELECT s.userID "
-                            "FROM shippers s "
-                            "JOIN users u ON s.userID = u.id "
-                            "WHERE (SELECT COUNT(*) FROM shippings WHERE shipper = s.userID AND state = FALSE) < 10 " //Per verificare che il trasportatore abbia meno di 10 spedizioni in corso
-                            "LIMIT 1");  // Per restituire al massimo un trasportatore
+    RedisCache rc = RedisCache();
+    DataService ds(rc);
+    vector<string> s;
 
-    if (r.empty()) {
-      cout << "Nessun trasportatore disponibile" << endl;
-      return -1;  // Se non troviamo trasportatori, restituiamo -1
+    s = ds.getAvailableShipper();
+
+    // Verifica che il vettore non sia vuoto (cioè abbiamo trovato un trasportatore)
+    if (s.empty()) {
+        cout << "Nessun trasportatore disponibile" << endl;
+        return -1;
     }
 
-    // Assegniamo i dati del trasportatore trovato
-    int shipperID = r[0][0].as<int>();  // userID
-    return shipperID;
-  } catch (const std::exception &e) {  //per catturare le eccezioni lanciate dal blocco try
-    cerr << "Error in trasportatore_disponibile: " << e.what() << endl;
-    throw e;
-  }
+    try {
+        string shipperID = s[0];  // userID del trasportatore
+
+        // Convertiamo shipperID in int
+        int shipperID_int = stoi(shipperID);
+
+        cout << "Trasportatore disponibile:" << endl;
+
+        // Ritorniamo solo l'ID del trasportatore trovato
+        return shipperID_int;  // Restituisci solo l'ID (intero) del trasportatore
+    }
+    catch (const std::exception &e) {
+        cerr << "Errore durante il recupero del trasportatore disponibile: " << e.what() << endl;
+        return -1;  // In caso di errore, restituiamo un ID di errore
+    }
 }
 
 /*
