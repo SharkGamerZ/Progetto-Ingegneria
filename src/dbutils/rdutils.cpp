@@ -248,14 +248,14 @@ void DataService::addCart(const string& ID, const string& prod, const string& qn
 
 // Implementing the Cache-Aside pattern
 map<int,int> DataService::getCart(const string& ID) {
-    // Check if the data exists in the cache
+    // Check if the data exists in the cache controlling the ID of a user
     map<int, int> res;
     vector<string> vals;
-    string value;
+    string prod, qnt;
     int pos = 0;
     string delimiter = "_";
 
-
+    // Checks if the cart is in the cache
     if (cache.exist("carts", ID)) {
         cout << "Cache hit for cart key: " << ID << endl;
         string data = cache.get("carts", ID);
@@ -265,11 +265,16 @@ map<int,int> DataService::getCart(const string& ID) {
         }
         //Splits on delimiter
         while ((pos = data.find(delimiter)) != std::string::npos) {
-            value = data.substr(0, pos);
-            vals.push_back(value);
+            prod = data.substr(0, pos);
             data.erase(0, pos + delimiter.length());
+            if ((pos = data.find(delimiter) != std::string::npos)) {
+                string qnt = data.substr(0, pos);
+                data.erase(0, pos + delimiter.length());
+                res[stoi(prod)] = stoi(qnt);
+            }
         }
-        vals.push_back(data);
+        res[stoi(prod)] = stoi(data);
+
 
         return res;
     } else {
@@ -283,13 +288,12 @@ map<int,int> DataService::getCart(const string& ID) {
         // Store the data in the cache
         cache.set("carts", ID, data);
         
-        string prod;
         // Splits on delimiter
         while ((pos = data.find(delimiter)) != std::string::npos) {
             prod = data.substr(0, pos);
             data.erase(0, pos + delimiter.length());
             if ((pos = data.find(delimiter) != std::string::npos)) {
-                string qnt = data.substr(0, pos);
+                qnt = data.substr(0, pos);
                 data.erase(0, pos + delimiter.length());
                 res[stoi(prod)] = stoi(qnt);
             }
@@ -299,7 +303,7 @@ map<int,int> DataService::getCart(const string& ID) {
         return res;
     }
 }
-// ATTENZIONE per fare query su dati dei Shipper vuol dire che quelli presenti in cache devono essere correttamente aggiornati
+// WARNING the data of the shippers in the cache has to be updated
 vector<string> DataService::getAvailableShipper() {    
     vector<string> res;
     vector<string> shippersC = cache.getShippers();
@@ -479,6 +483,7 @@ string DataService::fetchCartFromDatabase(const string& ID) {
             data += prod.as<string>() + "_";
             data += qnt.as<string>() + "_";
         }
+        // Pops the last element of the string (the last char "_")
         data.pop_back();
         w.commit();
         return data;

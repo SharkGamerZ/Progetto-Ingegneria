@@ -32,8 +32,14 @@ public:
      */
     string get(const string& table, const string& ID);
 
+    /** @brief Return all the shippers in the cache
+     * @return Returns a vector of strings in which each string is the tuple of the shipper
+     */
     vector<string> getShippers();
 
+    /** @brief Return all products in the cache (same in the DB) 
+     * @return Return a vector of strings in which each string is the tuple of the products
+    */
     vector<string> getProducts();
 
     /** @brief Set an element in the redis cache
@@ -62,15 +68,16 @@ public:
     vector<string> getData(const string& table, const string& ID);
     // da vedere se fare funzione o mettere set in codice
     //void setData(const string& table, const vector<any>& values);
-
+    
+    /** @brief  */
     void addCart(const string& ID, const string& prod, const string& qnt);
 
+    /** @brief */
     map<int, int> getCart(const string& ID);
 
 
     vector<string> getAvailableShipper();
 
-    
     vector<string> getFilteredProducts(string& filters);    
 
 private:
@@ -80,10 +87,16 @@ private:
      * 
      * The function is a private function called from the function getData in the case the pair table-ID is not found as a key in the redis cache.
      * @param table The table in which is going to be searched the ID
-     * @param ID The ID of the search tuple
+     * @param ID The ID of the searched tuple
      */
     string fetchFromDatabase(const string& table, const string& ID);
 
+    /** @brief Performs a select from the carts
+     * 
+     * The function is a private function called from the function getCart in the case the pair cart-ID is not found as a key in the redis cache.
+     * It return a string of pairs "productId_quantity"
+     * @param ID The ID of the key of a cart (it is also the ID of a user)
+     */
     string fetchCartFromDatabase(const string& ID);
 };
 
