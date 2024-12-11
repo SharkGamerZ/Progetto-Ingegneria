@@ -305,32 +305,38 @@ map<int,int> DataService::getCart(const string& ID) {
         return res;
     }
 }
-// WARNING the data of the shippers in the cache has to be updated
-vector<string> DataService::getAvailableShipper() {    
+// [WARNING] the data of the shippers in the cache has to be updated, expecially the number of shippings (any update oon the shippings table means that the value of that shipper in the cache has to be updated)
+vector<string> DataService::getAvailableShipper() { 
     vector<string> res;
     vector<string> shippersC = cache.getShippers();
+
+    // Checks if there are any shippers in the cache
     if(shippersC.empty()) {
         unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
         try {        
-            // Selezioniamo un trasportatore che non ha spedizioni in corso (stato FALSE)        
+            // Selects all the available shippers from the DB
             pqxx::work w(*conn);     
-            pqxx::result r = w.exec("SELECT s.userID, u.piva, u.ragione_sociale, u.sede FROM shippers s JOIN users u ON s.userID = u.id WHERE (SELECT COUNT(*) FROM shippings WHERE shipper = s.userID AND state = FALSE) < 10 LIMIT 1");  // Per restituire al massimo un trasportatore        
+            pqxx::result r = w.exec("SELECT s.userID, u.piva, u.ragione_sociale, u.sede FROM shippers s JOIN users u ON s.userID = u.id WHERE (SELECT COUNT(*) FROM shippings WHERE shipper = s.userID AND state = FALSE) < 10 LIMIT 1");         
             if (r.empty()) {        
-                cout << "Nessun trasportatore disponibile" << endl;      
-                return res;  // Se non troviamo trasportatori, restituiamo un oggetto vuoto        
+                cout << "[WARNING]No available shippers" << endl;      
+                // Empty res if there aren't any 
+                return res;          
             }    
-            // Assegniamo i dati del trasportatore trovato    
+            // Creating the tuple of the available shipper    
             res.insert(res.end(), r[0][0].as<string>());  // userID    
             res.insert(res.end(), r[0][1].as<string>());  // P_IVA    
             res.insert(res.end(), r[0][2].as<string>());  // ragione_sociale    
             res.insert(res.end(), r[0][3].as<string>());  // sede    
             return res;  
         } 
-        catch (const std::exception &e) {  //per catturare le eccezioni lanciate dal blocco try    
-            cerr << "Error in trasportatore_disponibile: " << e.what() << endl;    throw e;  
+        catch (const std::exception &e) { 
+            cerr << "[ERROR] Error while selecting from the DB: " << e.what() << endl;
+            throw e;
         }
-    } 
+    }
+    // Else, there are shippers in the cache
     else {
+        // Iterates over the cached shippers
         for(auto value : shippersC) {
             vector<string> splitValue;
             string token;
@@ -339,28 +345,31 @@ vector<string> DataService::getAvailableShipper() {
             while (std::getline(ss, token, '_')) {
                 splitValue.push_back(token);
             }
-            if (stoi(splitValue.back()) <= 10 ) {
+            // Checks if the shipper is available (the number of shippings is the last element)
+            if (stoi(splitValue.back()) < 10 ) {
                 return splitValue;
             }
         }
         unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
-        try {        
-            // Selezioniamo un trasportatore che non ha spedizioni in corso (stato FALSE)        
+        try { 
+
+            // Selects all the available shippers from the DB                   
             pqxx::work w(*conn);     
-            pqxx::result r = w.exec("SELECT s.userID, u.piva, u.ragione_sociale, u.sede FROM shippers s JOIN users u ON s.userID = u.id WHERE (SELECT COUNT(*) FROM shippings WHERE shipper = s.userID AND state = FALSE) < 10 LIMIT 1");  // Per restituire al massimo un trasportatore        
+            pqxx::result r = w.exec("SELECT s.userID, u.piva, u.ragione_sociale, u.sede FROM shippers s JOIN users u ON s.userID = u.id WHERE (SELECT COUNT(*) FROM shippings WHERE shipper = s.userID AND state = FALSE) < 10 LIMIT 1");        
             if (r.empty()) {        
                 cout << "Nessun trasportatore disponibile" << endl;      
-                return res;  // Se non troviamo trasportatori, restituiamo un oggetto vuoto        
+                // Empty res if there aren't any 
+                return res;         
             }    
-            // Assegniamo i dati del trasportatore trovato    
+            // Creating the tuple of the available shipper    
             res.insert(res.end(), r[0][0].as<string>());  // userID    
             res.insert(res.end(), r[0][1].as<string>());  // P_IVA    
             res.insert(res.end(), r[0][2].as<string>());  // ragione_sociale    
             res.insert(res.end(), r[0][3].as<string>());  // sede    
             return res;  
         } 
-        catch (const std::exception &e) {  //per catturare le eccezioni lanciate dal blocco try    
+        catch (const std::exception &e) {    
             cerr << "Error in trasportatore_disponibile: " << e.what() << endl;    
             throw e;  
         }
@@ -456,7 +465,7 @@ vector<string> DataService::getFilteredProducts(string& filters) {
                     product.pop_back();
                     continue;
                 }
-            }     
+            }
         }
     }
     return products;
@@ -499,12 +508,22 @@ string DataService::fetchCartFromDatabase(const string& ID) {
 string DataService::fetchFromDatabase(const string& table, const string& ID) {
     try {
         // Connect to the PostgreSQL database
-        unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+        pqxx::result result;
 
+        unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
         // Query the database for the value corresponding to the key
         pqxx::work w(*conn);
-        pqxx::result result = w.exec("SELECT * FROM " + table + " WHERE ID = " + w.quote(ID) + "");
-
+        if (table == "shippers") {
+            result = w.exec("SELECT u.CF, u.name, u.surname, u.email, s.piva, s.ragsoc, s.location, COUNT(o.orderID) \
+                FROM shippers s \
+                JOIN users u ON s.userID = u.id \
+                JOIN shippings o ON o.shipper = s.userID \
+                WHERE s.userID = " + ID + " \
+                GROUP BY s.userID, u.CF, u.name, u.surname, u.email, s.piva, s.ragsoc, s.location");
+        }
+        else {
+            result = w.exec("SELECT * FROM " + table + " WHERE ID = " + w.quote(ID) + "");
+        }
         if (result.empty()) {
             cerr << "No data found for ID in db: " << ID << endl;
             return "";
@@ -517,7 +536,7 @@ string DataService::fetchFromDatabase(const string& table, const string& ID) {
         // Return the data from the query result
         for(std::size_t col=0u; col < num_cols; ++col) {
             pqxx::field const field = row[col];
-            data += field.as<string>() +"_";
+            data += field.as<string>() + "_";
         }
         data.pop_back();
 

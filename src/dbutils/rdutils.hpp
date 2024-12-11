@@ -86,9 +86,20 @@ public:
     */
     map<int, int> getCart(const string& ID);
 
-
+    /** @brief Returns a single shipper that is aavailable (with less than 10 orders)
+     * 
+     * This function returns the first aavailable shipper that it finds. It checks if there are any shippers in the cache, then checks if it finds one from the cached ones otherwise it seaarches it in the DB.
+     * Return an empty vector if there aren't any available shippers.
+     * @return The tuple of aa shipper
+    */
     vector<string> getAvailableShipper();
 
+    /** @brief Gets all the products from the cache that fits the filters
+     * 
+     * This function loads all the products from the cache, then filters them accordingly to the filters string passed as argument.
+     * @param filters A string of format [ID],[nome],[=N,>N,<N,<=N,>=N]
+     * @return A vector of string in which each string is a tuple of products
+     */
     vector<string> getFilteredProducts(string& filters);    
 
 private:
