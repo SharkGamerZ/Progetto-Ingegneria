@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <termios.h>
 
-vector<int> customersID, shippersID, suppliersID, shipperIDs, orderIDs; // ID degli utenti
+vector<int> customersID, shippersID, suppliersID, shippingsID, orderID; // ID degli utenti
 void populateDB(int n) {
     std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
@@ -390,7 +390,7 @@ void chooseTestShipperOptions() {
     cout << "Choose the number of elements to test" << endl;
     int n;
     cin >> n;
-    testShipper(selected, n, shipperIDs, orderIDs);
+    testShipper(selected, n, shippersID, orderID);
 }
 
 
@@ -440,12 +440,12 @@ int main() {
                     default:
                         cout<<"Invalid choice"<<endl;
                 }
-                cout<<"Press any key to continue..."<<flush;
+                cout<<"Press any key to continue..."<<endl;
                 getch();
                 break;
             case 9:
                 cout<<"Exiting"<<endl;
-                cout<<"Press any key to continue..."<<flush;
+                cout<<"Press any key to continue..."<<endl;
                 getch();
                 break;
             default:

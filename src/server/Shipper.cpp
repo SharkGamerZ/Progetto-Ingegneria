@@ -49,7 +49,7 @@ std::vector<int> Shipper::getActiveShippings() {
     try {
         pqxx::work w(*conn);
         pqxx::result r = w.exec(
-            "SELECT s.id, s.orderID, s.shipper, s.handlingtime, s.state "
+            "SELECT s.orderID, s.shipper, s.handlingtime, s.state "
             "FROM shippings s "
             "WHERE s.shipper = " + std::to_string(this->ID) + " AND s.state = FALSE");
 
@@ -79,7 +79,7 @@ void Shipper::shippingDelivered(int shippingID) {
 
         // Controlla se la spedizione è già stata consegnata
         r = w.exec(
-            "SELECT state FROM shippings WHERE id = " + std::to_string(shippingID));
+            "SELECT state FROM shippings WHERE orderID = " + std::to_string(shippingID));
 
         if (r.empty()) {
             std::cerr << "Errore: spedizione con ID " << shippingID << " non trovata." << std::endl;
@@ -88,7 +88,7 @@ void Shipper::shippingDelivered(int shippingID) {
 
         bool state = r[0][0].as<bool>();
         if (state) {
-            std::cerr << "La spedizione con ID " << shippingID << " è già stata consegnata." << std::endl;
+            std::cerr << "[ERROR] La spedizione con ID " << shippingID << " è già stata consegnata." << std::endl;
             return;
         }
     } catch (const std::exception &e) {
@@ -101,11 +101,11 @@ void Shipper::shippingDelivered(int shippingID) {
 
         // Aggiorna lo stato della spedizione a TRUE
         w.exec(
-            "UPDATE shippings SET state = TRUE WHERE id = " + std::to_string(shippingID));
+            "UPDATE shippings SET state = TRUE WHERE orderID = " + std::to_string(shippingID));
 
         // Commit delle modifiche
         w.commit();
-        std::cout << "La spedizione con ID " << shippingID << " è stata segnata come consegnata." << std::endl;
+        std::cout << "[SUCCESS]La spedizione con ID " << shippingID << " è stata segnata come consegnata." << std::endl;
 
     } catch (const std::exception &e) {
         std::cerr << "Errore durante l'aggiornamento dello stato della spedizione: " << e.what() << std::endl;
@@ -185,7 +185,7 @@ void Shipper::newShipping(int orderID) {
 
         try {
             // Aggiorniamo l'ordine con l'ID della spedizione nel database
-            w.exec("UPDATE orders SET shipping = " + to_string(shippingID) + " WHERE id = " + to_string(orderID));
+            w.exec("UPDATE orders SET shipping = " + to_string(shippingID) + " WHERE orderID = " + to_string(orderID));
 
             // Aggiorniamo la relazione tra trasportatore e spedizione nel database (tabella intermedia)
             w.exec("INSERT INTO shipper_shippings (shipperID, shippingID) VALUES (" +
