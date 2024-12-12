@@ -17,14 +17,18 @@ public:
     vector<int> ID_wh;
     
     Supplier(int ID, string CF, string name, string surname, string email, string P_IVA);
+
     /** @brief Adds a certain quantity of a product to the DB
      * 
-     * Adds the quantity q to the product with ID as key 
+     * Adds the quantity q to the product with ID as key to the DB and updates the data in the cache 
      * 
      * @param ID The ID of a product
      * @param q The quantity of the product to be added
      */
     void addStock(int ID, int q);
+
+    /** @brief Given the values for the columns of a product, it adds the product to both DB and cache */
+    void addProduct(string name, string des, int supplier, int price, int stock);
 
     /** @brief Sets a product to discontinued
      * 

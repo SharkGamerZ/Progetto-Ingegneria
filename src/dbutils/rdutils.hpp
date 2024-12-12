@@ -67,6 +67,12 @@ public:
     */
     vector<string> getData(const string& table, const string& ID);
 
+    /** @brief Given the table, ID and values it creates an element in the redis cache.
+     * 
+     * @param table The table of the redis element in the DB
+     * @param ID The primary key of the element in the DB
+     * @param values The columns of the element in the DB
+     */
     void setData(const string& table, const string& ID, vector<string> values);
     // da vedere se fare funzione o mettere set in codice
     //void setData(const string& table, const vector<any>& values);
