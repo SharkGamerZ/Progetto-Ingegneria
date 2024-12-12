@@ -9,18 +9,46 @@ Supplier::Supplier(int ID, string CF, string name, string surname, string email,
     this->P_IVA = P_IVA;
 }
 
-void Supplier::addProduct(int ID, int q) {
-    bool exist = false; // TODO query per controllare se l'articolo è già presente
-    if (!exist) {
-        // TODO query per aggiungere l'articolo
+void Supplier::addStock(int ID, int q) {
+    RedisCache cache = RedisCache();
+    DataService redis(cache);
+    vector<string> data;
+    
+    data = redis.getData("products", to_string(ID));
+
+    // Checking if the ID exist (in the cache or DB since the cache is always updated)
+    if (data.empty()) {
+        cout << "[ERROR] ID of product doesn't exist.";
+        return;
     }
+
+    // Updating the value
+    data.back() = to_string(stoi(data.back()) + q);
+    // Setting the new value in redis
+    redis.setData("products", to_string(ID), data);
+
+    unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+    
+    // Setting the value in the DB
+    try {
+        pqxx::work w(*conn);
+        w.exec("UPDATE products SET stock = " + data.back() + " WHERE id = " + to_string(ID));
+    } 
+    catch (const exception &e) {
+        cerr << e.what() << endl;
+        throw e;
+    }
+}
+
+void Supplier::addProduct(string name, string des, int supplier, int price, int stock) {
+
 }
 
 void Supplier::setDiscontinuedProduct(int ID) {
     // TODO
 }
 
-vector<Product> Supplier::getPastOrders() {
+vector<int> Supplier::getPastOrders() {
     // TODO
-    return vector<Product>();
+    return vector<int>();
 }

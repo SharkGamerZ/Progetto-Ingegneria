@@ -6,6 +6,8 @@
 #include <string>
 #include <ctime>
 #include <vector>
+#include <pqxx/pqxx>
+#include "../dbutils/rdutils.hpp"
 using namespace std;
 
 class Supplier: public User {
@@ -15,24 +17,34 @@ public:
     vector<int> ID_wh;
     
     Supplier(int ID, string CF, string name, string surname, string email, string P_IVA);
-    /** Prototipo di funzione che aggiunge nel DB un nuovo articolo 
-     * 
-     * @param a Product da aggiungere
-     */
-    void addProduct(int ID, int q);
 
-    /** @brief Funzione che permette di marcare un prodotto come discontinuo
-     * Questa funzione prende in input l'ID di un prodotto 
-     * @param a Product da marcare come discontinuo
+    /** @brief Adds a certain quantity of a product to the DB
+     * 
+     * Adds the quantity q to the product with ID as key to the DB and updates the data in the cache 
+     * 
+     * @param ID The ID of a product
+     * @param q The quantity of the product to be added
+     */
+    void addStock(int ID, int q);
+
+    /** @brief Given the values for the columns of a product, it adds the product to both DB and cache */
+    void addProduct(string name, string des, int supplier, int price, int stock);
+
+    /** @brief Sets a product to discontinued
+     * 
+     * Takes the ID of a existant product and sets it to discontinued 
+     * @param ID The ID of a products
     */
     void setDiscontinuedProduct(int ID);
 
-    /** Prototipo di funzione che ritorna i propri articoli venduti
+    /** @brief Returns the past orders of the supplier
      * 
-     * @param p Supplier di cui si vogliono vedere gli articoli venduti
-     * @return Vector di articoli venduti
+     * Returns the past orders of the supplier (the orders of a customer that contains a product of the supplier)
+     * 
+     * @return A vector<int> of the IDs of orders?products? Una map<?,?,...>?  
      */
-    vector<Product> getPastOrders();
+    vector<int> getPastOrders();
+    // NON PENSO FARÒ QUESTA FUNZIONE CON REDIS
 };
 
 #endif
