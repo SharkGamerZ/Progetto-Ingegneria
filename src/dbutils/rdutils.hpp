@@ -90,7 +90,7 @@ public:
      * 
      * This function returns the first aavailable shipper that it finds. It checks if there are any shippers in the cache, then checks if it finds one from the cached ones otherwise it seaarches it in the DB.
      * Return an empty vector if there aren't any available shippers.
-     * @return The tuple of aa shipper
+     * @return The tuple of a shipper
     */
     vector<string> getAvailableShipper();
 
