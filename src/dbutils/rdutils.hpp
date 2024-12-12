@@ -9,7 +9,7 @@
 /** @brief Class that creates the redis cache and operates on it */
 class RedisCache{
 public:
-    /** @brief Connects to redis, and load the full Products table in the cache. */
+    /** @brief Connects to redis */
     RedisCache();
 
     /** @brief Closes the connection to redis. */
@@ -60,10 +60,12 @@ public:
 
     /** @brief Given the table and ID of a tuple in the db, returns the values in a string.
      * 
-     * The function before checks if the searched data are in the redis cache, if it is it returns it, otherwise it performs a select on the DB, loads the data in the cache and then returns it. 
+     * The function before checks if the searched data are in the redis cache, if it is it returns it, otherwise it performs a select on the DB, loads the data in the cache and then returns it.
+     * 
+     * The return is empty if the searched tuple/Redis element isn't present
      * @param table The table in which is going to be searched the ID
      * @param ID The ID of the search tuple
-     * @return A vector of strings that contains the returner values
+     * @return A vector of strings that contains the values
     */
     vector<string> getData(const string& table, const string& ID);
 

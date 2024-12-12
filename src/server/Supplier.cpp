@@ -10,7 +10,7 @@ Supplier::Supplier(int ID, string CF, string name, string surname, string email,
 }
 
 void Supplier::addStock(int ID, int q) {
-    RedisCache cache = RedisCache();
+    RedisCache cache;
     DataService redis(cache);
     vector<string> data;
     
@@ -41,7 +41,7 @@ void Supplier::addStock(int ID, int q) {
 }
 
 void Supplier::addProduct(string name, string des, int supplier, float price, int stock) {
-    RedisCache cache = RedisCache();
+    RedisCache cache;
     DataService redis = DataService(cache);
     unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
     pqxx::result res;
@@ -74,7 +74,36 @@ void Supplier::addProduct(string name, string des, int supplier, float price, in
 }
 
 void Supplier::setDiscontinuedProduct(int ID) {
-    // TODO
+    // Initialize the cache object and passes it to the DataService constructor
+    RedisCache cache;
+    DataService redis(cache);
+    vector<string> data;
+    
+    data = redis.getData("products", to_string(ID));
+
+    // Checking if the ID exist (in the cache or DB since getData searches in both cache and then DB)
+    if (data.empty()) {
+        cout << "[ERROR] ID of product doesn't exist.";
+        return;
+    }
+
+    // Updating the value
+    data.back() = "-1";
+    // Setting the new value in redis
+    redis.setData("products", to_string(ID), data);
+
+    unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+    
+    // Setting the value in the DB
+    try {
+        pqxx::work w(*conn);
+        w.exec("UPDATE products SET stock = " + data.back() + " WHERE id = " + to_string(ID));
+    } 
+    catch (const exception &e) {
+        cerr << e.what() << endl;
+        throw e;
+    }
+
 }
 
 vector<int> Supplier::getPastOrders() {

@@ -40,7 +40,7 @@ public:
 
     /** @brief Sets a product to discontinued
      * 
-     * Takes the ID of a existant product and sets it to discontinued 
+     * Takes the ID of a existant product and sets it to discontinued (quantity of the product<0) 
      * @param ID The ID of a products
     */
     void setDiscontinuedProduct(int ID);

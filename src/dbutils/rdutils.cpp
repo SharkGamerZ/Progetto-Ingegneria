@@ -22,7 +22,6 @@ RedisCache::~RedisCache() {
     }
 }
 
-
 void RedisCache::initCache() {
     // Enstablish connection to DB and load the products table
     unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");

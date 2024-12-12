@@ -2,6 +2,7 @@
 #include "utils.hpp"
 #include "User.hpp"
 #include "../dbutils/pgutils.hpp"
+#include "../dbutils/rdutils.hpp"
 
 class Shipper : public User {
 
