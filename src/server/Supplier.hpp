@@ -6,6 +6,8 @@
 #include <string>
 #include <ctime>
 #include <vector>
+#include <pqxx/pqxx>
+#include "../dbutils/rdutils.hpp"
 using namespace std;
 
 class Supplier: public User {
@@ -22,7 +24,7 @@ public:
      * @param ID The ID of a product
      * @param q The quantity of the product to be added
      */
-    void addProduct(int ID, int q);
+    void addStock(int ID, int q);
 
     /** @brief Sets a product to discontinued
      * 

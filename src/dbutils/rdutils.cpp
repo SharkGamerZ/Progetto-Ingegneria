@@ -40,7 +40,6 @@ void RedisCache::initCache() {
     }
 }
 
-
 bool RedisCache::exist(const string& table, const string& ID) {
     string key = "";
 
@@ -210,6 +209,10 @@ vector<string> DataService::getData(const string& table, const string& ID) {
         cout << "Cache miss for key: " << key << endl;
         // Simulate fetching data from a PostgreSQL database
         string data = fetchFromDatabase(table, ID);
+        if (data.empty()) {
+            // If the string is empty return the empty res
+            return res;
+        }
         // Store the data in the cache
         cache.set(table, ID, data);
         
@@ -223,6 +226,17 @@ vector<string> DataService::getData(const string& table, const string& ID) {
 
         return res;
     }
+}
+
+void DataService::setData(const string& table, const string& ID, vector<string> columns) {
+    string value = "";
+    
+    for (string column : columns) {
+        value += column;
+    }
+
+    cache.set(table, ID, value);
+
 }
 
 void DataService::addCart(const string& ID, const string& prod, const string& qnt) {
