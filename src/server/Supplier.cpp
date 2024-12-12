@@ -40,8 +40,37 @@ void Supplier::addStock(int ID, int q) {
     }
 }
 
-void Supplier::addProduct(string name, string des, int supplier, int price, int stock) {
+void Supplier::addProduct(string name, string des, int supplier, float price, int stock) {
+    RedisCache cache = RedisCache();
+    DataService redis = DataService(cache);
+    unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+    pqxx::result res;
 
+    try {
+        // Inserts a new row in the DB
+        pqxx::work w(*conn);
+        res = w.exec("INSERT INTO products (name, description, supplier, price, stock) \
+            VALUES ("+name+", \
+                "+des+", \
+                "+to_string(supplier)+", \
+                "+to_string(price)+", \
+                "+to_string(stock)+") RETURNING id");
+    }
+    catch (const exception &e) {
+        cerr << e.what() << endl;
+        throw e;
+    }
+
+    vector<string> values;
+    // Create the array of string columns
+    values.insert(values.end(), name);
+    values.insert(values.end(), des);
+    values.insert(values.end(), to_string(supplier));
+    values.insert(values.end(), to_string(price));
+    values.insert(values.end(), to_string(stock));
+
+    // Sets the data in the cache
+    redis.setData("products", res[0][0].c_str(), values);
 }
 
 void Supplier::setDiscontinuedProduct(int ID) {

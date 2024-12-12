@@ -230,11 +230,11 @@ vector<string> DataService::getData(const string& table, const string& ID) {
 
 void DataService::setData(const string& table, const string& ID, vector<string> columns) {
     string value = "";
-    
+    // Creates the value for the Redis element
     for (string column : columns) {
-        value += column;
+        value += column + "_";
     }
-
+    value.pop_back();
     cache.set(table, ID, value);
 
 }

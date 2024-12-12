@@ -27,8 +27,16 @@ public:
      */
     void addStock(int ID, int q);
 
-    /** @brief Given the values for the columns of a product, it adds the product to both DB and cache */
-    void addProduct(string name, string des, int supplier, int price, int stock);
+    /** @brief Given the values for the columns of a product, it adds the product to both DB and cache
+     * 
+     * It creates a new tuple in the DB and set a new element in the Redis cache, following the always cached patter of the products
+     * @param name The name of the product
+     * @param des The description of the product
+     * @param supplier The ID of the supplier of the product
+     * @param price The price of the product
+     * @param stock The number of said products in the stock 
+     */
+    void addProduct(string name, string des, int supplier, float price, int stock);
 
     /** @brief Sets a product to discontinued
      * 
