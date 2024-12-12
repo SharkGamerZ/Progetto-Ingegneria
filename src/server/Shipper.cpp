@@ -149,6 +149,7 @@ int Shipper::trasportatore_disponibile() {
     }
 }
 
+
 /*
  Questa funzione serve ad assegnare una spedizione ad un trasportatore disponibile,
   creare un record nella tabella shippings con i dettagli della spedizione e aggiornare l'ordine per associare
