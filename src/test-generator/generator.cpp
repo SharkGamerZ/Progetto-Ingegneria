@@ -323,6 +323,7 @@ void testSupplier(vector<bool> selected, int n, vector<int> suppliersIDs, vector
     if (selected[0]) {
         cout << "[INFO]Testing addStock" << endl;
         for (int i = 0; i < n; i++) {
+
             if (suppliersIDs.empty()) break;
 
             int randomSupplierID = suppliersIDs[rand() % suppliersIDs.size()];
@@ -387,7 +388,7 @@ void testSupplier(vector<bool> selected, int n, vector<int> suppliersIDs, vector
 
     // Test getPastOrders
     if (selected[3]) {
-        cout << "[INFO]Testing getPastOrders" << endl;
+        cout << "[INFO]Testing getPastSolds" << endl;
         for (int i = 0; i < n; i++) {
             if (suppliersIDs.empty()) break;
 
@@ -397,7 +398,6 @@ void testSupplier(vector<bool> selected, int n, vector<int> suppliersIDs, vector
             supplier.ID = randomSupplierID;
 
             cout << "[INFO]Supplier ID:" << setw(20) << randomSupplierID << endl;
-
             vector<vector<string>> pastOrders = supplier.getPastSolds();
 
             // Magari printare il risultato

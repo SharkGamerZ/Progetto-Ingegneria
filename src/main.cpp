@@ -276,6 +276,8 @@ void populateDB(int n) {
         }   
     }
 
+    RedisCache cache;
+    cache.initCache();
 
 }
 
@@ -421,17 +423,18 @@ void chooseTestSupplierOptions() {
     cout << "Choose the number of elements to test" << endl;
     int n;
     cin >> n;
-    testShipper(selected, n, suppliersID, productsID);
+    testSupplier(selected, n, suppliersID, productsID);
 }
 
 
 int main() {
     cout<<"[INFO]Initializing DB"<<endl;
     initDB();
-
+/* 
     cout<<"[INFO]Initializing Redis"<<endl;
     RedisCache cache;
     cache.initCache();
+ */
 
     int choice, n;
     do {

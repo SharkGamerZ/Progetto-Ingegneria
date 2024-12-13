@@ -28,7 +28,7 @@ void Supplier::addStock(int ID, int q) {
     redis.setData("products", to_string(ID), data);
 
     unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
-    
+     
     // Setting the value in the DB
     try {
         pqxx::work w(*conn);
@@ -50,11 +50,11 @@ void Supplier::addProduct(string name, string des, float price, int stock) {
         // Inserts a new row in the DB
         pqxx::work w(*conn);
         res = w.exec("INSERT INTO products (name, description, supplier, price, stock) \
-            VALUES ("+name+", \
-                "+des+", \
-                "+to_string(ID)+", \
-                "+to_string(price)+", \
-                "+to_string(stock)+") RETURNING id");
+            VALUES ('"+name+"', \
+                '"+des+"', \
+                '"+to_string(ID)+"', \
+                '"+to_string(price)+"', \
+                '"+to_string(stock)+"') RETURNING id");
     }
     catch (const exception &e) {
         cerr << e.what() << endl;
@@ -123,6 +123,7 @@ vector<vector<string>> Supplier::getPastSolds() {
 
         // Filling the vector of vector containing the fields
         for (int i = 0; i < res.size(); i++) {
+            printf("qua\n");
             for (pqxx::field field : res[i]) {
                 soldProducts[i].insert(soldProducts[i].end(), field.c_str());
             }
