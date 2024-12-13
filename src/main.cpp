@@ -421,7 +421,7 @@ void chooseTestSupplierOptions() {
     cout << "Choose the number of elements to test" << endl;
     int n;
     cin >> n;
-    testShipper(selected, n, suppliersID, productsId);
+    testShipper(selected, n, suppliersID, productsID);
 }
 
 
