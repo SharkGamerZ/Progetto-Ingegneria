@@ -52,7 +52,7 @@ void Supplier::addProduct(string name, string des, int supplier, float price, in
         res = w.exec("INSERT INTO products (name, description, supplier, price, stock) \
             VALUES ("+name+", \
                 "+des+", \
-                "+to_string(supplier)+", \
+                "+to_string(ID)+", \
                 "+to_string(price)+", \
                 "+to_string(stock)+") RETURNING id");
     }

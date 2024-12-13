@@ -393,6 +393,38 @@ void chooseTestShipperOptions() {
     testShipper(selected, n, shippersID, orderID);
 }
 
+void chooseTestSupplierOptions() {
+    std::vector<std::string> options = {"addStock", "addProduct", "setDiscontinuedProduct", "getPastOrders"};
+    std::vector<bool> selected(options.size(), false);
+    int current = 0;
+
+    while (true) {
+        displayChoiceMenu(options, selected, current);
+        int ch = getch();
+
+        if (ch == '\033') { // Sequenza di escape (tasti freccia)
+            getch();        // Ignora '['
+            switch (getch()) {
+                case 'A': // Freccia SU
+                    current = (current == 0 ? options.size() - 1 : current - 1);
+                break;
+                case 'B': // Freccia GIU
+                    current = (current == options.size() - 1 ? 0 : current + 1);
+                break;
+            }
+        } else if (ch == ' ') { // Spazio per selezionare/deselezionare
+            selected[current] = !selected[current];
+        } else if (ch == '\n' || ch == '\r') { // Invio per confermare
+            break;
+        }
+
+    }
+
+    cout << "Choose the number of elements to test" << endl;
+    int n;
+    cin >> n;
+    testShipper(selected, n, suppliersID, productsId);
+}
 
 
 int main() {
@@ -435,7 +467,7 @@ int main() {
                         chooseTestShipperOptions();
                         break;
                     case 3:
-                        cout<<"Not implemented yet"<<endl;
+                        chooseTestSupplierOptions();
                         break;
                     default:
                         cout<<"Invalid choice"<<endl;

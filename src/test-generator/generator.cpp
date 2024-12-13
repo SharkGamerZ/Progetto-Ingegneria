@@ -333,9 +333,74 @@ void testSupplier(vector<bool> selected, int n, vector<int> suppliersIDs, vector
             Supplier supplier;
             supplier.ID = randomSupplierID;
             
-            cout << "[INFO]Supplier ID: " << supplier.ID << setw(10) << "Product ID: " << randomProductID << setw(10) << "Quantity: " << randomQnt << endl;
+            cout << "[INFO]Supplier ID: " << setw(20) << supplier.ID << endl; 
+            cout << setw(4) << "Product ID: " << setw(20) << randomProductID << endl;
+            cout << setw(4) << "Quantity: " << setw(20) << randomQnt << endl;
             supplier.addStock(randomProductID, randomQnt);
 
+        }
+    }
+
+    // Test addProduct
+    if (selected[1]) {
+        cout << "[INFO]Testing addProduct" << endl;
+        for (int i = 0; i < n; i++) {
+            if (suppliersIDs.empty()) break;
+
+            int randomSupplierID = suppliersIDs[rand() % suppliersIDs.size()];
+            string productName = getRandomProductNames(1)[0];
+            string des = "Lorem ipsum";
+            float price = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/100000));
+            int qnt = rand();
+
+            Supplier supplier;
+            supplier.ID = randomSupplierID;
+
+            cout << "[INFO]Supplier ID:" << setw(20) << randomSupplierID << endl;
+            cout << setw(4) << "Name: " << setw(20) << productName << endl;
+            cout << setw(4) << "Descrption: " << setw(20) << des << endl;
+            cout << setw(4) << "Price: " << setw(20) << price << endl;
+            cout << setw(4) << "Quantity: " << setw(20) << qnt << endl;
+
+            supplier.addProduct(productName, des, price, qnt);
+        }
+    }
+
+    // Test setDiscontinuedProduct
+    if (selected[2]) {
+        cout << "[INFO]Testing setDiscontinuedProduct" << endl;
+        for (int i = 0; i < n; i++) {
+            if (suppliersIDs.empty()) break;
+
+            int randomSupplierID = suppliersIDs[rand() % suppliersIDs.size()];
+            int randomProductID = productsIDs[rand() % productsIDs.size()];
+
+            Supplier supplier;
+            supplier.ID = randomSupplierID;
+
+            cout << "[INFO]Supplier ID:" << setw(20) << randomSupplierID << endl;
+            cout << setw(4) << "Product ID: " << setw(20) << randomProductID << endl;
+
+            supplier.setDiscontinuedProduct(randomProductID);
+        }
+    }
+
+    // Test getPastOrders
+    if (selected[3]) {
+        cout << "[INFO]Testing getPastOrders" << endl;
+        for (int i = 0; i < n; i++) {
+            if (suppliersIDs.empty()) break;
+
+            int randomSupplierID = suppliersIDs[rand() % suppliersIDs.size()];
+
+            Supplier supplier;
+            supplier.ID = randomSupplierID;
+
+            cout << "[INFO]Supplier ID:" << setw(20) << randomSupplierID << endl;
+
+            vector<int> pastOrders = supplier.getPastOrders();
+
+            // Magari printare il risultato
         }
     }
 }
