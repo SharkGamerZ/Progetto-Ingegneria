@@ -120,16 +120,17 @@ vector<vector<string>> Supplier::getPastSolds() {
             JOIN orders o ON o.id = op.orderID \
             WHERE s.userID = " + to_string(ID) + " \
             ORDER BY o.instant DESC");
-        
-        /* for (int i = 0; i < res.size(); i++) {
-            for (auto column : res[i]) {
-                soldProducts[i].insert(soldProducts.end(), to_string(column));
 
+        // Filling the vector of vector containing the fields
+        for (int i = 0; i < res.size(); i++) {
+            for (pqxx::field field : res[i]) {
+                soldProducts[i].insert(soldProducts[i].end(), field.c_str());
             }
-        } */
+        }
     }
     catch (const exception &e) {
         cerr << e.what() << endl;
         throw e;
     }
+    return soldProducts;
 }
