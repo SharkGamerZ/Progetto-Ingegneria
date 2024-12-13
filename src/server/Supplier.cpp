@@ -106,7 +106,30 @@ void Supplier::setDiscontinuedProduct(int ID) {
 
 }
 
-vector<int> Supplier::getPastOrders() {
-    // TODO
-    return vector<int>();
+vector<vector<string>> Supplier::getPastSolds() {
+    vector<vector<string>> soldProducts;
+
+    unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+
+    // Selecting all the sold products from the DB
+    try {
+        pqxx::work w(*conn);
+        pqxx::result res = w.exec("SELECT o.customer, p.name, op.quantity, o.instant \
+            FROM suppliers s JOIN products p ON s.userID = p.supplier \
+            JOIN orderProducts op ON p.id = op.product \
+            JOIN orders o ON o.id = op.orderID \
+            WHERE s.userID = " + to_string(ID) + " \
+            ORDER BY o.instant DESC");
+        
+        /* for (int i = 0; i < res.size(); i++) {
+            for (auto column : res[i]) {
+                soldProducts[i].insert(soldProducts.end(), to_string(column));
+
+            }
+        } */
+    }
+    catch (const exception &e) {
+        cerr << e.what() << endl;
+        throw e;
+    }
 }

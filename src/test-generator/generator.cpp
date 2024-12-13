@@ -398,7 +398,7 @@ void testSupplier(vector<bool> selected, int n, vector<int> suppliersIDs, vector
 
             cout << "[INFO]Supplier ID:" << setw(20) << randomSupplierID << endl;
 
-            vector<int> pastOrders = supplier.getPastOrders();
+            vector<vector<string>> pastOrders = supplier.getPastSolds();
 
             // Magari printare il risultato
         }
