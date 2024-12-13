@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <termios.h>
 
-vector<int> customersID, shippersID, suppliersID, shippingsID, orderID; // ID degli utenti
+vector<int> customersID, shippersID, suppliersID, shippingsID, orderID, productsID; // ID degli utenti
 void populateDB(int n) {
     std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
@@ -99,8 +99,6 @@ void populateDB(int n) {
     vector<string> productNames = getRandomProductNames(n);
     vector<string> adjectives = getRandomAdjectives(n);
 
-    vector<int> productIDs; 
-
     for (int i = 0; i < n; i++) {
         if (suppliersID.size() == 0) break;
         pqxx::work w(*conn);
@@ -117,7 +115,7 @@ void populateDB(int n) {
 
             w.exec(query);
 
-            productIDs.push_back(i+1);
+            productsID.push_back(i+1);
 
         } catch (const std::exception &e) {
             cerr << e.what() << endl;
@@ -162,7 +160,7 @@ void populateDB(int n) {
     cout<<"[INFO]Populating OrderProducts"<<endl;
     // Riempimento orderProducts
     for (int i = 0; i < orderIDs.size(); i++) {
-        if (productIDs.size() == 0) break;
+        if (productsID.size() == 0) break;
         // Genera numero casuale di prodotti in un ordine
         int numProducts = rand()%10+1;
         for (int j = 0; j < numProducts; j++) {
@@ -174,7 +172,7 @@ void populateDB(int n) {
                     int qty = rand()%10+1;
                     string query = "INSERT INTO orderProducts (orderID, product, quantity) VALUES ('" + 
                                                 to_string(orderIDs[i]) + "', '" +
-                                                to_string(productIDs[rand()%productIDs.size()]) + "', '" +
+                                                to_string(productsID[rand()%productsID.size()]) + "', '" +
                                                 to_string(qty) + "')";
 
                     w.exec(query);
@@ -249,7 +247,7 @@ void populateDB(int n) {
     cout<<"[INFO]Populating Carts"<<endl;
     // Riempimento Carts
     for (int i = 0; i < customersID.size(); i++) {
-        if (productIDs.size() == 0) break;
+        if (productsID.size() == 0) break;
         // Genera numero casuale di prodotti in un carrello
         int numProducts = rand()%10;
         for (int j = 0; j < numProducts; j++) {
@@ -258,7 +256,7 @@ void populateDB(int n) {
                 success = true;
                 pqxx::work w(*conn);
                 try {
-                    int randomProductID = productIDs[rand()%productIDs.size()];
+                    int randomProductID = productsID[rand()%productsID.size()];
                     int qty = rand()%9+1;
 
                     string query = "INSERT INTO carts (customer, product, quantity) VALUES ('" + 
