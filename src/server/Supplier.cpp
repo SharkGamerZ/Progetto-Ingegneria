@@ -65,7 +65,7 @@ void Supplier::addProduct(string name, string des, float price, int stock) {
     // Create the array of string columns
     values.insert(values.end(), name);
     values.insert(values.end(), des);
-    values.insert(values.end(), to_string(supplier));
+    values.insert(values.end(), to_string(ID));
     values.insert(values.end(), to_string(price));
     values.insert(values.end(), to_string(stock));
 
