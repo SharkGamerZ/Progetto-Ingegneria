@@ -16,6 +16,8 @@ public:
     string pw;
     vector<int> ID_wh;
     
+    Supplier() {}
+    
     Supplier(int ID, string CF, string name, string surname, string email, string P_IVA);
 
     /** @brief Adds a certain quantity of a product to the DB

@@ -313,3 +313,29 @@ void testShipper(std::vector<bool> selected, int n, vector<int> shipperIDs, vect
     }
 }
 
+void testSupplier(vector<bool> selected, int n, vector<int> suppliersIDs, vector<int> productsIDs) {
+    unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
+
+    RedisCache cache;
+    DataService redis(cache);
+
+    // Test addStock
+    if (selected[0]) {
+        cout << "[INFO]Testing addStock" << endl;
+        for (int i = 0; i < n; i++) {
+            if (suppliersIDs.empty()) break;
+
+            int randomSupplierID = suppliersIDs[rand() % suppliersIDs.size()];
+            int randomProductID = productsIDs[rand() % productsIDs.size()];
+            int randomQnt = rand() % 1000;
+
+
+            Supplier supplier;
+            supplier.ID = randomSupplierID;
+            
+            cout << "[INFO]Supplier ID: " << supplier.ID << setw(10) << "Product ID: " << randomProductID << setw(10) << "Quantity: " << randomQnt << endl;
+            supplier.addStock(randomProductID, randomQnt);
+
+        }
+    }
+}

@@ -87,7 +87,7 @@ void Supplier::setDiscontinuedProduct(int ID) {
         return;
     }
 
-    // Updating the value
+    // Set the product to discontinued (quantity<0)
     data.back() = "-1";
     // Setting the new value in redis
     redis.setData("products", to_string(ID), data);
