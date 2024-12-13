@@ -40,7 +40,7 @@ void Supplier::addStock(int ID, int q) {
     }
 }
 
-void Supplier::addProduct(string name, string des, int supplier, float price, int stock) {
+void Supplier::addProduct(string name, string des, float price, int stock) {
     RedisCache cache;
     DataService redis = DataService(cache);
     unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
