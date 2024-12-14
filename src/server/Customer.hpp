@@ -44,7 +44,7 @@ public:
      * Gets the list of the past orders.
      * @return the list of past orders IDS
      */
-    vector<int> getPastOrders();
+    vector<Order> getPastOrders();
 };
 
 struct IndirizzoSpedizione {

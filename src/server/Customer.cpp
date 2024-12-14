@@ -171,9 +171,49 @@ void Customer::buyCart() {
 
 
 
-Order* getPastOrders (Customer c) {
-	// TODO query per prendere gli ordini passati
-	Order* orders;
+vector<Order> Customer::getPastOrders () {
+	// Prende tutti gli ordini passati, con anche i prodotti e quantita' per ogni ordine
+	string query = "SELECT id, customer, instant, orderid, product, quantity FROM orders, orderProducts WHERE orders.customer = " + to_string(this->ID) + " AND orders.id = orderProducts.orderID";
+
+
+	pqxx::connection conn("dbname=ecommerce user=ecommerce password=ecommerce host=localhost");
+	pqxx::work w(conn);
+	pqxx::result r;
+	try {
+		r = w.exec(query);
+	} catch (const std::exception &e) {
+		cerr << e.what() << endl;
+	}
+
+	// Transforma il risultato della query in un array di ordini
+	vector<Order> orders;
+	for (pqxx::result::const_iterator row = r.begin(); row != r.end(); ++row) {
+		Order o;
+
+		// Checks if the order is already in the vector
+		bool found = false;
+		for (int i = 0; i < orders.size(); i++) {
+			if (orders[i].ID == row[0].as<int>()) {
+				found = true;
+
+				// If the order is already in the vector, just add the product to the order
+				o.products[row[4].as<int>()] = row[5].as<int>();
+				break;
+			}
+		}
+		if (found) { continue; }
+		o.ID = row[0].as<int>();
+		o.customerID = row[1].as<int>();
+		// Parse the time from the string
+		struct tm tm;
+		strptime(row[2].c_str(), "%Y-%m-%d %H:%M:%S", &tm);
+		o.orderTime = mktime(&tm);
+
+
+		o.products[row[4].as<int>()] = row[5].as<int>();
+
+		orders.push_back(o);
+	}
 
 	return orders;
 }

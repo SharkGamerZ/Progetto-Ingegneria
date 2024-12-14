@@ -39,7 +39,6 @@ class Order {
 public:
     int ID;
     int customerID;
-    int ShippingID;
     map <int, int> products; // Maps productsID to quantities
     time_t orderTime;
 

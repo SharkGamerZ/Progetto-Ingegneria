@@ -74,29 +74,6 @@ vector<string> getRandomCities(int n) {
 }
 
 
-vector<string> getRandomProducts(int n) {
-    srand(time(NULL));
-
-    vector<string> products;
-
-    // Reads from files and gets random names
-    ifstream file("../src/test-generator/products.txt");
-    string product;
-    while (getline(file, product)) {
-        products.push_back(product);
-    }
-
-
-    vector<string> randomProducts;
-    for (int i = 0; i < n; i++) {
-        int randomIndex = rand() % products.size();
-        randomProducts.push_back(products[randomIndex]);
-    }
-
-    return randomProducts;
-}
-
-
 vector<string> getRandomProductNames(int n) {
     srand(time(NULL));
 
@@ -205,6 +182,41 @@ void testCustomer(std::vector<bool> selected, int n, vector<int> customersID, ve
             c.buyCart();
         }
     }
+
+
+    // getPastOrders test
+    if (selected[3]) {
+        cout<<"[INFO]Testing getPastOrders"<<endl;
+        for (int i = 0; i < n; i++) {
+            if (customersID.size() == 0) break;
+            int randomCustomerID = customersID[rand() % customersID.size()];
+
+            Customer c;
+            c.ID = randomCustomerID;
+            vector<Order> orders = c.getPastOrders();
+
+            // Itera sugli ordini e stampa i dettagli
+            for (const auto& order : orders) { cout << "Order Details:" << endl;
+                cout << "  Order ID: " << order.ID << endl;
+                cout << "  Customer ID: " << order.customerID << endl;
+                cout << "  Order Time: " << put_time(localtime(&order.orderTime), "%Y-%m-%d %H:%M:%S") << endl;
+
+                cout << "  Products:" << endl;
+                if (order.products.empty()) {
+                    cout << "    No products in this order." << endl;
+                } else {
+                    for (const auto& [productID, quantity] : order.products) {
+                        cout << "    Product ID: " << productID << " | Quantity: " << quantity << endl;
+                    }
+                }
+
+                cout << "---------------------------------" << endl; // Separatore tra gli ordini
+            }
+        }
+
+
+    }
+
 }
 
 void testShipper(std::vector<bool> selected, int n, vector<int> shipperIDs, vector<int> orderIDs) {
