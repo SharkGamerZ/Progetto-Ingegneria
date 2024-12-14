@@ -29,14 +29,28 @@ void RedisCache::initCache() {
     try {
         pqxx::work w(*conn);
         string query = "SELECT * FROM products";
-        for (auto [id, supplierID, name, description, price, stock] : w.query<string, string, string, string, string, string>(query)) {
-            set("products", id, supplierID + "_" + name + "_" + description + "_" + price + "_" + stock);
+        for (auto [id, name, description, supplierID, price, stock] : w.query<string, string, string, string, string, string>(query)) {
+            set("products", id, name + "_" + description + "_" + supplierID + "_" +  price + "_" + stock);
         }
         w.commit();
     } catch (const std::exception &e) {
         cerr << e.what() << std::endl;
         throw e;
     }
+}
+
+void RedisCache::emptyCache() {
+    redisReply* reply = (redisReply*) redisCommand(context, "FLUSHALL");
+    if (!reply) {
+        std::cerr << "Failed to execute FLUSHALL command" << std::endl;
+        return;
+    }
+    if (reply->type == REDIS_REPLY_STATUS && std::string(reply->str) == "OK") {
+        std::cout << "Cache successfully emptied." << std::endl;
+    } else {
+        std::cerr << "Failed to empty cache. Reply: " << reply->str << std::endl;
+    }
+    freeReplyObject(reply);
 }
 
 bool RedisCache::exist(const string& table, const string& ID) {
@@ -51,6 +65,7 @@ bool RedisCache::exist(const string& table, const string& ID) {
         return false;
     }
     bool exists = reply->integer == 1;
+    
     freeReplyObject(reply);
     return exists;
 }
@@ -78,7 +93,6 @@ void RedisCache::set(const string& table, const string& ID, const string& value)
 
     key.append(table);
     key.append(ID);
-
     redisReply* reply = (redisReply*)redisCommand(context, "SET %s %s", key.c_str(), value.c_str());
     if (!reply || reply->type != REDIS_REPLY_STATUS || string(reply->str) != "OK") {
         cerr << "Failed to set cache" << endl;
@@ -86,93 +100,62 @@ void RedisCache::set(const string& table, const string& ID, const string& value)
     freeReplyObject(reply);
 }
 
-vector<string> RedisCache::getShippers() {
+vector<string> RedisCache::scanTable(const string& table) {
     unsigned long long cursor = 0;
-    vector<string> shippers;
+    vector<string> rows;
+    
     do {
-        // You can experiment with different COUNT (batch size) in the SCAN
-        redisReply *reply = (redisReply*) redisCommand(context, "SCAN %llu MATCH shippers*", cursor);
+        // Execute the SCAN command with a MATCH pattern for shippers
+        redisReply *reply = (redisReply*) redisCommand(context, "SCAN %llu MATCH %s*", cursor, table.c_str());
+        if (!reply) {
+            cerr << "[ERROR] Failed to execute SCAN command" << endl;
+            freeReplyObject(reply);
+            return rows;
+        }
+
         if (reply->type == REDIS_REPLY_ARRAY && reply->elements == 2) {
             // Update the cursor
             cursor = strtoull(reply->element[0]->str, NULL, 10);
+            // cout << "[DEBUG] Updated cursor: " << cursor << endl;
 
             // Check if the keys list is empty
-            if (reply->element[1]->type == REDIS_REPLY_ARRAY && reply->element[1]->elements == 0) {
-                printf("No shippers in cache.\n");
-                return shippers;
-            } 
-            else {
-                // Get the data from the key
-                string id = "";
-                string key = "";
-                
+            if (reply->element[1]->type == REDIS_REPLY_ARRAY) {
+
+                // On a empty cache this loop won't have any iterations
                 for (size_t i = 0; i < reply->element[1]->elements; i++) {
-                    key = reply->element[1]->element[i]->str;
-                    id = key.substr(8, string::npos);
+                    string key = reply->element[1]->element[i]->str;
+                    // cout << "[DEBUG] Found key: " << key << endl;
                     
-                    string shipper = id + "_" + get("shippers", id);
-                    shippers.insert(shippers.end(), shipper);
+                    // Cuts the ID off the key (tableID)
+                    string id = key.substr(table.size());
+
+                    // Get the data from the key
+                    string row = id + "_" + get(table, id);
+                    if (!row.empty()) {
+                        rows.push_back(row);
+                    } else {
+                        cout << "[WARNING]Retrieved empty value for key: " << key << endl;
+                    }
                 }
+            } else {
+                cout << "[DEBUG]No keys found in this batch." << endl;
             }
-        } 
-        else {
-            printf("[ERROR]Unexpected reply structure.\n");
+        } else {
+            cerr << "[ERROR]Unexpected reply structure." << endl;
             freeReplyObject(reply);
-            
-            // Return an empty array
-            return shippers;
+            return rows;
         }
 
         freeReplyObject(reply);
     } while (cursor != 0);
-
-    // Returns the tuples of the shippers
-    return shippers;
-}
-
-vector<string> RedisCache::getProducts() {
-    unsigned long long cursor = 0;
-    vector<string> products;
-    // Iterates over the batches (cursor) of keys
-    do {
-        redisReply *reply = (redisReply*) redisCommand(context, "SCAN %llu MATCH products*", cursor);
-        if (reply->type == REDIS_REPLY_ARRAY && reply->elements == 2) {
-            // Update the cursor
-            cursor = strtoull(reply->element[0]->str, NULL, 10);
-
-            // Check if the keys list is empty
-            if (reply->element[1]->type == REDIS_REPLY_ARRAY && reply->element[1]->elements == 0) {
-                printf("No products in cache.\n");
-                // Return an empy array
-                return products;
-            } 
-            else {
-                // Get the data from the key
-                string id = "";
-                string key = "";
-                
-                for (size_t i = 0; i < reply->element[1]->elements; i++) {
-                    key = reply->element[1]->element[i]->str;
-                    id = key.substr(8, string::npos);
-                    // Contains only the value of the redis element (not the key or table)
-                    string product = id + "_" + get("products", id);
-                    products.insert(products.end(), product);
-                }
-            }
-        } 
-        else {
-            printf("[ERRORE]Unexpected reply structure.\n");
-            freeReplyObject(reply);
-            // Returns an empty array
-            return products;
-        }
-
-        freeReplyObject(reply);
-    // Loop stops when cursor loops back to 0
-    } while (cursor != 0);
-
-    // Return array of strings containing the products tuples
-    return products;
+    
+    if (!rows.empty()) {
+        cout << "[INFO]Shippers in cache." << endl;
+    }
+    else {
+        cout << "[INFO]No shippers in cache." << endl;
+    }
+    return rows;
 }
 
 DataService::DataService(RedisCache& cache) : cache(cache) {}
@@ -321,26 +304,48 @@ map<int,int> DataService::getCart(const string& ID) {
 // [WARNING] the data of the shippers in the cache has to be updated, expecially the number of shippings (any update oon the shippings table means that the value of that shipper in the cache has to be updated)
 vector<string> DataService::getAvailableShipper() { 
     vector<string> res;
-    vector<string> shippersC = cache.getShippers();
+    vector<string> shippersC;
 
+    shippersC = cache.scanTable("shippers");
     // Checks if there are any shippers in the cache
     if(shippersC.empty()) {
         unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
         try {        
             // Selects all the available shippers from the DB
             pqxx::work w(*conn);     
-            pqxx::result r = w.exec("SELECT s.userID, u.piva, u.ragione_sociale, u.sede FROM shippers s JOIN users u ON s.userID = u.id WHERE (SELECT COUNT(*) FROM shippings WHERE shipper = s.userID AND state = FALSE) < 10 LIMIT 1");         
+            pqxx::result r = w.exec("SELECT s.userID, u.CF, u.name, u.surname, u.email, s.piva,  COUNT(o.orderID) \
+                FROM shippers s \
+                JOIN users u ON s.userID = u.id \
+                JOIN shippings o ON o.shipper = s.userID \
+                GROUP BY s.userID, u.CF, u.name, u.surname, u.email, s.piva \
+                HAVING COUNT(o.orderID) < 10");
             if (r.empty()) {        
-                cout << "[WARNING]No available shippers" << endl;      
+                cout << "[WARNING]No available shipper." << endl;      
                 // Empty res if there aren't any 
-                return res;          
-            }    
+                return res;         
+            }
+
+            // Setting the newly found shippers in cache
+            for (int i = 0; i < r.size(); i++) {
+                string value = "";
+                // Skipps from adding the userID to the value (it's part of the key)
+                for (int j = 1; j < r[i].size(); j++) {
+                    value += r[i][j].c_str();
+                    value += "_";
+                }
+                value.pop_back();
+                // Skip setting in cache if already in cache
+                if (cache.exist("shippers", r[i][0].c_str())) {
+                    continue;
+                }
+                // Setting in cache
+                cache.set("shippers", r[i][0].c_str(), value);
+            }
+            
             // Creating the tuple of the available shipper    
             res.insert(res.end(), r[0][0].as<string>());  // userID    
-            res.insert(res.end(), r[0][1].as<string>());  // P_IVA    
-            res.insert(res.end(), r[0][2].as<string>());  // ragione_sociale    
-            res.insert(res.end(), r[0][3].as<string>());  // sede    
-            return res;  
+            res.insert(res.end(), r[0][5].as<string>());  // P_IVA    
+            return res;        
         } 
         catch (const std::exception &e) { 
             cerr << "[ERROR] Error while selecting from the DB: " << e.what() << endl;
@@ -360,7 +365,10 @@ vector<string> DataService::getAvailableShipper() {
             }
             // Checks if the shipper is available (the number of shippings is the last element)
             if (stoi(splitValue.back()) < 10 ) {
-                return splitValue;
+                cout << "[INFO]Available from cache." << endl;
+                res.insert(res.end(), splitValue[0]);  // userID    
+                res.insert(res.end(), splitValue[5]);  // P_IVA    
+                return res;
             }
         }
         unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
@@ -369,18 +377,38 @@ vector<string> DataService::getAvailableShipper() {
 
             // Selects all the available shippers from the DB                   
             pqxx::work w(*conn);     
-            pqxx::result r = w.exec("SELECT s.userID, u.piva, u.ragione_sociale, u.sede FROM shippers s JOIN users u ON s.userID = u.id WHERE (SELECT COUNT(*) FROM shippings WHERE shipper = s.userID AND state = FALSE) < 10 LIMIT 1");        
+            pqxx::result r = w.exec("SELECT s.userID, u.CF, u.name, u.surname, u.email, s.piva,  COUNT(o.orderID) \
+                FROM shippers s \
+                JOIN users u ON s.userID = u.id \
+                JOIN shippings o ON o.shipper = s.userID \
+                GROUP BY s.userID, u.CF, u.name, u.surname, u.email, s.piva \
+                HAVING COUNT(o.orderID) < 10");
             if (r.empty()) {        
-                cout << "Nessun trasportatore disponibile" << endl;      
+                cout << "[WARNING]No available shipper" << endl;      
                 // Empty res if there aren't any 
                 return res;         
             }    
+            // Setting the newly found shippers in cache
+            for (int i = 0; i < r.size(); i++) {
+                string value = "";
+                // Skipps from adding the userID to the value (it's part of the key)
+                for (int j = 1; j < r[i].size(); j++) {
+                    value += r[i][j].c_str();
+                    value += "_";
+                }
+                value.pop_back();
+                // Skip setting in cache if already in cache
+                if (cache.exist("shippers", r[i][0].c_str())) {
+                    continue;
+                }
+                // Setting in cache
+                cache.set("shippers", r[i][0].c_str(), value);
+            }
+            
             // Creating the tuple of the available shipper    
-            res.insert(res.end(), r[0][0].as<string>());  // userID    
-            res.insert(res.end(), r[0][1].as<string>());  // P_IVA    
-            res.insert(res.end(), r[0][2].as<string>());  // ragione_sociale    
-            res.insert(res.end(), r[0][3].as<string>());  // sede    
-            return res;  
+            res.insert(res.end(), r[0][0].c_str());  // userID    
+            res.insert(res.end(), r[0][5].c_str());  // P_IVA    
+            return res;
         } 
         catch (const std::exception &e) {    
             cerr << "Error in trasportatore_disponibile: " << e.what() << endl;    
@@ -403,7 +431,7 @@ vector<string> DataService::getFilteredProducts(string& filters) {
     }
     filt.insert(filt.end(), filters);
 
-    products = cache.getProducts();
+    products = cache.scanTable("products");
     // getProducts()
 
     int len = products.size();
@@ -527,12 +555,12 @@ string DataService::fetchFromDatabase(const string& table, const string& ID) {
         // Query the database for the value corresponding to the key
         pqxx::work w(*conn);
         if (table == "shippers") {
-            result = w.exec("SELECT u.CF, u.name, u.surname, u.email, s.piva, s.ragsoc, s.location, COUNT(o.orderID) \
+            result = w.exec("SELECT u.CF, u.name, u.surname, u.email, s.piva,  COUNT(o.orderID) \
                 FROM shippers s \
                 JOIN users u ON s.userID = u.id \
                 JOIN shippings o ON o.shipper = s.userID \
                 WHERE s.userID = " + ID + " \
-                GROUP BY s.userID, u.CF, u.name, u.surname, u.email, s.piva, s.ragsoc, s.location");
+                GROUP BY s.userID, u.CF, u.name, u.surname, u.email, s.piva");
         }
         else {
             result = w.exec("SELECT * FROM " + table + " WHERE ID = " + w.quote(ID) + "");

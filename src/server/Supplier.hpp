@@ -38,7 +38,7 @@ public:
      * @param price The price of the product
      * @param stock The number of said products in the stock 
      */
-    void addProduct(string name, string des, int supplier, float price, int stock);
+    void addProduct(string name, string des, float price, int stock);
 
     /** @brief Sets a product to discontinued
      * 
@@ -53,7 +53,7 @@ public:
      * 
      * @return A vector<int> of the IDs of orders?products? Una map<?,?,...>?  
      */
-    vector<int> getPastOrders();
+    vector<vector<string>> getSoldProducts();
     // NON PENSO FARÒ QUESTA FUNZIONE CON REDIS
 };
 
