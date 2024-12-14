@@ -36,7 +36,7 @@ public:
         string token = generateToken();
 
         // Salva il token nella mappa globale
-        userTokens[username] = token;
+        //userTokens[username] = token;
 
         // Registra il login
         cout << "User " << username << " logged in with token: " << token << endl;

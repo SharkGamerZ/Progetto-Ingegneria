@@ -18,19 +18,18 @@ void Customer::addProductToCart(int productID, int qta) {
 	cout<<"[INFO] Adding product with ID "<<productID<<" to the cart of "<<this->ID<<endl;
 	vector<string> productString = ds.getData("products", to_string(productID));
 	Product p;
-
-	p.ID = stoi(productString[0]);
-	p.name = productString[1];
-	p.description = productString[2];
-	p.supplierID = stoi(productString[3]);
-	p.price = stof(productString[4]);
-	p.stock = stoi(productString[5]);
+	
+	p.ID = productID;
+	p.name = productString[0];
+	p.description = productString[1];
+	p.supplierID = stoi(productString[2]);
+	p.price = stof(productString[3]);
+	p.stock = stoi(productString[4]);
 
 	if (p.stock < qta) {
 		cerr<<"[ERROR] Error adding product to cart.\n\tProduct "<<p.name<<" has "<<p.stock<< " elements in stock, but "<<qta<<" where requested."<<endl;
 		return;
 	}
-	
 	cart = ds.getCart(to_string(this->ID));
 	string query;
 	// Controlla se l'articolo è già presente nel carrello

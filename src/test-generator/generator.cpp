@@ -334,9 +334,9 @@ void testSupplier(vector<bool> selected, int n, vector<int> suppliersIDs, vector
             Supplier supplier;
             supplier.ID = randomSupplierID;
             
-            cout << "[INFO]Supplier ID: " << setw(20) << supplier.ID << endl; 
-            cout << setw(4) << "Product ID: " << setw(20) << randomProductID << endl;
-            cout << setw(4) << "Quantity: " << setw(20) << randomQnt << endl;
+            cout << right << setw(20) << "[INFO]Supplier ID: " << supplier.ID << endl; 
+            cout << right << setw(20) << "Product ID: " << randomProductID << endl;
+            cout << right << setw(20) << "Quantity: " << randomQnt << endl;
             supplier.addStock(randomProductID, randomQnt);
 
         }
@@ -357,11 +357,11 @@ void testSupplier(vector<bool> selected, int n, vector<int> suppliersIDs, vector
             Supplier supplier;
             supplier.ID = randomSupplierID;
 
-            cout << "[INFO]Supplier ID:" << setw(20) << randomSupplierID << endl;
-            cout << setw(4) << "Name: " << setw(20) << productName << endl;
-            cout << setw(4) << "Descrption: " << setw(20) << des << endl;
-            cout << setw(4) << "Price: " << setw(20) << price << endl;
-            cout << setw(4) << "Quantity: " << setw(20) << qnt << endl;
+            cout << right << setw(20) << "[INFO]Supplier ID: " << randomSupplierID << endl;
+            cout << right << setw(20) << "Name: " << productName << endl;
+            cout << right << setw(20) << "Descrption: " << des << endl;
+            cout << right << setw(20) << "Price: " << price << endl;
+            cout << right << setw(20) << "Quantity: " << qnt << endl;
 
             supplier.addProduct(productName, des, price, qnt);
         }
@@ -379,8 +379,8 @@ void testSupplier(vector<bool> selected, int n, vector<int> suppliersIDs, vector
             Supplier supplier;
             supplier.ID = randomSupplierID;
 
-            cout << "[INFO]Supplier ID:" << setw(20) << randomSupplierID << endl;
-            cout << setw(4) << "Product ID: " << setw(20) << randomProductID << endl;
+            cout << right << setw(20) << "[INFO]Supplier ID: " << randomSupplierID << endl;
+            cout << right << setw(20) << "Product ID: " << randomProductID << endl;
 
             supplier.setDiscontinuedProduct(randomProductID);
         }
@@ -388,7 +388,7 @@ void testSupplier(vector<bool> selected, int n, vector<int> suppliersIDs, vector
 
     // Test getPastOrders
     if (selected[3]) {
-        cout << "[INFO]Testing getPastSolds" << endl;
+        cout << "[INFO]Testing getSoldProducts" << endl;
         for (int i = 0; i < n; i++) {
             if (suppliersIDs.empty()) break;
 
@@ -397,8 +397,13 @@ void testSupplier(vector<bool> selected, int n, vector<int> suppliersIDs, vector
             Supplier supplier;
             supplier.ID = randomSupplierID;
 
-            cout << "[INFO]Supplier ID:" << setw(20) << randomSupplierID << endl;
-            vector<vector<string>> pastOrders = supplier.getPastSolds();
+            cout << "[INFO]Supplier ID: " << randomSupplierID << endl;
+            vector<vector<string>> pastOrders = supplier.getSoldProducts();
+
+            cout << left << setw(12) << "CustomerID" << setw(50) << "Product name" << setw(10) << "Quantity" << setw(19) << "Instant" << endl;
+            for (vector<string> order : pastOrders) {
+                cout << left << setw(12) << order[0] << setw(50) << order[1] << setw(10) << order[2] << setw(19) << order[3] << endl;            
+            }
 
             // Magari printare il risultato
         }

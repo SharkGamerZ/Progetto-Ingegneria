@@ -34,17 +34,15 @@ public:
      */
     string get(const string& table, const string& ID);
 
-    vector<string> scanTable(const string& table);
-
-    /** @brief Return all the shippers in the cache
-     * @return Returns a vector of strings in which each string is the tuple of the shipper
+    /** @brief Returns everything that is cached in regards to a table
+     * 
+     * Uses the Redis SCAN comand to iterate over every Redis element e see if the key matches _table*_, and then returns a vector of strings, in which every string is a value of a key that matched the table searched.
+     * 
+     * In front of the value there is "id_" (ie. the id is concateneted to _value).
+     * @param table A table searched in the cache
+     * @return A vector of values with the ID of the tuple first
      */
-    vector<string> getShippers();
-
-    /** @brief Return all products in the cache (same in the DB) 
-     * @return Return a vector of strings in which each string is the tuple of the products
-    */
-    vector<string> getProducts();
+    vector<string> scanTable(const string& table);
 
     /** @brief Set an element in the redis cache
      * @param table The table in the DB

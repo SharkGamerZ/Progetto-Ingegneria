@@ -38,6 +38,7 @@ void Supplier::addStock(int ID, int q) {
         cerr << e.what() << endl;
         throw e;
     }
+
 }
 
 void Supplier::addProduct(string name, string des, float price, int stock) {
@@ -106,9 +107,8 @@ void Supplier::setDiscontinuedProduct(int ID) {
 
 }
 
-vector<vector<string>> Supplier::getPastSolds() {
+vector<vector<string>> Supplier::getSoldProducts() {
     vector<vector<string>> soldProducts;
-    vector<string> soldProduct;
 
     unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
@@ -124,11 +124,11 @@ vector<vector<string>> Supplier::getPastSolds() {
 
         // Filling the vector of vector containing the fields
         for (int i = 0; i < res.size(); i++) {
+            vector<string> soldProduct;
             for (pqxx::field field : res[i]) {
                 soldProduct.insert(soldProduct.end(), field.c_str());
             }
             soldProducts.insert(soldProducts.end(), soldProduct);
-            soldProduct.clear();
         }
     }
     catch (const exception &e) {

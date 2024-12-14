@@ -53,7 +53,7 @@ public:
      * 
      * @return A vector<int> of the IDs of orders?products? Una map<?,?,...>?  
      */
-    vector<vector<string>> getPastSolds();
+    vector<vector<string>> getSoldProducts();
     // NON PENSO FARÒ QUESTA FUNZIONE CON REDIS
 };
 
