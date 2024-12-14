@@ -29,8 +29,8 @@ void RedisCache::initCache() {
     try {
         pqxx::work w(*conn);
         string query = "SELECT * FROM products";
-        for (auto [id, supplierID, name, description, price, stock] : w.query<string, string, string, string, string, string>(query)) {
-            set("products", id, supplierID + "_" + name + "_" + description + "_" + price + "_" + stock);
+        for (auto [id, name, description, supplierID, price, stock] : w.query<string, string, string, string, string, string>(query)) {
+            set("products", id, name + "_" + description + "_" + supplierID + "_" +  price + "_" + stock);
         }
         w.commit();
     } catch (const std::exception &e) {
@@ -41,6 +41,16 @@ void RedisCache::initCache() {
 
 void RedisCache::emptyCache() {
     redisReply* reply = (redisReply*) redisCommand(context, "FLUSHALL");
+    if (!reply) {
+        std::cerr << "Failed to execute FLUSHALL command" << std::endl;
+        return;
+    }
+    if (reply->type == REDIS_REPLY_STATUS && std::string(reply->str) == "OK") {
+        std::cout << "Cache successfully emptied." << std::endl;
+    } else {
+        std::cerr << "Failed to empty cache. Reply: " << reply->str << std::endl;
+    }
+    freeReplyObject(reply);
 }
 
 bool RedisCache::exist(const string& table, const string& ID) {
@@ -83,7 +93,7 @@ void RedisCache::set(const string& table, const string& ID, const string& value)
 
     key.append(table);
     key.append(ID);
-
+    cout << key << "-" << value << endl;
     redisReply* reply = (redisReply*)redisCommand(context, "SET %s %s", key.c_str(), value.c_str());
     if (!reply || reply->type != REDIS_REPLY_STATUS || string(reply->str) != "OK") {
         cerr << "Failed to set cache" << endl;
@@ -111,6 +121,10 @@ vector<string> RedisCache::getShippers() {
             // Check if the keys list is empty
             if (reply->element[1]->type == REDIS_REPLY_ARRAY && reply->element[1]->elements == 0) {
                 printf("No shippers in cache. Dimensione %ld\n", reply->element[1]->elements);
+                
+                for (int i = 0; i < reply->element[1]->elements; i++) {
+                    cout << reply->element[1]->element[i] << endl;
+                }
 
                 return shippers;
             } 
@@ -366,6 +380,7 @@ vector<string> DataService::getAvailableShipper() {
             for (int i = 0; i < r.size(); i++) {
                 string value = "";
                 // Skipps from adding the userID to the value (it's part of the key)
+                // GENERA CORRETTAMENTE IL VALUE
                 for (int j = 1; j < r[i].size(); j++) {
                     value += r[i][j].c_str();
                     value += "_";
@@ -373,6 +388,7 @@ vector<string> DataService::getAvailableShipper() {
                 value.pop_back();
                 cout << value << endl;
                 // Skip setting in cache if already in cache
+                // A CACHE VUOTA CORRETTAMENTE ESCE SUBITO DALL'IF
                 cout << r[i][0].c_str() << endl;
                 if (cache.exist("shippers", r[i][0].c_str())) {
                     cout << "cache.exist() flag" << endl;
