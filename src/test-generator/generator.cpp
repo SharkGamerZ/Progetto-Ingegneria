@@ -357,25 +357,25 @@ void testSupplier(vector<bool> selected, int n, vector<int> suppliersIDs, vector
     // Test addProduct
     if (selected[1]) {
         cout << "[INFO]Testing addProduct" << endl;
+        vector<string> productNames = getRandomProductNames(n);
         for (int i = 0; i < n; i++) {
             if (suppliersIDs.empty()) break;
 
             int randomSupplierID = suppliersIDs[rand() % suppliersIDs.size()];
-            string productName = getRandomProductNames(1)[0];
             string des = "Lorem ipsum";
-            float price = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/100000));
+            float price = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX));
             int qnt = rand();
 
             Supplier supplier;
             supplier.ID = randomSupplierID;
 
             cout << right << setw(20) << "[INFO]Supplier ID: " << randomSupplierID << endl;
-            cout << right << setw(20) << "Name: " << productName << endl;
+            cout << right << setw(20) << "Name: " << productNames[i] << endl;
             cout << right << setw(20) << "Descrption: " << des << endl;
             cout << right << setw(20) << "Price: " << price << endl;
             cout << right << setw(20) << "Quantity: " << qnt << endl;
 
-            supplier.addProduct(productName, des, price, qnt);
+            supplier.addProduct(productNames[i], des, price, qnt);
         }
     }
 
@@ -398,7 +398,7 @@ void testSupplier(vector<bool> selected, int n, vector<int> suppliersIDs, vector
         }
     }
 
-    // Test getPastOrders
+    // Test getSoldProducts
     if (selected[3]) {
         cout << "[INFO]Testing getSoldProducts" << endl;
         for (int i = 0; i < n; i++) {
