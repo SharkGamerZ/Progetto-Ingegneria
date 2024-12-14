@@ -18,6 +18,8 @@ public:
     /** @brief Populates the cache with the needed tables (products) */
     void initCache();
 
+    void emptyCache();
+
     /** @brief Checks the existence of the key inside redis
      * @param table The table in the DB
      * @param ID The primary key of the tuple in the DB

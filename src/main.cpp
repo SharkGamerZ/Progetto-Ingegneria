@@ -430,11 +430,9 @@ void chooseTestSupplierOptions() {
 int main() {
     cout<<"[INFO]Initializing DB"<<endl;
     initDB();
-/* 
-    cout<<"[INFO]Initializing Redis"<<endl;
+
+/*     cout<<"[INFO]Initializing Redis"<<endl;*/
     RedisCache cache;
-    cache.initCache();
- */
 
     int choice, n;
     do {
@@ -486,6 +484,7 @@ int main() {
         }
     } while(choice != 9);
 
+    cache.emptyCache();
 }
 
 

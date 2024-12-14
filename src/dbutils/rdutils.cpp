@@ -39,6 +39,10 @@ void RedisCache::initCache() {
     }
 }
 
+void RedisCache::emptyCache() {
+    redisReply* reply = (redisReply*) redisCommand(context, "FLUSHALL");
+}
+
 bool RedisCache::exist(const string& table, const string& ID) {
     string key = "";
 
@@ -51,6 +55,7 @@ bool RedisCache::exist(const string& table, const string& ID) {
         return false;
     }
     bool exists = reply->integer == 1;
+    
     freeReplyObject(reply);
     return exists;
 }
@@ -89,16 +94,24 @@ void RedisCache::set(const string& table, const string& ID, const string& value)
 vector<string> RedisCache::getShippers() {
     unsigned long long cursor = 0;
     vector<string> shippers;
+    
     do {
         // You can experiment with different COUNT (batch size) in the SCAN
         redisReply *reply = (redisReply*) redisCommand(context, "SCAN %llu MATCH shippers*", cursor);
+
+        if(!reply) {
+            cerr << "[ERROR] Failed to execute SCAN command" << endl;
+            return shippers;
+        }
+
         if (reply->type == REDIS_REPLY_ARRAY && reply->elements == 2) {
             // Update the cursor
             cursor = strtoull(reply->element[0]->str, NULL, 10);
 
             // Check if the keys list is empty
             if (reply->element[1]->type == REDIS_REPLY_ARRAY && reply->element[1]->elements == 0) {
-                printf("No shippers in cache.\n");
+                printf("No shippers in cache. Dimensione %ld\n", reply->element[1]->elements);
+
                 return shippers;
             } 
             else {
@@ -122,10 +135,11 @@ vector<string> RedisCache::getShippers() {
             // Return an empty array
             return shippers;
         }
-
+    
         freeReplyObject(reply);
     } while (cursor != 0);
 
+    cout << "[INFO]Shippers in cache." << endl;
     // Returns the tuples of the shippers
     return shippers;
 }
@@ -321,26 +335,58 @@ map<int,int> DataService::getCart(const string& ID) {
 // [WARNING] the data of the shippers in the cache has to be updated, expecially the number of shippings (any update oon the shippings table means that the value of that shipper in the cache has to be updated)
 vector<string> DataService::getAvailableShipper() { 
     vector<string> res;
-    vector<string> shippersC = cache.getShippers();
-
+    vector<string> shippersC;
+    for (int i = 0; i < shippersC.size() && i < 2; i++) {
+            cout << shippersC[i] << endl;
+    }
+    shippersC = cache.getShippers();
+    for (int i = 0; i < shippersC.size() && i < 2; i++) {
+            cout << shippersC[i] << endl;
+    }
     // Checks if there are any shippers in the cache
     if(shippersC.empty()) {
+        cout << "e sono effettivamente vuoto"<< endl;
         unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
         try {        
             // Selects all the available shippers from the DB
             pqxx::work w(*conn);     
-            pqxx::result r = w.exec("SELECT s.userID, u.piva, u.ragione_sociale, u.sede FROM shippers s JOIN users u ON s.userID = u.id WHERE (SELECT COUNT(*) FROM shippings WHERE shipper = s.userID AND state = FALSE) < 10 LIMIT 1");         
+            pqxx::result r = w.exec("SELECT s.userID, u.CF, u.name, u.surname, u.email, s.piva,  COUNT(o.orderID) \
+                FROM shippers s \
+                JOIN users u ON s.userID = u.id \
+                JOIN shippings o ON o.shipper = s.userID \
+                GROUP BY s.userID, u.CF, u.name, u.surname, u.email, s.piva \
+                HAVING COUNT(o.orderID) < 10");
             if (r.empty()) {        
-                cout << "[WARNING]No available shippers" << endl;      
+                cout << "Nessun trasportatore disponibile" << endl;      
                 // Empty res if there aren't any 
-                return res;          
-            }    
+                return res;         
+            }
+
+            // Setting the newly found shippers in cache
+            for (int i = 0; i < r.size(); i++) {
+                string value = "";
+                // Skipps from adding the userID to the value (it's part of the key)
+                for (int j = 1; j < r[i].size(); j++) {
+                    value += r[i][j].c_str();
+                    value += "_";
+                }
+                value.pop_back();
+                cout << value << endl;
+                // Skip setting in cache if already in cache
+                cout << r[i][0].c_str() << endl;
+                if (cache.exist("shippers", r[i][0].c_str())) {
+                    cout << "cache.exist() flag" << endl;
+                    continue;
+                }
+                // Setting in cache
+                cache.set("shippers", r[i][0].c_str(), value);
+                cout << "cache.set() flag" << endl;
+            }
+            
             // Creating the tuple of the available shipper    
             res.insert(res.end(), r[0][0].as<string>());  // userID    
-            res.insert(res.end(), r[0][1].as<string>());  // P_IVA    
-            res.insert(res.end(), r[0][2].as<string>());  // ragione_sociale    
-            res.insert(res.end(), r[0][3].as<string>());  // sede    
-            return res;  
+            res.insert(res.end(), r[0][5].as<string>());  // P_IVA    
+            return res;        
         } 
         catch (const std::exception &e) { 
             cerr << "[ERROR] Error while selecting from the DB: " << e.what() << endl;
@@ -349,6 +395,10 @@ vector<string> DataService::getAvailableShipper() {
     }
     // Else, there are shippers in the cache
     else {
+        cout << "e non sono effettivamente vuoto"<< endl;
+        for (int i = 0; i < shippersC.size() && i < 2; i++) {
+            cout << shippersC[i] << endl;
+        }
         // Iterates over the cached shippers
         for(auto value : shippersC) {
             vector<string> splitValue;
@@ -360,6 +410,7 @@ vector<string> DataService::getAvailableShipper() {
             }
             // Checks if the shipper is available (the number of shippings is the last element)
             if (stoi(splitValue.back()) < 10 ) {
+                cout << "[INFO]Available from cache." << endl;
                 return splitValue;
             }
         }
@@ -368,19 +419,50 @@ vector<string> DataService::getAvailableShipper() {
         try { 
 
             // Selects all the available shippers from the DB                   
-            pqxx::work w(*conn);     
-            pqxx::result r = w.exec("SELECT s.userID, u.piva, u.ragione_sociale, u.sede FROM shippers s JOIN users u ON s.userID = u.id WHERE (SELECT COUNT(*) FROM shippings WHERE shipper = s.userID AND state = FALSE) < 10 LIMIT 1");        
+            pqxx::work w(*conn);/* 
+            w.exec("SELECT s.userID, u.CF, u.name, u.surname, u.email, s.piva,  COUNT(o.orderID) \
+                FROM shippers s \
+                JOIN users u ON s.userID = u.id \
+                JOIN shippings o ON o.shipper = s.userID \
+                GROUP BY s.userID, u.CF, u.name, u.surname, u.email, s.piva \
+                HAVING COUNT(o.orderID) < 10"); */
+            /* pqxx::result r = w.exec("SELECT s.userID, u.name, u.surname, u.email, s.piva, COUNT\
+                FROM shippers s JOIN users u ON s.userID = u.id \
+                WHERE (SELECT COUNT(*) FROM shippings \
+                    WHERE shipper = s.userID AND state = FALSE) < 10 LIMIT 1"); */        
+            pqxx::result r = w.exec("SELECT s.userID, u.CF, u.name, u.surname, u.email, s.piva,  COUNT(o.orderID) \
+                FROM shippers s \
+                JOIN users u ON s.userID = u.id \
+                JOIN shippings o ON o.shipper = s.userID \
+                GROUP BY s.userID, u.CF, u.name, u.surname, u.email, s.piva \
+                HAVING COUNT(o.orderID) < 10");
             if (r.empty()) {        
                 cout << "Nessun trasportatore disponibile" << endl;      
                 // Empty res if there aren't any 
                 return res;         
             }    
+            // Setting the newly found shippers in cache
+            for (int i = 0; i < r.size(); i++) {
+                string value = "";
+                // Skipps from adding the userID to the value (it's part of the key)
+                for (int j = 1; j < r[i].size(); j++) {
+                    value += r[i][j].c_str();
+                    value += "_";
+                }
+                value.pop_back();
+                // Skip setting in cache if already in cache
+                if (cache.exist("shippers", r[i][0].c_str())) {
+                    cout << "cache.exist() flag" << endl;
+                    continue;
+                }
+                // Setting in cache
+                cache.set("shippers", r[i][0].c_str(), value);
+            }
+            
             // Creating the tuple of the available shipper    
-            res.insert(res.end(), r[0][0].as<string>());  // userID    
-            res.insert(res.end(), r[0][1].as<string>());  // P_IVA    
-            res.insert(res.end(), r[0][2].as<string>());  // ragione_sociale    
-            res.insert(res.end(), r[0][3].as<string>());  // sede    
-            return res;  
+            res.insert(res.end(), r[0][0].c_str());  // userID    
+            res.insert(res.end(), r[0][5].c_str());  // P_IVA    
+            return res;
         } 
         catch (const std::exception &e) {    
             cerr << "Error in trasportatore_disponibile: " << e.what() << endl;    
@@ -527,12 +609,12 @@ string DataService::fetchFromDatabase(const string& table, const string& ID) {
         // Query the database for the value corresponding to the key
         pqxx::work w(*conn);
         if (table == "shippers") {
-            result = w.exec("SELECT u.CF, u.name, u.surname, u.email, s.piva, s.ragsoc, s.location, COUNT(o.orderID) \
+            result = w.exec("SELECT u.CF, u.name, u.surname, u.email, s.piva,  COUNT(o.orderID) \
                 FROM shippers s \
                 JOIN users u ON s.userID = u.id \
                 JOIN shippings o ON o.shipper = s.userID \
                 WHERE s.userID = " + ID + " \
-                GROUP BY s.userID, u.CF, u.name, u.surname, u.email, s.piva, s.ragsoc, s.location");
+                GROUP BY s.userID, u.CF, u.name, u.surname, u.email, s.piva");
         }
         else {
             result = w.exec("SELECT * FROM " + table + " WHERE ID = " + w.quote(ID) + "");

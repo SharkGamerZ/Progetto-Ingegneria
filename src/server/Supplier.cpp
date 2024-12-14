@@ -52,9 +52,9 @@ void Supplier::addProduct(string name, string des, float price, int stock) {
         res = w.exec("INSERT INTO products (name, description, supplier, price, stock) \
             VALUES ('"+name+"', \
                 '"+des+"', \
-                '"+to_string(ID)+"', \
-                '"+to_string(price)+"', \
-                '"+to_string(stock)+"') RETURNING id");
+                "+to_string(ID)+", \
+                "+to_string(price)+", \
+                "+to_string(stock)+") RETURNING id");
     }
     catch (const exception &e) {
         cerr << e.what() << endl;
