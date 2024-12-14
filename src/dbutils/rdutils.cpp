@@ -101,22 +101,84 @@ void RedisCache::set(const string& table, const string& ID, const string& value)
     freeReplyObject(reply);
 }
 
+vector<string> RedisCache::scanTable(const string& table) {
+    unsigned long long cursor = 0;
+    vector<string> tuples;
+    
+    do {
+        // You can experiment with different COUNT (batch size) in the SCAN
+        redisReply *reply = (redisReply*) redisCommand(context, "SCAN %llu MATCH %s*", cursor, table.c_str());
+
+        if(!reply) {
+            cerr << "[ERROR] Failed to execute SCAN command" << endl;
+            return tuples;
+        }
+
+        if (reply->type == REDIS_REPLY_ARRAY && reply->elements == 2) {
+            // Update the cursor
+            cursor = strtoull(reply->element[0]->str, NULL, 10);
+
+            // Check if the keys list is empty
+            if (reply->element[1]->type == REDIS_REPLY_ARRAY && reply->element[1]->elements == 0) {
+                printf("No %s in cache. Dimensione %ld\n", table.c_str(), reply->element[1]->elements);
+                
+                for (int i = 0; i < reply->element[1]->elements; i++) {
+                    cout << reply->element[1]->element[i] << endl;
+                }
+
+                return tuples;
+            } 
+            else {
+                // Get the data from the key
+                string id = "";
+                string key = "";
+                
+                for (size_t i = 0; i < reply->element[1]->elements; i++) {
+                    key = reply->element[1]->element[i]->str;
+                    id = key.substr(8, string::npos);
+                    
+                    string row = id + "_" + get(table, id);
+                    tuples.insert(tuples.end(), row);
+                }
+            }
+        } 
+        else {
+            printf("[ERROR]Unexpected reply structure.\n");
+            freeReplyObject(reply);
+            
+            // Return an empty array
+            return tuples;
+        }
+    
+        freeReplyObject(reply);
+    } while (cursor != 0);
+
+    cout << "[INFO]" << table << " in cache." << endl;
+    // Returns the tuples of the shippers
+    return tuples;
+}
+
+
 vector<string> RedisCache::getShippers() {
     unsigned long long cursor = 0;
     vector<string> shippers;
     
+
+
     do {
         // You can experiment with different COUNT (batch size) in the SCAN
         redisReply *reply = (redisReply*) redisCommand(context, "SCAN %llu MATCH shippers*", cursor);
 
         if(!reply) {
             cerr << "[ERROR] Failed to execute SCAN command" << endl;
+            freeReplyObject(reply);
             return shippers;
         }
 
         if (reply->type == REDIS_REPLY_ARRAY && reply->elements == 2) {
             // Update the cursor
             cursor = strtoull(reply->element[0]->str, NULL, 10);
+            cout << "Cursore aggiornato" << cursor << endl;
 
             // Check if the keys list is empty
             if (reply->element[1]->type == REDIS_REPLY_ARRAY && reply->element[1]->elements == 0) {
@@ -126,6 +188,7 @@ vector<string> RedisCache::getShippers() {
                     cout << reply->element[1]->element[i] << endl;
                 }
 
+                freeReplyObject(reply);
                 return shippers;
             } 
             else {
@@ -350,13 +413,9 @@ map<int,int> DataService::getCart(const string& ID) {
 vector<string> DataService::getAvailableShipper() { 
     vector<string> res;
     vector<string> shippersC;
-    for (int i = 0; i < shippersC.size() && i < 2; i++) {
-            cout << shippersC[i] << endl;
-    }
+    // GIUSTAMENTE PRIMA SHIPPERSC È VUOTO
     shippersC = cache.getShippers();
-    for (int i = 0; i < shippersC.size() && i < 2; i++) {
-            cout << shippersC[i] << endl;
-    }
+    // MA OGNI TANTO ANCHE SE RITORNA VUOTO QUA È PIENO E VA ALL'ELSE
     // Checks if there are any shippers in the cache
     if(shippersC.empty()) {
         cout << "e sono effettivamente vuoto"<< endl;
@@ -386,11 +445,10 @@ vector<string> DataService::getAvailableShipper() {
                     value += "_";
                 }
                 value.pop_back();
-                cout << value << endl;
                 // Skip setting in cache if already in cache
                 // A CACHE VUOTA CORRETTAMENTE ESCE SUBITO DALL'IF
-                cout << r[i][0].c_str() << endl;
-                if (cache.exist("shippers", r[i][0].c_str())) {
+/*                 cout << r[i][0].c_str() << endl;
+ */                if (cache.exist("shippers", r[i][0].c_str())) {
                     cout << "cache.exist() flag" << endl;
                     continue;
                 }

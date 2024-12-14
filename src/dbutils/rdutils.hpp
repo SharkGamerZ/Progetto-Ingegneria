@@ -34,6 +34,8 @@ public:
      */
     string get(const string& table, const string& ID);
 
+    vector<string> scanTable(const string& table);
+
     /** @brief Return all the shippers in the cache
      * @return Returns a vector of strings in which each string is the tuple of the shipper
      */
