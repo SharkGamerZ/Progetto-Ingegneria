@@ -32,17 +32,27 @@ public:
     * un utente fa il login
     */
     string login(string username) {
-        // Genera un token univoco
+        // Controlla se lo username ha già un token
+        string existingToken = get("", username);
+
+        if (!existingToken.empty()) {
+            // Se esiste un token lo restituisce
+            cout << "User " << username << " ha il seguente token: " << existingToken << endl;
+            return existingToken;
+        }
+
+        // Genera un nuovo token
         string token = generateToken();
 
-        // Salva il token nella mappa globale
-        //userTokens[username] = token;
+        // Salva il nuovo token utilizzando la funzione set
+        set("", username, { token });
 
-        // Registra il login
-        cout << "User " << username << " logged in with token: " << token << endl;
+
+        cout << "User " << username << " ha il seguente token: " << token << endl;
 
         return token;
     }
+
 
     /**
     * Funzione che permette e registra quando
