@@ -224,7 +224,7 @@ void DataService::setData(const string& table, const string& ID, vector<string> 
 void DataService::addCart(const string& ID, const string& prod, const string& qnt) {
     map<int,int> old = getCart(ID);
     string value = "";
-
+    
     // Checks if the product is already in the cart
     if (old.find(stoi(prod)) != old.end()) {
         // Updates the quantity of the product already in the cart
@@ -248,10 +248,9 @@ void DataService::addCart(const string& ID, const string& prod, const string& qn
 map<int,int> DataService::getCart(const string& ID) {
     // Check if the data exists in the cache controlling the ID of a user
     map<int, int> res;
-    vector<string> vals;
     string prod, qnt;
-    int pos = 0;
     string delimiter = "_";
+    string token;
 
     // Checks if the cart is in the cache
     if (cache.exist("carts", ID)) {
@@ -261,18 +260,19 @@ map<int,int> DataService::getCart(const string& ID) {
         if (data == "") {
             return res;
         }
+
         //Splits on delimiter following the format of the data for carts (productID_quantity ...)
-        while ((pos = data.find(delimiter)) != std::string::npos) {
-            prod = data.substr(0, pos);
-            data.erase(0, pos + delimiter.length());
-            if ((pos = data.find(delimiter) != std::string::npos)) {
-                string qnt = data.substr(0, pos);
-                data.erase(0, pos + delimiter.length());
-                res[stoi(prod)] = stoi(qnt);
+        stringstream ss(data);
+        int i = 0;
+        while (std::getline(ss, token, '_')) {
+            if ((i % 2) == 0) {
+                prod = token;
+            }
+            else {
+                res[stoi(prod)] = stoi(token);
             }
         }
-        res[stoi(prod)] = stoi(data);
-        
+
         return res;
     } 
     else {
@@ -287,16 +287,16 @@ map<int,int> DataService::getCart(const string& ID) {
         cache.set("carts", ID, data);
         
         //Splits on delimiter following the format of the data for carts (productID_quantity ...)
-        while ((pos = data.find(delimiter)) != std::string::npos) {
-            prod = data.substr(0, pos);
-            data.erase(0, pos + delimiter.length());
-            if ((pos = data.find(delimiter) != std::string::npos)) {
-                qnt = data.substr(0, pos);
-                data.erase(0, pos + delimiter.length());
-                res[stoi(prod)] = stoi(qnt);
+        stringstream ss(data);
+        int i = 0;
+        while (std::getline(ss, token, '_')) {
+            if ((i % 2) == 0) {
+                prod = token;
+            }
+            else {
+                res[stoi(prod)] = stoi(token);
             }
         }
-        res[stoi(prod)] = stoi(data);
 
         return res;
     }
