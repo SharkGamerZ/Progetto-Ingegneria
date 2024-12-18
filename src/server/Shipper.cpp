@@ -173,28 +173,12 @@ void Shipper::newShipping(int orderID) {
         int shippingID = -1; // Variabile per memorizzare l'ID della spedizione
         try {
             // Creiamo la nuova spedizione nel database
-            pqxx::result r = w.exec(
-                "INSERT INTO shippings (shipper, handlingtime, state) "
-                "VALUES (" + to_string(shipperID) + ", NOW(), FALSE) "
-                "RETURNING orderID"); // Restituiamo l'ID della spedizione appena inserita
+            w.exec(
+                "INSERT INTO shippings (orderID, shipper, handlingtime, state) "
+                "VALUES (" + to_string(orderID) + ", " + to_string(shipperID) + ", NOW(), FALSE) ");
 
             // Otteniamo l'ID della spedizione appena creata
-            shippingID = r[0][0].as<int>();
-        } catch (const std::exception &e) {
-            logError(e.what());
-            return;
-        }
-        // Aggiungiamo la spedizione alla lista di spedizioni del trasportatore in memoria
-        // TODO
-        /*/t.spedizioni_assegnate.push_back(shippingID);/*/
-
-        try {
-            // Aggiorniamo l'ordine con l'ID della spedizione nel database
-            w.exec("UPDATE orders SET shipping = " + to_string(shippingID) + " WHERE orderID = " + to_string(orderID));
-
-            // Aggiorniamo la relazione tra trasportatore e spedizione nel database (tabella intermedia)
-            w.exec("INSERT INTO shipper_shippings (shipperID, shippingID) VALUES (" +
-                   to_string(shipperID) + ", " + to_string(shippingID) + ")");
+            shippingID = orderID;
         } catch (const std::exception &e) {
             logError(e.what());
             return;
@@ -247,11 +231,9 @@ void Shipper::assignUnassignedOrders() {
                 // Creazione della spedizione
                 pqxx::result r = w.exec(
                     "INSERT INTO shippings (orderID, shipper, handlingtime, state) "
-                    "VALUES (" + to_string(orderId) + ", " + to_string(shipperID) + ", NOW(), FALSE) "
-                    "RETURNING orderID"
-                );
+                    "VALUES (" + to_string(orderId) + ", " + to_string(shipperID) + ", NOW(), FALSE)");
 
-                int shippingId = r[0][0].as<int>(); // id della spedizione appena creata
+                int shippingId = orderId;
                 cout << "Ordine ID: " << orderId << " Trasportatore con ID: " << shipperID
                      << " Spedizione ID: " << shippingId << endl;
 

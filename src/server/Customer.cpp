@@ -140,14 +140,18 @@ void Customer::buyCart() {
 		productStock[p.ID] = p.stock;
 	}
 
-
-
 	// Aggiunge l'ordine al db
 	std::unique_ptr<pqxx::connection> conn = getConnection("ecommerce", "localhost", "ecommerce", "ecommerce");
 
 	pqxx::work w(*conn);
 	try {
-		w.exec("INSERT INTO orders (customer, instant) VALUES (" + to_string(order.customerID) + ", NOW())");
+		pqxx::result r = w.exec(
+			"INSERT INTO orders (customer, instant)"
+			"VALUES (" + to_string(order.customerID) + ", NOW()) "
+			"RETURNING id"); // Restituiamo l'ID della spedizione appena inserita
+
+		// Otteniamo l'ID della spedizione appena creata
+		order.ID = r[0][0].as<int>();
 	} catch (const std::exception &e) {
 		logError(e.what());
 	}

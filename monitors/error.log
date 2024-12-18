@@ -1,0 +1,3289 @@
+[2024-12-18 22:09:02]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(34, 18) already exists.
+
+[2024-12-18 22:09:02]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(34, 77) already exists.
+
+[2024-12-18 22:09:02]Error adding product to cart
+	Product     Well-crafted Board Game has 0 elements in stock, but 1 where requested.
+[2024-12-18 22:09:02]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 13) already exists.
+
+[2024-12-18 22:09:02]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(15, 78) already exists.
+
+[2024-12-18 22:09:02]Error adding product to cart
+	Product     Well-crafted Board Game has 0 elements in stock, but 8 where requested.
+[2024-12-18 22:09:02]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 54) already exists.
+
+[2024-12-18 22:09:02]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 82) already exists.
+
+[2024-12-18 22:09:02]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 40) already exists.
+
+[2024-12-18 22:09:02]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has 2 elements in stock, but 8 where requested.
+[2024-12-18 22:09:02]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 23) already exists.
+
+[2024-12-18 22:09:02]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 77) already exists.
+
+[2024-12-18 22:09:02]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 49) already exists.
+
+[2024-12-18 22:09:02]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 9) already exists.
+
+[2024-12-18 22:09:02]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 72) already exists.
+
+[2024-12-18 22:09:02]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 82) already exists.
+
+[2024-12-18 22:09:02]Error adding product to cart
+	Product     Universal Self-Help Book has 5 elements in stock, but 8 where requested.
+[2024-12-18 22:09:02]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(45, 57) already exists.
+
+[2024-12-18 22:09:02]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 49) already exists.
+
+[2024-12-18 22:09:02]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 13) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(85, 59) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(85, 41) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(85, 72) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(85, 9) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(48, 59) already exists.
+
+[2024-12-18 22:09:03]Error adding product to cart
+	Product     Well-crafted Board Game has 0 elements in stock, but 1 where requested.
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(48, 49) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(94, 23) already exists.
+
+[2024-12-18 22:09:03]Error adding product to cart
+	Product     Universal Self-Help Book has 5 elements in stock, but 6 where requested.
+[2024-12-18 22:09:03]Error adding product to cart
+	Product     Essential Weighted Blanket has 5 elements in stock, but 7 where requested.
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(56, 98) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(91, 76) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(91, 73) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(91, 98) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(91, 54) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 100) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 44) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 73) already exists.
+
+[2024-12-18 22:09:03]Error adding product to cart
+	Product     Universal Self-Help Book has 5 elements in stock, but 6 where requested.
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(52, 13) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(52, 36) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 3) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 41) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 57) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 59) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 3) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(46, 51) already exists.
+
+[2024-12-18 22:09:03]Error adding product to cart
+	Product     Well-crafted Board Game has 0 elements in stock, but 2 where requested.
+[2024-12-18 22:09:03]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has 5 elements in stock, but 6 where requested.
+[2024-12-18 22:09:03]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has 2 elements in stock, but 8 where requested.
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(56, 67) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(56, 57) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(56, 76) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(56, 77) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(56, 69) already exists.
+
+[2024-12-18 22:09:03]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has 5 elements in stock, but 7 where requested.
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(39, 32) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 90) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(1, 36) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(19, 18) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(19, 14) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(19, 18) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 74) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 58) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(81, 13) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(81, 41) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(81, 14) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(85, 69) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(85, 98) already exists.
+
+[2024-12-18 22:09:03]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(85, 98) already exists.
+
+[2024-12-18 22:09:03]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has 2 elements in stock, but 6 where requested.
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 22) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 58) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 98) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 67) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 49) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 67) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 67) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 90) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 58) already exists.
+
+[2024-12-18 22:09:04]Error adding product to cart
+	Product     Well-crafted Board Game has 0 elements in stock, but 6 where requested.
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 72) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 51) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 82) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(5, 33) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(5, 58) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(5, 44) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(81, 67) already exists.
+
+[2024-12-18 22:09:04]Error adding product to cart
+	Product     Universal Self-Help Book has 5 elements in stock, but 7 where requested.
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(81, 59) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(81, 40) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 57) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 13) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 51) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(85, 14) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(85, 32) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(85, 59) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(85, 32) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(85, 59) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(12, 58) already exists.
+
+[2024-12-18 22:09:04]Error adding product to cart
+	Product     Well-crafted Board Game has 0 elements in stock, but 8 where requested.
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(12, 64) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(88, 9) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(88, 57) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(88, 33) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(88, 77) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 59) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 57) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 90) already exists.
+
+[2024-12-18 22:09:04]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has 2 elements in stock, but 4 where requested.
+[2024-12-18 22:09:04]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has 2 elements in stock, but 5 where requested.
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(75, 76) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(75, 59) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(88, 8) already exists.
+
+[2024-12-18 22:09:04]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has 2 elements in stock, but 5 where requested.
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(88, 57) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(52, 8) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(52, 64) already exists.
+
+[2024-12-18 22:09:04]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has 2 elements in stock, but 8 where requested.
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(46, 78) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 76) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 54) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 72) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 73) already exists.
+
+[2024-12-18 22:09:04]Error adding product to cart
+	Product     Universal Self-Help Book has 5 elements in stock, but 9 where requested.
+[2024-12-18 22:09:04]Error adding product to cart
+	Product     Essential Weighted Blanket has 5 elements in stock, but 9 where requested.
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(88, 8) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(45, 76) already exists.
+
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(45, 51) already exists.
+
+[2024-12-18 22:09:04]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has 2 elements in stock, but 9 where requested.
+[2024-12-18 22:09:04]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(45, 69) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(52, 90) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(52, 69) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 22) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 22) already exists.
+
+[2024-12-18 22:09:05]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has 2 elements in stock, but 6 where requested.
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 76) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(39, 14) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(39, 78) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(39, 51) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(1, 41) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(1, 58) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 100) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 100) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 90) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 40) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(81, 41) already exists.
+
+[2024-12-18 22:09:05]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has 2 elements in stock, but 9 where requested.
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(81, 57) already exists.
+
+[2024-12-18 22:09:05]Error adding product to cart
+	Product     Essential Weighted Blanket has 5 elements in stock, but 8 where requested.
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(48, 44) already exists.
+
+[2024-12-18 22:09:05]Error adding product to cart
+	Product     Well-crafted Board Game has 0 elements in stock, but 3 where requested.
+[2024-12-18 22:09:05]Error adding product to cart
+	Product     Well-crafted Board Game has 0 elements in stock, but 6 where requested.
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(15, 58) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(39, 41) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(39, 23) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(42, 90) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(42, 3) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(42, 14) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(42, 77) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(42, 18) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(70, 69) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(70, 59) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(70, 3) already exists.
+
+[2024-12-18 22:09:05]Error adding product to cart
+	Product     Essential Weighted Blanket has 5 elements in stock, but 9 where requested.
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(28, 13) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(28, 22) already exists.
+
+[2024-12-18 22:09:05]Error adding product to cart
+	Product     Well-crafted Board Game has 0 elements in stock, but 7 where requested.
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 13) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 13) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 54) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 51) already exists.
+
+[2024-12-18 22:09:05]Error adding product to cart
+	Product     Well-crafted Board Game has 0 elements in stock, but 8 where requested.
+[2024-12-18 22:09:05]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has 2 elements in stock, but 8 where requested.
+[2024-12-18 22:09:05]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has 5 elements in stock, but 6 where requested.
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(56, 36) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(56, 100) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(85, 76) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(28, 3) already exists.
+
+[2024-12-18 22:09:05]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has 2 elements in stock, but 5 where requested.
+[2024-12-18 22:09:05]Error adding product to cart
+	Product     Well-crafted Board Game has 0 elements in stock, but 4 where requested.
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(5, 44) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(5, 100) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(5, 82) already exists.
+
+[2024-12-18 22:09:05]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(5, 8) already exists.
+
+[2024-12-18 22:09:06]Error adding product to cart
+	Product     Innovative Toaster Oven has 6 elements in stock, but 8 where requested.
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(46, 98) already exists.
+
+[2024-12-18 22:09:06]Error adding product to cart
+	Product     Well-crafted Board Game has 0 elements in stock, but 8 where requested.
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 32) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 76) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 57) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 40) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 58) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(34, 57) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(34, 58) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(34, 58) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(34, 57) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(34, 40) already exists.
+
+[2024-12-18 22:09:06]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has 5 elements in stock, but 8 where requested.
+[2024-12-18 22:09:06]Error adding product to cart
+	Product     Innovative Toaster Oven has 6 elements in stock, but 9 where requested.
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(95, 44) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(1, 18) already exists.
+
+[2024-12-18 22:09:06]Error adding product to cart
+	Product     Essential Weighted Blanket has 5 elements in stock, but 8 where requested.
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(1, 44) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(1, 100) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(5, 54) already exists.
+
+[2024-12-18 22:09:06]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has 2 elements in stock, but 4 where requested.
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(5, 100) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(56, 14) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(56, 14) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(56, 77) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(56, 51) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(56, 57) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(20, 59) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(20, 90) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(20, 14) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(20, 33) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(42, 14) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(42, 14) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(81, 8) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(81, 78) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(81, 100) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(81, 3) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(34, 77) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(34, 77) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(34, 72) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 77) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 78) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 90) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 22) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(88, 8) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(88, 100) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(88, 49) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(88, 90) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(95, 41) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(95, 9) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 32) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 98) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 9) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(19, 58) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(19, 13) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(70, 77) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(70, 98) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(70, 76) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(70, 22) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 41) already exists.
+
+[2024-12-18 22:09:06]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has 5 elements in stock, but 8 where requested.
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 22) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 76) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 22) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(52, 64) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(52, 32) already exists.
+
+[2024-12-18 22:09:06]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has 2 elements in stock, but 4 where requested.
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 8) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 51) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 72) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 72) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 57) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(45, 18) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(45, 9) already exists.
+
+[2024-12-18 22:09:06]Error adding product to cart
+	Product     Well-crafted Board Game has 0 elements in stock, but 4 where requested.
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(46, 49) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(70, 40) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(70, 33) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(70, 65) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(88, 23) already exists.
+
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(88, 76) already exists.
+
+[2024-12-18 22:09:06]Error adding product to cart
+	Product     Universal Self-Help Book has 5 elements in stock, but 8 where requested.
+[2024-12-18 22:09:06]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(34, 82) already exists.
+
+[2024-12-18 22:09:06]Error adding product to cart
+	Product     Well-crafted Board Game has 0 elements in stock, but 9 where requested.
+[2024-12-18 22:09:07]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(1, 8) already exists.
+
+[2024-12-18 22:09:07]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(1, 32) already exists.
+
+[2024-12-18 22:09:07]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(1, 73) already exists.
+
+[2024-12-18 22:09:07]Error adding product to cart
+	Product     Well-crafted Board Game has 0 elements in stock, but 8 where requested.
+[2024-12-18 22:09:07]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(94, 69) already exists.
+
+[2024-12-18 22:09:07]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has 2 elements in stock, but 3 where requested.
+[2024-12-18 22:09:07]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 40) already exists.
+
+[2024-12-18 22:09:07]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 77) already exists.
+
+[2024-12-18 22:09:07]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 98) already exists.
+
+[2024-12-18 22:09:07]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 64) already exists.
+
+[2024-12-18 22:09:07]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(12, 98) already exists.
+
+[2024-12-18 22:09:07]Error adding product to cart
+	Product     Universal Self-Help Book has 5 elements in stock, but 7 where requested.
+[2024-12-18 22:09:07]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(12, 13) already exists.
+
+[2024-12-18 22:09:07]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 40) already exists.
+
+[2024-12-18 22:09:07]Error adding product to cart
+	Product     Essential Weighted Blanket has 5 elements in stock, but 9 where requested.
+[2024-12-18 22:09:07]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has 5 elements in stock, but 6 where requested.
+[2024-12-18 22:09:07]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 98) already exists.
+
+[2024-12-18 22:09:07]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 65) already exists.
+
+[2024-12-18 22:09:07]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 77) already exists.
+
+[2024-12-18 22:09:07]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 78) already exists.
+
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 41 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 9 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 65 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 65 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 67 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 36 not found in the cart of 31
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 98 not found in the cart of 31
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 31
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 40 not found in the cart of 31
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 3 not found in the cart of 31
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 18 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 18 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 82 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 54 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 23 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 65 not found in the cart of 99
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 77 not found in the cart of 99
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 33 not found in the cart of 99
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 3 not found in the cart of 99
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 57 not found in the cart of 99
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 76 not found in the cart of 5
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 3 not found in the cart of 5
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 5
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 51 not found in the cart of 5
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 74 not found in the cart of 5
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 32 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 14 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 98 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 72 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 78 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 98 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 90 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 51 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 100 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 32 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 100 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 22 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 36 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 54 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 36 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 23 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 77 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 84 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 51 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 74 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 67 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 3 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 100 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 23 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 67 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 76 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 77 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 65 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 18 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 76 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 78 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 36 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 74 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 74 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 41 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 58 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 9 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 51 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 73 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 64 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 22 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 40 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 23 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 54 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 23 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 57 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 98 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 84 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 32 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 33 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 73 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 64 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 67 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 23 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 58 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 73 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 41 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 54 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 78 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 65 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 31
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 31
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 36 not found in the cart of 31
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 33 not found in the cart of 31
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 77 not found in the cart of 31
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 74 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 3 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 64 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 72 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 9 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 74 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 82 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 49 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 14 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 3 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 74 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 51 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 65 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 23 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 73 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 9 not found in the cart of 56
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 84 not found in the cart of 56
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 57 not found in the cart of 56
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 67 not found in the cart of 56
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 56
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 36 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 72 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 22 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 49 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 22 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 3 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 78 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 98 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 65 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 78 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 49 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 32 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 18 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 72 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 84 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 67 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 8 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 100 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 100 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 8 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 23 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 78 not found in the cart of 29
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 67 not found in the cart of 29
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 33 not found in the cart of 29
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 40 not found in the cart of 29
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 14 not found in the cart of 29
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 8 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 3 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 72 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 36 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 9 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 51 not found in the cart of 20
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 54 not found in the cart of 20
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 54 not found in the cart of 20
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 20
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 40 not found in the cart of 20
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 98 not found in the cart of 88
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 88
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 9 not found in the cart of 88
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 3 not found in the cart of 88
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 88
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 4
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 54 not found in the cart of 4
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 41 not found in the cart of 4
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 4
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 54 not found in the cart of 4
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 90 not found in the cart of 39
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 41 not found in the cart of 39
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 76 not found in the cart of 39
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 58 not found in the cart of 39
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 8 not found in the cart of 39
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 14 not found in the cart of 29
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 57 not found in the cart of 29
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 29
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 78 not found in the cart of 29
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 72 not found in the cart of 29
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 18 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 18 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 18 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 8 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 9 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 14 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 8 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 82 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 41 not found in the cart of 4
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 98 not found in the cart of 4
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 49 not found in the cart of 4
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 67 not found in the cart of 4
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 32 not found in the cart of 4
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 64 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 90 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 8 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 98 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 65 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 8 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 8 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 72 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 40 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 8 not found in the cart of 12
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 40 not found in the cart of 12
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 57 not found in the cart of 12
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 14 not found in the cart of 12
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 98 not found in the cart of 12
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 84 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 73 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 9 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 77 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 22 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 22 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 57 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 98 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 32 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 84 not found in the cart of 56
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 98 not found in the cart of 56
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 8 not found in the cart of 56
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 32 not found in the cart of 56
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 33 not found in the cart of 56
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 41 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 33 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 65 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 36 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 84 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 51 not found in the cart of 88
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 41 not found in the cart of 88
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 100 not found in the cart of 88
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 88
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 40 not found in the cart of 88
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 36 not found in the cart of 29
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 32 not found in the cart of 29
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 18 not found in the cart of 29
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 29
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 29
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 90 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 49 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 57 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 98 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 36 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 3 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 57 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 57 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 58 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 14 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 57 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 84 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 90 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 72 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 65 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 41 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 74 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 36 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 67 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 67 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 74 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 78 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 49 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 84 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 40 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 49 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 67 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 72 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 67 not found in the cart of 12
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 12
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 58 not found in the cart of 12
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 32 not found in the cart of 12
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 82 not found in the cart of 12
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 78 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 41 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 40 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 58 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 78 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 84 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 51 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 77 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 22 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 58 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 64 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 77 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 65 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 18 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 84 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 54 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 100 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 67 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 22 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 84 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 49 not found in the cart of 28
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 28
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 78 not found in the cart of 28
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 77 not found in the cart of 28
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 3 not found in the cart of 28
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 36 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 8 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 23 not found in the cart of 45
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 22 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 65 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 33 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 22 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 28
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 65 not found in the cart of 28
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 8 not found in the cart of 28
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 77 not found in the cart of 28
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 78 not found in the cart of 28
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 57 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 90 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 78 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 18 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 72 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 67 not found in the cart of 5
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 72 not found in the cart of 5
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 5
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 5
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 5
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 58 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 98 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 49 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 18 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 58 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 77 not found in the cart of 48
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 58 not found in the cart of 48
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 9 not found in the cart of 48
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 76 not found in the cart of 48
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 49 not found in the cart of 48
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 99
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 54 not found in the cart of 99
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 3 not found in the cart of 99
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 14 not found in the cart of 99
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 51 not found in the cart of 99
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 73 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 57 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 49 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 32 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 73 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 32 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 41 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 84 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 82 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 78 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 36 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 64 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 9 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 57 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 36 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 18 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 22 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 51 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 78 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 100 not found in the cart of 85
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 67 not found in the cart of 46
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 57 not found in the cart of 46
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 40 not found in the cart of 46
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 72 not found in the cart of 46
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 73 not found in the cart of 46
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 32 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 3 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 72 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 67 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 51 not found in the cart of 94
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 54 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 84 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 3 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 14 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 18 not found in the cart of 15
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 67 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 98 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 3 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 67 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 100 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 36 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 51 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 58 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 51 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 41 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 22 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 73 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 51 not found in the cart of 95
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 40 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 77 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 58 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 76 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 49 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 65 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 98 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 3 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 22 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 82 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 74 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 51 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 82 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 32 not found in the cart of 75
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 9 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 51 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 36 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 8 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 65 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 32 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 33 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 90 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 84 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 3 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 78 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 49 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 49 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 21
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 58 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 41 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 57 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 77 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 9 not found in the cart of 46
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 46
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 41 not found in the cart of 46
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 23 not found in the cart of 46
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 46
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 76 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 23 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 77 not found in the cart of 81
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 18 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 18 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 72 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 76 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 34
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 100 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 33 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 64 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 42
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 23 not found in the cart of 39
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 39
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 78 not found in the cart of 39
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 13 not found in the cart of 39
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 65 not found in the cart of 39
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 76 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 9 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 72 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 74 not found in the cart of 70
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 41 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 22 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 57 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 51 not found in the cart of 1
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 100 not found in the cart of 28
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 54 not found in the cart of 28
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 77 not found in the cart of 28
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 57 not found in the cart of 28
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 40 not found in the cart of 28
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 44 not found in the cart of 48
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 41 not found in the cart of 48
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 77 not found in the cart of 48
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 100 not found in the cart of 48
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 58 not found in the cart of 48
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 8 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 22 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 8 not found in the cart of 52
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 82 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 33 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 18 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 9 not found in the cart of 91
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 74 not found in the cart of 20
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 14 not found in the cart of 20
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 14 not found in the cart of 20
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 20
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 69 not found in the cart of 20
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 23 not found in the cart of 20
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 65 not found in the cart of 20
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 33 not found in the cart of 20
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 41 not found in the cart of 20
+[2024-12-18 22:09:07]Error removing product from cart
+	Product with ID 59 not found in the cart of 20
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.225369, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.243264, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.261764, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.278989, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.293928, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.311977, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.32995, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.347578, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.364089, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.377956, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.394777, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.410032, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.42542, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.439838, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.456474, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.475223, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.490339, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.508757, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.524782, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.539036, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.554241, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.569783, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.585756, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.601432, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.617304, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.633525, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.649068, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.665167, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.679191, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.697399, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.715198, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.729174, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.745962, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.764711, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.783003, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.79891, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.813968, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.830014, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.847094, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.864222, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.88051, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.896324, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.913171, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.929443, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.945887, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.964652, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.982413, f).
+
+[2024-12-18 22:09:07]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:07.999518, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.017387, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.034132, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.052382, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.06994, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.088721, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.106988, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.124184, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.141997, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.15777, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.175824, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.19534, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.21553, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.235823, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.252559, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.27158, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.288263, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.307349, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.323505, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.340122, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.356721, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.37438, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.388686, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.406216, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.425218, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.442299, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.46094, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.477322, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.493811, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.510587, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.526639, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.54786, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.571758, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.592361, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.609204, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.62749, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.646816, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.667326, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.684718, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.70785, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.732364, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.74767, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.763701, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.782288, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.799131, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.816875, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.833486, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.849687, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.872113, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.896143, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.915845, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.938279, f).
+
+[2024-12-18 22:09:08]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:09:08.962917, f).
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Portable Diaper Bag has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Waterproof Instant Pot has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Waterproof Instant Pot has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Reusable Protein Shaker Bottle has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Functional Milk Frother has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Waterproof Instant Pot has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Stylish Hair Dryer has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 18) already exists.
+
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 49) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Lightweight LED String Lights has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Smart Facial Cleanser has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Customizable Portable SSD has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Practical Baby Bottles has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Customizable Portable SSD has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Lightweight LED String Lights has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Smart Facial Cleanser has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Practical Baby Bottles has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Functional Milk Frother has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Sturdy Dog Leash has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Vintage Cutting Board has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Customizable Portable SSD has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Innovative Toaster Oven has 6 elements in stock, but 7 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Sturdy Dog Leash has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Universal Self-Help Book has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Sturdy Dog Leash has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Practical Baby Bottles has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(34, 58) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Lightweight LED String Lights has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Essential Weighted Blanket has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Stylish Hair Dryer has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Innovative Toaster Oven has 6 elements in stock, but 8 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Smart Facial Cleanser has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(28, 41) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Sturdy Dog Leash has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(19, 54) already exists.
+
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(19, 82) already exists.
+
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(19, 59) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Vintage Cutting Board has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Premium Pull-Up Bar has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Customizable Portable SSD has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(42, 59) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Premium Pull-Up Bar has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(42, 58) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Sturdy Dog Leash has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Customizable Portable SSD has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Portable Diaper Bag has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Portable Diaper Bag has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Stylish Hair Dryer has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Waterproof Instant Pot has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Elegant Memory Foam Pillow has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Practical Baby Bottles has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(20, 44) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Functional Milk Frother has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Waterproof Instant Pot has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Essential Weighted Blanket has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(1, 58) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Practical Baby Bottles has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(19, 54) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Natural Resistance Bands Set has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(19, 14) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Vintage Cutting Board has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Universal Self-Help Book has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     High-performance Measuring Cups has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(48, 41) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Lightweight LED String Lights has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(88, 58) already exists.
+
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(88, 22) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Waterproof Instant Pot has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 22) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Waterproof Instant Pot has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Premium Pull-Up Bar has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Elegant Memory Foam Pillow has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Sturdy Dog Leash has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Essential Weighted Blanket has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Portable Diaper Bag has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Elegant Memory Foam Pillow has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Natural Resistance Bands Set has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Vintage Cutting Board has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 9) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Practical Baby Bottles has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 82) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Portable Diaper Bag has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Lightweight LED String Lights has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Smart Facial Cleanser has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Portable Diaper Bag has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Innovative Toaster Oven has 6 elements in stock, but 8 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     High-performance Measuring Cups has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Functional Milk Frother has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(52, 41) already exists.
+
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 54) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 41) already exists.
+
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 98) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Reusable Protein Shaker Bottle has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Premium Pull-Up Bar has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(42, 14) already exists.
+
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 54) already exists.
+
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 22) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Smart Facial Cleanser has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Vintage Cutting Board has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Stylish Hair Dryer has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Natural Resistance Bands Set has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Sturdy Dog Leash has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Elegant Memory Foam Pillow has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Stylish Hair Dryer has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Reusable Protein Shaker Bottle has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Premium Pull-Up Bar has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Premium Pull-Up Bar has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Smart Facial Cleanser has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 49) already exists.
+
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 49) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 82) already exists.
+
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 84) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Reusable Protein Shaker Bottle has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 54) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Customizable Portable SSD has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Premium Pull-Up Bar has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(42, 49) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Waterproof Instant Pot has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(52, 82) already exists.
+
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(52, 98) already exists.
+
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(52, 100) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Elegant Memory Foam Pillow has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Premium Pull-Up Bar has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Waterproof Instant Pot has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(5, 100) already exists.
+
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(5, 100) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Sturdy Dog Leash has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Sturdy Dog Leash has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Elegant Memory Foam Pillow has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Universal Self-Help Book has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Smart Facial Cleanser has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(56, 98) already exists.
+
+[2024-12-18 22:15:34]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(56, 22) already exists.
+
+[2024-12-18 22:15:34]Error adding product to cart
+	Product     Natural Resistance Bands Set has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 98) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 82) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Smart Facial Cleanser has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(15, 54) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     High-performance Measuring Cups has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(95, 22) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(95, 54) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Portable Diaper Bag has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Reusable Protein Shaker Bottle has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(28, 98) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Essential Weighted Blanket has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(34, 98) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Customizable Portable SSD has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Smart Facial Cleanser has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 98) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Functional Milk Frother has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Functional Milk Frother has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Vintage Cutting Board has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(42, 59) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Stylish Hair Dryer has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Customizable Portable SSD has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sturdy Dog Leash has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Vintage Cutting Board has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(19, 98) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Smart Facial Cleanser has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Reusable Protein Shaker Bottle has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Smart Facial Cleanser has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(46, 100) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Waterproof Instant Pot has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     High-performance Measuring Cups has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Essential Weighted Blanket has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Essential Weighted Blanket has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(81, 44) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(81, 14) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Stylish Hair Dryer has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(81, 58) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 58) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Universal Self-Help Book has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 14) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Portable Diaper Bag has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(5, 100) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Customizable Portable SSD has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Vintage Cutting Board has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(46, 100) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(46, 98) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Customizable Portable SSD has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(95, 54) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Vintage Cutting Board has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Portable Diaper Bag has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Waterproof Instant Pot has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(70, 14) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(70, 59) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(5, 58) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Portable Diaper Bag has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Elegant Memory Foam Pillow has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Waterproof Instant Pot has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Portable Diaper Bag has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Waterproof Instant Pot has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Functional Milk Frother has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(12, 44) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Natural Resistance Bands Set has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Essential Weighted Blanket has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Premium Pull-Up Bar has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Essential Weighted Blanket has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Customizable Portable SSD has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Waterproof Instant Pot has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Premium Pull-Up Bar has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Natural Resistance Bands Set has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Essential Weighted Blanket has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(1, 58) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Waterproof Instant Pot has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Elegant Memory Foam Pillow has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Vintage Cutting Board has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Customizable Portable SSD has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sturdy Dog Leash has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(85, 9) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(85, 14) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(85, 58) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(85, 59) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Practical Baby Bottles has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Essential Weighted Blanket has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(48, 41) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Waterproof Instant Pot has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Vintage Cutting Board has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(1, 22) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Universal Self-Help Book has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Elegant Memory Foam Pillow has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Essential Weighted Blanket has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Reusable Protein Shaker Bottle has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(28, 49) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(28, 18) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(12, 58) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     High-performance Measuring Cups has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(12, 54) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Practical Baby Bottles has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Essential Weighted Blanket has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Universal Self-Help Book has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Essential Weighted Blanket has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(46, 54) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Practical Baby Bottles has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Vintage Cutting Board has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Reusable Protein Shaker Bottle has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     High-performance Measuring Cups has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(19, 100) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(19, 54) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Essential Weighted Blanket has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Smart Facial Cleanser has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Universal Self-Help Book has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(85, 98) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Premium Pull-Up Bar has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Elegant Memory Foam Pillow has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Premium Pull-Up Bar has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Stylish Hair Dryer has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Premium Pull-Up Bar has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Elegant Memory Foam Pillow has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(20, 59) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Practical Baby Bottles has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Elegant Memory Foam Pillow has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(20, 59) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Universal Self-Help Book has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Customizable Portable SSD has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(42, 59) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(52, 18) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(52, 18) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Elegant Memory Foam Pillow has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Elegant Memory Foam Pillow has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Vintage Cutting Board has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Lightweight LED String Lights has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(48, 41) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Elegant Memory Foam Pillow has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Functional Milk Frother has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Functional Milk Frother has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Vintage Cutting Board has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 18) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Customizable Portable SSD has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Lightweight LED String Lights has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 98) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 98) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Lightweight LED String Lights has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(29, 44) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Universal Self-Help Book has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Innovative Toaster Oven has 6 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sturdy Dog Leash has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(12, 44) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sturdy Dog Leash has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(94, 18) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(94, 54) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Universal Self-Help Book has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(1, 49) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(1, 41) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Universal Self-Help Book has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(94, 98) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Practical Baby Bottles has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(94, 18) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(94, 98) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Lightweight LED String Lights has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(46, 49) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Elegant Memory Foam Pillow has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Practical Baby Bottles has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Functional Milk Frother has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Innovative Toaster Oven has 6 elements in stock, but 7 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(48, 41) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Reusable Protein Shaker Bottle has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Reusable Protein Shaker Bottle has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(39, 41) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(39, 98) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Premium Pull-Up Bar has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Reusable Protein Shaker Bottle has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Lightweight LED String Lights has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Portable Diaper Bag has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Reusable Protein Shaker Bottle has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Practical Baby Bottles has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(88, 14) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(70, 59) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Vintage Cutting Board has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(70, 44) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(70, 82) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Practical Baby Bottles has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Vintage Cutting Board has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(94, 98) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sleek Aquarium Starter Kit has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Portable Diaper Bag has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     High-performance Measuring Cups has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(99, 98) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Elegant Memory Foam Pillow has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Smart Facial Cleanser has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sturdy Dog Leash has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Stylish Hair Dryer has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 82) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Essential Weighted Blanket has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sturdy Dog Leash has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 82) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(95, 84) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Smart Facial Cleanser has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(95, 9) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Reusable Protein Shaker Bottle has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     High-performance Measuring Cups has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Premium Pull-Up Bar has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Versatile Cast Iron Skillet has -1 elements in stock, but 5 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Reusable Protein Shaker Bottle has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Elegant Memory Foam Pillow has -1 elements in stock, but 4 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Sturdy Dog Leash has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Innovative Toaster Oven has 6 elements in stock, but 8 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Portable Diaper Bag has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 14) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Essential Weighted Blanket has -1 elements in stock, but 6 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(46, 54) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Essential Weighted Blanket has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(34, 41) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(34, 98) already exists.
+
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(34, 58) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Lightweight LED String Lights has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(34, 98) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Natural Resistance Bands Set has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(4, 59) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Portable Diaper Bag has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Universal Self-Help Book has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Practical Baby Bottles has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:35]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 9) already exists.
+
+[2024-12-18 22:15:35]Error adding product to cart
+	Product     Smart Facial Cleanser has -1 elements in stock, but 7 where requested.
+[2024-12-18 22:15:36]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(21, 100) already exists.
+
+[2024-12-18 22:15:36]Error adding product to cart
+	Product     Vintage Cutting Board has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:15:36]Error adding product to cart
+	Product     Premium Pull-Up Bar has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:36]Error adding product to cart
+	Product     Eco-friendly High Heels has -1 elements in stock, but 3 where requested.
+[2024-12-18 22:15:36]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(31, 82) already exists.
+
+[2024-12-18 22:15:36]Error adding product to cart
+	Product     Sturdy Dog Leash has -1 elements in stock, but 1 where requested.
+[2024-12-18 22:15:36]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(1, 44) already exists.
+
+[2024-12-18 22:15:36]ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(1, 22) already exists.
+
+[2024-12-18 22:15:36]Error adding product to cart
+	Product     Portable Diaper Bag has -1 elements in stock, but 8 where requested.
+[2024-12-18 22:15:36]Error adding product to cart
+	Product     Smart Facial Cleanser has -1 elements in stock, but 2 where requested.
+[2024-12-18 22:15:58]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:15:58.640434, f).
+
+[2024-12-18 22:15:58]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:15:58.659761, f).
+
+[2024-12-18 22:15:58]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:15:58.677214, f).
+
+[2024-12-18 22:15:58]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:15:58.694328, f).
+
+[2024-12-18 22:15:58]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:15:58.712066, f).
+
+[2024-12-18 22:15:58]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:15:58.727057, f).
+
+[2024-12-18 22:15:58]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:15:58.741443, f).
+
+[2024-12-18 22:15:58]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:15:58.75856, f).
+
+[2024-12-18 22:15:58]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:15:58.777144, f).
+
+[2024-12-18 22:15:58]ERROR:  null value in column "orderid" of relation "shippings" violates not-null constraint
+DETAIL:  Failing row contains (null, 13, 2024-12-18 22:15:58.794825, f).
+
+[2024-12-18 22:20:32]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(-939014752) is not present in table "orders".
+
+[2024-12-18 22:20:32]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(-939014752) is not present in table "orders".
+
+[2024-12-18 22:20:32]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(-939014752) is not present in table "orders".
+
+[2024-12-18 22:20:32]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(-939014752) is not present in table "orders".
+
+[2024-12-18 22:20:32]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(-939014752) is not present in table "orders".
+
+[2024-12-18 22:20:32]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(-939014752) is not present in table "orders".
+
+[2024-12-18 22:20:32]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(-939014752) is not present in table "orders".
+
+[2024-12-18 22:20:32]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(-939014752) is not present in table "orders".
+
+[2024-12-18 22:20:32]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(-939014752) is not present in table "orders".
+
+[2024-12-18 22:20:32]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(-939014752) is not present in table "orders".
+
+[2024-12-18 22:26:45]No data found for ID in db: 74
+[2024-12-18 22:26:45]ERROR:  column "orderid" does not exist
+LINE 1: ...ders (customer, instant)VALUES (74, NOW()) RETURNING orderID
+                                                                ^
+
+[2024-12-18 22:26:45]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(1953653091) is not present in table "orders".
+
+[2024-12-18 22:26:45]ERROR:  column "orderid" does not exist
+LINE 1: ...ders (customer, instant)VALUES (77, NOW()) RETURNING orderID
+                                                                ^
+
+[2024-12-18 22:26:46]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(1971832224) is not present in table "orders".
+
+[2024-12-18 22:26:46]ERROR:  column "orderid" does not exist
+LINE 1: ...ders (customer, instant)VALUES (17, NOW()) RETURNING orderID
+                                                                ^
+
+[2024-12-18 22:26:46]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(1971832224) is not present in table "orders".
+
+[2024-12-18 22:26:46]No data found for ID in db: 35
+[2024-12-18 22:26:46]ERROR:  column "orderid" does not exist
+LINE 1: ...ders (customer, instant)VALUES (35, NOW()) RETURNING orderID
+                                                                ^
+
+[2024-12-18 22:26:46]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(1953653091) is not present in table "orders".
+
+[2024-12-18 22:26:46]ERROR:  column "orderid" does not exist
+LINE 1: ...ders (customer, instant)VALUES (92, NOW()) RETURNING orderID
+                                                                ^
+
+[2024-12-18 22:26:46]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(1971832224) is not present in table "orders".
+
+[2024-12-18 22:26:46]ERROR:  column "orderid" does not exist
+LINE 1: ...ders (customer, instant)VALUES (94, NOW()) RETURNING orderID
+                                                                ^
+
+[2024-12-18 22:26:46]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(1971832224) is not present in table "orders".
+
+[2024-12-18 22:26:46]ERROR:  column "orderid" does not exist
+LINE 1: ...ders (customer, instant)VALUES (55, NOW()) RETURNING orderID
+                                                                ^
+
+[2024-12-18 22:26:46]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(1971832224) is not present in table "orders".
+
+[2024-12-18 22:26:46]ERROR:  column "orderid" does not exist
+LINE 1: ...ders (customer, instant)VALUES (26, NOW()) RETURNING orderID
+                                                                ^
+
+[2024-12-18 22:26:46]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(1971832224) is not present in table "orders".
+
+[2024-12-18 22:26:46]ERROR:  column "orderid" does not exist
+LINE 1: ...ders (customer, instant)VALUES (98, NOW()) RETURNING orderID
+                                                                ^
+
+[2024-12-18 22:26:46]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(1971832224) is not present in table "orders".
+
+[2024-12-18 22:26:46]ERROR:  column "orderid" does not exist
+LINE 1: ...ders (customer, instant)VALUES (66, NOW()) RETURNING orderID
+                                                                ^
+
+[2024-12-18 22:26:46]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(1971832224) is not present in table "orders".
+
+[2024-12-18 22:27:54]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(101) is not present in table "orders".
+
+[2024-12-18 22:27:54]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(102) is not present in table "orders".
+
+[2024-12-18 22:27:54]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(103) is not present in table "orders".
+
+[2024-12-18 22:27:54]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(104) is not present in table "orders".
+
+[2024-12-18 22:27:54]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(105) is not present in table "orders".
+
+[2024-12-18 22:27:54]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(106) is not present in table "orders".
+
+[2024-12-18 22:27:54]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(107) is not present in table "orders".
+
+[2024-12-18 22:27:54]No data found for ID in db: 24
+[2024-12-18 22:27:54]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(108) is not present in table "orders".
+
+[2024-12-18 22:27:54]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(109) is not present in table "orders".
+
+[2024-12-18 22:27:54]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(110) is not present in table "orders".
+
+[2024-12-18 22:31:55]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(101) is not present in table "orders".
+
+[2024-12-18 22:31:55]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(102) is not present in table "orders".
+
+[2024-12-18 22:31:55]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(103) is not present in table "orders".
+
+[2024-12-18 22:31:55]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(104) is not present in table "orders".
+
+[2024-12-18 22:31:55]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(105) is not present in table "orders".
+
+[2024-12-18 22:31:55]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(106) is not present in table "orders".
+
+[2024-12-18 22:31:55]No data found for ID in db: 7
+[2024-12-18 22:31:55]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(107) is not present in table "orders".
+
+[2024-12-18 22:31:55]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(108) is not present in table "orders".
+
+[2024-12-18 22:31:55]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(109) is not present in table "orders".
+
+[2024-12-18 22:31:55]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(110) is not present in table "orders".
+
