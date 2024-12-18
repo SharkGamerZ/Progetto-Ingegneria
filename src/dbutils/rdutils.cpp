@@ -7,10 +7,10 @@ RedisCache::RedisCache() {
     context = redisConnect(host.c_str(), port);
     if (context == nullptr || context->err) {
         if (context) {
-            cerr << "Connection error: " << context->errstr << endl;
+            logError(context->errstr);
             redisFree(context);
         } else {
-            cerr << "Connection error: Can't allocate redis context" << endl;
+            logError("Connection error: Can't allocate redis context");
         }
         exit(1);  // Exit on error
     }
@@ -34,7 +34,7 @@ void RedisCache::initCache() {
         }
         w.commit();
     } catch (const std::exception &e) {
-        cerr << e.what() << std::endl;
+        logError(e.what());
         throw e;
     }
 }
@@ -42,13 +42,13 @@ void RedisCache::initCache() {
 void RedisCache::emptyCache() {
     redisReply* reply = (redisReply*) redisCommand(context, "FLUSHALL");
     if (!reply) {
-        std::cerr << "Failed to execute FLUSHALL command" << std::endl;
+        logError("Failed to execute FLUSHALL command");
         return;
     }
     if (reply->type == REDIS_REPLY_STATUS && std::string(reply->str) == "OK") {
         std::cout << "Cache successfully emptied." << std::endl;
     } else {
-        std::cerr << "Failed to empty cache. Reply: " << reply->str << std::endl;
+        logError("Failed to empty cache.");
     }
     freeReplyObject(reply);
 }
@@ -61,7 +61,7 @@ bool RedisCache::exist(const string& table, const string& ID) {
 
     redisReply* reply = (redisReply*)redisCommand(context, "EXISTS %s", key.c_str());
     if (!reply) {
-        cerr << "Failed to execute EXISTS command" << endl;
+        logError("Failed to execute EXISTS command");
         return false;
     }
     bool exists = reply->integer == 1;
@@ -95,7 +95,7 @@ void RedisCache::set(const string& table, const string& ID, const string& value)
     key.append(ID);
     redisReply* reply = (redisReply*)redisCommand(context, "SET %s %s", key.c_str(), value.c_str());
     if (!reply || reply->type != REDIS_REPLY_STATUS || string(reply->str) != "OK") {
-        cerr << "Failed to set cache" << endl;
+        logError("Failed to set cache");
     }
     freeReplyObject(reply);
 }
@@ -108,7 +108,7 @@ vector<string> RedisCache::scanTable(const string& table) {
         // Execute the SCAN command with a MATCH pattern for shippers
         redisReply *reply = (redisReply*) redisCommand(context, "SCAN %llu MATCH %s*", cursor, table.c_str());
         if (!reply) {
-            cerr << "[ERROR] Failed to execute SCAN command" << endl;
+            logError("Failed to execute SCAN command");
             freeReplyObject(reply);
             return rows;
         }
@@ -141,7 +141,7 @@ vector<string> RedisCache::scanTable(const string& table) {
                 cout << "[DEBUG]No keys found in this batch." << endl;
             }
         } else {
-            cerr << "[ERROR]Unexpected reply structure." << endl;
+            logError("Failed to execute SCAN command");
             freeReplyObject(reply);
             return rows;
         }
@@ -348,7 +348,7 @@ vector<string> DataService::getAvailableShipper() {
             return res;        
         } 
         catch (const std::exception &e) { 
-            cerr << "[ERROR] Error while selecting from the DB: " << e.what() << endl;
+            logError(e.what());
             throw e;
         }
     }
@@ -411,7 +411,7 @@ vector<string> DataService::getAvailableShipper() {
             return res;
         } 
         catch (const std::exception &e) {    
-            cerr << "Error in trasportatore_disponibile: " << e.what() << endl;    
+            logError(e.what());
             throw e;  
         }
     }
@@ -523,7 +523,7 @@ string DataService::fetchCartFromDatabase(const string& ID) {
         pqxx::result result = w.exec("SELECT * FROM carts WHERE customer = " + w.quote(ID) + "");
 
         if (result.empty()) {
-            cerr << "No data found for ID in db: " << ID << endl;
+            logError("No data found for ID in db: " + ID);
             return "";
         }
 
@@ -541,7 +541,7 @@ string DataService::fetchCartFromDatabase(const string& ID) {
         return data;
 
     } catch (const exception &e) {
-        cerr << "Error fetching from database: " << e.what() << endl;
+        logError(e.what());
         return "";
     }
 }
@@ -566,7 +566,7 @@ string DataService::fetchFromDatabase(const string& table, const string& ID) {
             result = w.exec("SELECT * FROM " + table + " WHERE ID = " + w.quote(ID) + "");
         }
         if (result.empty()) {
-            cerr << "No data found for ID in db: " << ID << endl;
+            logError("No data found for ID in db: " + ID);
             return "";
         }
 
@@ -585,7 +585,7 @@ string DataService::fetchFromDatabase(const string& table, const string& ID) {
         return data;
 
     } catch (const exception &e) {
-        cerr << "Error fetching from database: " << e.what() << endl;
+        logError(e.what());
         return "";
     }
 }

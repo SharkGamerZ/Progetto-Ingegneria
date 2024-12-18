@@ -18,6 +18,11 @@ void Customer::addProductToCart(int productID, int qta) {
 	cout<<"[INFO] Adding product with ID "<<productID<<" to the cart of "<<this->ID<<endl;
 	vector<string> productString = ds.getData("products", to_string(productID));
 	Product p;
+
+	// Prints the productString
+	for (int i = 0; i < productString.size(); i++) {
+		cout << "[Product]" << productString[i] << endl;
+	}
 	
 	p.ID = productID;
 	p.name = productString[0];
@@ -27,7 +32,7 @@ void Customer::addProductToCart(int productID, int qta) {
 	p.stock = stoi(productString[4]);
 
 	if (p.stock < qta) {
-		cerr<<"[ERROR] Error adding product to cart.\n\tProduct "<<p.name<<" has "<<p.stock<< " elements in stock, but "<<qta<<" where requested."<<endl;
+		logError("Error adding product to cart\n\tProduct " + p.name + " has " + to_string(p.stock) + " elements in stock, but " + to_string(qta) + " where requested.");
 		return;
 	}
 	cart = ds.getCart(to_string(this->ID));
@@ -51,7 +56,7 @@ void Customer::addProductToCart(int productID, int qta) {
 		w.exec(query);
 		w.commit();
 	} catch (const std::exception &e) {
-		cerr << e.what() << endl;
+		logError(e.what());
 	}
 
 	// Salva su redis
@@ -63,12 +68,12 @@ void Customer::removeProductFromCart(int productID, int qta) {
 	// Controlla se l'articolo è presente nel carrello
 	// e se la quantità da rimuovere è minore o uguale a quella presente
 	if (this->cart.count(productID) == 0) {
-		cerr<<"[ERROR] Error removing product from cart\n\tProduct with ID "<<productID<<" not found in the cart of "<<this->ID<<endl;
+		logError("Error removing product from cart\n\tProduct with ID " + to_string(productID) + " not found in the cart of " + to_string(this->ID));
 		return;
 	}
 
 	if (this->cart[productID] < qta) {
-		cerr<<"[ERROR] Error removing product from cart\n\tProduct with ID "<<productID<<" has "<<this->cart[productID]<<" elements in the cart, but "<<qta<<" where requested to remove."<<endl;
+		logError("Error removing product from cart\n\tProduct with ID " + to_string(productID) + " has " + to_string(this->cart[productID]) + " elements in the cart, but " + to_string(qta) + " where requested to remove.");
 		return;
 	}
 
@@ -89,14 +94,14 @@ void Customer::removeProductFromCart(int productID, int qta) {
 			w.exec("DELETE FROM carts WHERE customer = " + to_string(this->ID) + " AND product = " + to_string(productID));
 			w.commit();
 		} catch (const std::exception &e) {
-			cerr << e.what() << endl;
+			logError(e.what());
 		}
 	} else {
 		try {
 			w.exec("UPDATE carts SET quantity = " + to_string(this->cart[productID]) + " WHERE customer = " + to_string(this->ID) + " AND product = " + to_string(productID));
 			w.commit();
 		} catch (const std::exception &e) {
-			cerr << e.what() << endl;
+			logError(e.what());
 		}
 	}
 }
@@ -144,7 +149,7 @@ void Customer::buyCart() {
 	try {
 		w.exec("INSERT INTO orders (customer, instant) VALUES (" + to_string(order.customerID) + ", NOW())");
 	} catch (const std::exception &e) {
-		cerr << e.what() << endl;
+		logError(e.what());
 	}
 
 	// Aggiunge i vari prodotti all'ordine
@@ -156,7 +161,7 @@ void Customer::buyCart() {
 			// Aggiunge all'ultimo ordine inserito il prodotto
 			w.exec("INSERT INTO order_products (orderID, productID, quantity) VALUES ((SELECT MAX(ID) FROM orders), " + to_string(productID) + ", " + to_string(qta) + ")");
 		} catch (const std::exception &e) {
-			cerr << e.what() << endl;
+			logError(e.what());
 		}
 	}
 
@@ -181,7 +186,7 @@ vector<Order> Customer::getPastOrders () {
 	try {
 		r = w.exec(query);
 	} catch (const std::exception &e) {
-		cerr << e.what() << endl;
+		logError(e.what());
 	}
 
 	// Transforma il risultato della query in un array di ordini

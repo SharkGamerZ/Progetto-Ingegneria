@@ -1,10 +1,4 @@
 #include "main.hpp"
-#include "dbutils/rdutils.hpp"
-#include <cstdio>
-#include <string>
-#include <vector>
-#include <unistd.h>
-#include <termios.h>
 
 vector<int> customersID, shippersID, suppliersID, shippingsID, orderID, productsID; // ID degli utenti
 void populateDB(int n) {
@@ -31,7 +25,7 @@ void populateDB(int n) {
 
         } catch (const std::exception &e) {
             continue;
-            cerr << e.what() << endl;
+            logError(e.what());
         }
 
         w.commit();
@@ -83,7 +77,7 @@ void populateDB(int n) {
             } catch (const std::exception &e) {
                 // Se gia' esiste quella partita iva, riprova
                 continue;
-                cerr << e.what() << endl;
+                logError(e.what());
                 success = false;
             }
             w.commit();
@@ -118,7 +112,7 @@ void populateDB(int n) {
             productsID.push_back(i+1);
 
         } catch (const std::exception &e) {
-            cerr << e.what() << endl;
+            logError(e.what());
         }
         w.commit();
     }
@@ -150,7 +144,7 @@ void populateDB(int n) {
 
         } catch (const std::exception &e) {
             continue;
-            cerr << e.what() << endl;
+            logError(e.what());
         }
         w.commit();
     }
@@ -178,7 +172,7 @@ void populateDB(int n) {
                     w.exec(query);
                 } catch (const std::exception &e) {
                     continue;
-                    cerr << e.what() << endl;
+                    logError(e.what());
                     success = false;
                 }
             w.commit();
@@ -234,7 +228,7 @@ void populateDB(int n) {
 
             } catch (const std::exception &e) {
                 continue;
-                cerr << e.what() << endl;
+                logError(e.what());
                 success = false;
             }
         w.commit();

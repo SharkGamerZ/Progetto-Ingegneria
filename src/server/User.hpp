@@ -1,4 +1,5 @@
 #include "utils.hpp"
+#include "../dbutils/rdutils.hpp"
 #include "../dbutils/pgutils.hpp"
 #include <iostream>
 #include <string>
@@ -32,20 +33,18 @@ public:
     * un utente fa il login
     */
     string login(string username) {
+        RedisCache rc;
+
         // Controlla se lo username ha già un token
-        string existingToken = get("", username);
+        string token = rc.get("", username);
 
-        if (!existingToken.empty()) {
-            // Se esiste un token lo restituisce
-            cout << "User " << username << " ha il seguente token: " << existingToken << endl;
-            return existingToken;
+        if (token.empty()) {
+            // Genera un nuovo token
+            token = generateToken();
+
+            // Salva il nuovo token utilizzando la funzione set
+            rc.set("", username, { token });
         }
-
-        // Genera un nuovo token
-        string token = generateToken();
-
-        // Salva il nuovo token utilizzando la funzione set
-        set("", username, { token });
 
 
         cout << "User " << username << " ha il seguente token: " << token << endl;

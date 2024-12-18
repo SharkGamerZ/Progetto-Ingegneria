@@ -35,7 +35,7 @@ void Supplier::addStock(int ID, int q) {
         w.exec("UPDATE products SET stock = " + data.back() + " WHERE id = " + to_string(ID));
     } 
     catch (const exception &e) {
-        cerr << e.what() << endl;
+        logError(e.what());
         throw e;
     }
 
@@ -58,7 +58,7 @@ void Supplier::addProduct(string name, string des, float price, int stock) {
                 "+to_string(stock)+") RETURNING id");
     }
     catch (const exception &e) {
-        cerr << e.what() << endl;
+        logError(e.what());
         throw e;
     }
 
@@ -101,7 +101,7 @@ void Supplier::setDiscontinuedProduct(int ID) {
         w.exec("UPDATE products SET stock = " + data.back() + " WHERE id = " + to_string(ID));
     } 
     catch (const exception &e) {
-        cerr << e.what() << endl;
+        logError(e.what());
         throw e;
     }
 
@@ -132,7 +132,7 @@ vector<vector<string>> Supplier::getSoldProducts() {
         }
     }
     catch (const exception &e) {
-        cerr << e.what() << endl;
+        logError(e.what());
         throw e;
     }
     return soldProducts;
