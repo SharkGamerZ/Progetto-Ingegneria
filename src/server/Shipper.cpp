@@ -30,7 +30,7 @@ std::vector<int> Shipper::getShippings() {
         // Completamento della transazione
         w.commit();
     } catch (const std::exception &e) {
-        logError(e.what());
+        logError(__FILE__, __LINE__, e.what());
         // In caso di errore ritorniamo un vettore vuoto
     }
 
@@ -59,7 +59,7 @@ std::vector<int> Shipper::getActiveShippings() {
             activeShippings.push_back(shipmentID);
         }
     } catch (const std::exception &e) {
-        logError(e.what());
+        logError(__FILE__, __LINE__, e.what());
     }
 
     return activeShippings;
@@ -82,17 +82,17 @@ void Shipper::shippingDelivered(int shippingID) {
             "SELECT state FROM shippings WHERE orderID = " + std::to_string(shippingID));
 
         if (r.empty()) {
-            logError("Errore: spedizione con ID " + std::to_string(shippingID) + " non trovata.");
+            logError(__FILE__, __LINE__, "Errore: spedizione con ID " + std::to_string(shippingID) + " non trovata.");
             return;
         }
 
         bool state = r[0][0].as<bool>();
         if (state) {
-            logError("Errore: spedizione con ID " + std::to_string(shippingID) + " già consegnata.");
+            logError(__FILE__, __LINE__, "Errore: spedizione con ID " + std::to_string(shippingID) + " già consegnata.");
             return;
         }
     } catch (const std::exception &e) {
-        logError(e.what());
+        logError(__FILE__, __LINE__, e.what());
         return;
     }
 
@@ -108,7 +108,7 @@ void Shipper::shippingDelivered(int shippingID) {
         std::cout << "[SUCCESS]La spedizione con ID " << shippingID << " è stata segnata come consegnata." << std::endl;
 
     } catch (const std::exception &e) {
-        logError(e.what());
+        logError(__FILE__, __LINE__, e.what());
     }
 }
 
@@ -144,7 +144,7 @@ int Shipper::trasportatore_disponibile() {
         return shipperID_int;  // Restituisci solo l'ID (intero) del trasportatore
     }
     catch (const std::exception &e) {
-        logError(e.what());
+        logError(__FILE__, __LINE__, e.what());
         return -1;  // In caso di errore, restituiamo un ID di errore
     }
 }
@@ -162,7 +162,7 @@ void Shipper::newShipping(int orderID) {
 
     // Se non troviamo un trasportatore disponibile
     if (shipperID == -1) {
-        logError("Nessun trasportatore disponibile!");
+        logError(__FILE__, __LINE__, "Nessun trasportatore disponibile!");
         return;
     }
 
@@ -180,7 +180,7 @@ void Shipper::newShipping(int orderID) {
             // Otteniamo l'ID della spedizione appena creata
             shippingID = orderID;
         } catch (const std::exception &e) {
-            logError(e.what());
+            logError(__FILE__, __LINE__, e.what());
             return;
         }
 
@@ -190,7 +190,7 @@ void Shipper::newShipping(int orderID) {
         cout << "Nuova spedizione creata con ID: " << shippingID << endl;
 
     } catch (const std::exception &e) {
-        logError(e.what());
+        logError(__FILE__, __LINE__, e.what());
         return;
     }
 }
@@ -242,7 +242,7 @@ void Shipper::assignUnassignedOrders() {
                        to_string(shipperID) + ", " + to_string(shippingId) + ")");
 
             } catch (const std::exception &e) {
-                logError("Impossibile assegnare l'ordine con ID: " + to_string(orderId) +
+                logError(__FILE__, __LINE__, "Impossibile assegnare l'ordine con ID: " + to_string(orderId) +
                          " al trasportatore con ID: " + to_string(shipperID) + " - " + e.what());
                 // Potresti voler eseguire un rollback qui se è necessario fermare la transazione per l'ordine
                 // w.abort(); // Ad esempio se vuoi fermare l'inserimento dell'ordine corrente
@@ -255,7 +255,7 @@ void Shipper::assignUnassignedOrders() {
         cout << "Tutti gli ordini sono stati assegnati correttamente." << endl;
 
     } catch (const std::exception &e) {
-        logError("Errore generale in assignUnassignedOrders: " + string(e.what()));
+        logError(__FILE__, __LINE__, "Errore generale in assignUnassignedOrders: " + string(e.what()));
     }
 }
 

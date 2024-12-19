@@ -25,7 +25,7 @@ void populateDB(int n) {
 
         } catch (const std::exception &e) {
             continue;
-            logError(e.what());
+            logError(__FILE__, __LINE__, e.what());
         }
 
         w.commit();
@@ -77,7 +77,7 @@ void populateDB(int n) {
             } catch (const std::exception &e) {
                 // Se gia' esiste quella partita iva, riprova
                 continue;
-                logError(e.what());
+                logError(__FILE__, __LINE__, e.what());
                 success = false;
             }
             w.commit();
@@ -112,7 +112,7 @@ void populateDB(int n) {
             productsID.push_back(i+1);
 
         } catch (const std::exception &e) {
-            logError(e.what());
+            logError(__FILE__, __LINE__, e.what());
         }
         w.commit();
     }
@@ -144,7 +144,7 @@ void populateDB(int n) {
 
         } catch (const std::exception &e) {
             continue;
-            logError(e.what());
+            logError(__FILE__, __LINE__, e.what());
         }
         w.commit();
     }
@@ -172,7 +172,7 @@ void populateDB(int n) {
                     w.exec(query);
                 } catch (const std::exception &e) {
                     continue;
-                    logError(e.what());
+                    logError(__FILE__, __LINE__, e.what());
                     success = false;
                 }
             w.commit();
@@ -228,7 +228,7 @@ void populateDB(int n) {
 
             } catch (const std::exception &e) {
                 continue;
-                logError(e.what());
+                logError(__FILE__, __LINE__, e.what());
                 success = false;
             }
         w.commit();

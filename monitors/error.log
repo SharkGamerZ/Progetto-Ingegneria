@@ -3287,3 +3287,194 @@ DETAIL:  Key (orderid)=(109) is not present in table "orders".
 [2024-12-18 22:31:55]ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
 DETAIL:  Key (orderid)=(110) is not present in table "orders".
 
+[2024-12-18 22:46:24]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(101) is not present in table "orders".
+
+[2024-12-18 22:46:24]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(102) is not present in table "orders".
+
+[2024-12-18 22:46:24]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(103) is not present in table "orders".
+
+[2024-12-18 22:46:24]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(104) is not present in table "orders".
+
+[2024-12-18 22:46:24]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(105) is not present in table "orders".
+
+[2024-12-18 22:46:24]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(106) is not present in table "orders".
+
+[2024-12-18 22:46:24]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(107) is not present in table "orders".
+
+[2024-12-18 22:46:24]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(108) is not present in table "orders".
+
+[2024-12-18 22:46:24]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(109) is not present in table "orders".
+
+[2024-12-18 22:46:24]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(110) is not present in table "orders".
+
+[2024-12-18 22:47:02]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 59: ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(53, 35) already exists.
+
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 59: ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(53, 47) already exists.
+
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 59: ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(74, 18) already exists.
+
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 35: Error adding product to cart
+	Product     Robust Dog Bed has -1 elements in stock, but 9 where requested.
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 59: ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(12, 32) already exists.
+
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 35: Error adding product to cart
+	Product     Elegant Reusable Water Bottle has 6 elements in stock, but 9 where requested.
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 59: ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(57, 26) already exists.
+
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 59: ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(57, 66) already exists.
+
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 35: Error adding product to cart
+	Product     Elegant Reusable Water Bottle has 6 elements in stock, but 9 where requested.
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 35: Error adding product to cart
+	Product     Elegant Reusable Water Bottle has 6 elements in stock, but 7 where requested.
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 35: Error adding product to cart
+	Product     Elegant Reusable Water Bottle has 6 elements in stock, but 8 where requested.
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 59: ERROR:  duplicate key value violates unique constraint "carts_pkey"
+DETAIL:  Key (customer, product)=(43, 71) already exists.
+
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 26 not found in the cart of 94
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 99 not found in the cart of 94
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 9 not found in the cart of 94
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 44 not found in the cart of 94
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 65 not found in the cart of 94
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 34 not found in the cart of 28
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 25 not found in the cart of 28
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 25 not found in the cart of 28
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 48 not found in the cart of 28
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 37 not found in the cart of 28
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 66 not found in the cart of 16
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 100 not found in the cart of 16
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 37 not found in the cart of 16
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 71 not found in the cart of 16
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 71 not found in the cart of 16
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 65 not found in the cart of 42
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 98 not found in the cart of 42
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 91 not found in the cart of 42
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 47 not found in the cart of 42
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 97 not found in the cart of 42
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 9 not found in the cart of 80
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 29 not found in the cart of 80
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 92 not found in the cart of 80
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 97 not found in the cart of 80
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 66 not found in the cart of 80
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 65 not found in the cart of 31
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 48 not found in the cart of 31
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 9 not found in the cart of 31
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 37 not found in the cart of 31
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 46 not found in the cart of 31
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 37 not found in the cart of 57
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 26 not found in the cart of 57
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 37 not found in the cart of 57
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 32 not found in the cart of 57
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 73 not found in the cart of 57
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 100 not found in the cart of 12
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 34 not found in the cart of 12
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 73 not found in the cart of 12
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 100 not found in the cart of 12
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 100 not found in the cart of 12
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 47 not found in the cart of 96
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 71 not found in the cart of 96
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 66 not found in the cart of 96
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 58 not found in the cart of 96
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 13 not found in the cart of 96
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 34 not found in the cart of 2
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 100 not found in the cart of 2
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 66 not found in the cart of 2
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 82 not found in the cart of 2
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Customer.cpp at line 71: Error removing product from cart
+	Product with ID 58 not found in the cart of 2
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(111) is not present in table "orders".
+
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(112) is not present in table "orders".
+
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(113) is not present in table "orders".
+
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(114) is not present in table "orders".
+
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(115) is not present in table "orders".
+
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(116) is not present in table "orders".
+
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(117) is not present in table "orders".
+
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(118) is not present in table "orders".
+
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(119) is not present in table "orders".
+
+[2024-12-18 22:47:03]Error in /home/marcio/Documenti/Uni/Ingegneria/Progetto-Ingegneria/src/server/Shipper.cpp at line 183: ERROR:  insert or update on table "shippings" violates foreign key constraint "shippings_orderid_fkey"
+DETAIL:  Key (orderid)=(120) is not present in table "orders".
+

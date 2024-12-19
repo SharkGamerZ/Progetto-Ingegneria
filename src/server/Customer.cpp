@@ -32,7 +32,7 @@ void Customer::addProductToCart(int productID, int qta) {
 	p.stock = stoi(productString[4]);
 
 	if (p.stock < qta) {
-		logError("Error adding product to cart\n\tProduct " + p.name + " has " + to_string(p.stock) + " elements in stock, but " + to_string(qta) + " where requested.");
+		logError(__FILE__, __LINE__, "Error adding product to cart\n\tProduct " + p.name + " has " + to_string(p.stock) + " elements in stock, but " + to_string(qta) + " where requested.");
 		return;
 	}
 	cart = ds.getCart(to_string(this->ID));
@@ -56,7 +56,7 @@ void Customer::addProductToCart(int productID, int qta) {
 		w.exec(query);
 		w.commit();
 	} catch (const std::exception &e) {
-		logError(e.what());
+		logError(__FILE__, __LINE__, e.what());
 	}
 
 	// Salva su redis
@@ -68,12 +68,12 @@ void Customer::removeProductFromCart(int productID, int qta) {
 	// Controlla se l'articolo è presente nel carrello
 	// e se la quantità da rimuovere è minore o uguale a quella presente
 	if (this->cart.count(productID) == 0) {
-		logError("Error removing product from cart\n\tProduct with ID " + to_string(productID) + " not found in the cart of " + to_string(this->ID));
+		logError(__FILE__, __LINE__, "Error removing product from cart\n\tProduct with ID " + to_string(productID) + " not found in the cart of " + to_string(this->ID));
 		return;
 	}
 
 	if (this->cart[productID] < qta) {
-		logError("Error removing product from cart\n\tProduct with ID " + to_string(productID) + " has " + to_string(this->cart[productID]) + " elements in the cart, but " + to_string(qta) + " where requested to remove.");
+		logError(__FILE__, __LINE__, "Error removing product from cart\n\tProduct with ID " + to_string(productID) + " has " + to_string(this->cart[productID]) + " elements in the cart, but " + to_string(qta) + " where requested to remove.");
 		return;
 	}
 
@@ -94,14 +94,14 @@ void Customer::removeProductFromCart(int productID, int qta) {
 			w.exec("DELETE FROM carts WHERE customer = " + to_string(this->ID) + " AND product = " + to_string(productID));
 			w.commit();
 		} catch (const std::exception &e) {
-			logError(e.what());
+			logError(__FILE__, __LINE__, e.what());
 		}
 	} else {
 		try {
 			w.exec("UPDATE carts SET quantity = " + to_string(this->cart[productID]) + " WHERE customer = " + to_string(this->ID) + " AND product = " + to_string(productID));
 			w.commit();
 		} catch (const std::exception &e) {
-			logError(e.what());
+			logError(__FILE__, __LINE__, e.what());
 		}
 	}
 }
@@ -153,7 +153,7 @@ void Customer::buyCart() {
 		// Otteniamo l'ID della spedizione appena creata
 		order.ID = r[0][0].as<int>();
 	} catch (const std::exception &e) {
-		logError(e.what());
+		logError(__FILE__, __LINE__, e.what());
 	}
 
 	// Aggiunge i vari prodotti all'ordine
@@ -165,7 +165,7 @@ void Customer::buyCart() {
 			// Aggiunge all'ultimo ordine inserito il prodotto
 			w.exec("INSERT INTO order_products (orderID, productID, quantity) VALUES ((SELECT MAX(ID) FROM orders), " + to_string(productID) + ", " + to_string(qta) + ")");
 		} catch (const std::exception &e) {
-			logError(e.what());
+			logError(__FILE__, __LINE__, e.what());
 		}
 	}
 
@@ -190,7 +190,7 @@ vector<Order> Customer::getPastOrders () {
 	try {
 		r = w.exec(query);
 	} catch (const std::exception &e) {
-		logError(e.what());
+		logError(__FILE__, __LINE__, e.what());
 	}
 
 	// Transforma il risultato della query in un array di ordini

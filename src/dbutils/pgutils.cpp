@@ -13,7 +13,7 @@ std::unique_ptr<pqxx::connection> getConnection(string dbname, string host, stri
         std::unique_ptr<pqxx::connection> conn = std::make_unique<pqxx::connection>("dbname=" + dbname + " user=" + user + " password=" + password + " host=" + host + " port=5432");
         return conn;
     } catch (const std::exception &e) {
-        logError(e.what());
+        logError(__FILE__, __LINE__, e.what());
         throw e;
     }
 }
@@ -37,7 +37,7 @@ void createRole(std::unique_ptr<pqxx::connection> &conn, string role) {
             return;
         }
     } catch (const std::exception &e) {
-        logError(e.what());
+        logError(__FILE__, __LINE__, e.what());
         throw e;
     }
 
@@ -47,7 +47,7 @@ void createRole(std::unique_ptr<pqxx::connection> &conn, string role) {
         w.exec("CREATE ROLE " + role + " NOSUPERUSER CREATEDB NOCREATEROLE INHERIT LOGIN NOREPLICATION NOBYPASSRLS PASSWORD 'ecommerce'");
         w.commit();
     } catch (const std::exception &e) {
-        logError(e.what());
+        logError(__FILE__, __LINE__, e.what());
         throw e;
     }
 }
@@ -62,7 +62,7 @@ void dropRole(std::unique_ptr<pqxx::connection> &conn, string role) {
             return;
         }
     } catch (const std::exception &e) {
-        logError(e.what());
+        logError(__FILE__, __LINE__, e.what());
         throw e;
     }
 
@@ -72,7 +72,7 @@ void dropRole(std::unique_ptr<pqxx::connection> &conn, string role) {
         w.exec("DROP ROLE " + role);
         w.commit();
     } catch (const std::exception &e) {
-        logError(e.what());
+        logError(__FILE__, __LINE__, e.what());
         throw e;
     }
 }
@@ -160,7 +160,7 @@ void createTables(std::unique_ptr<pqxx::connection> &conn) {
 
         w.commit();
     } catch (const std::exception &e) {
-        logError(e.what());
+        logError(__FILE__, __LINE__, e.what());
         throw e;
     }
 
@@ -176,7 +176,7 @@ void createDatabase(std::unique_ptr<pqxx::connection> &conn) {
             return;
         }
     } catch (const std::exception &e) {
-        logError(e.what());
+        logError(__FILE__, __LINE__, e.what());
         throw e;
     }
 
@@ -185,7 +185,7 @@ void createDatabase(std::unique_ptr<pqxx::connection> &conn) {
         pqxx::nontransaction w(*conn);
         w.exec("CREATE DATABASE ecommerce");
     } catch (const std::exception &e) {
-        logError(e.what());
+        logError(__FILE__, __LINE__, e.what());
         throw e;
     }
 }
@@ -204,7 +204,7 @@ void dropDatabase(std::unique_ptr<pqxx::connection> &conn) {
             return;
         }
     } catch (const std::exception &e) {
-        logError(e.what());
+        logError(__FILE__, __LINE__, e.what());
         throw e;
     }
 
@@ -213,7 +213,7 @@ void dropDatabase(std::unique_ptr<pqxx::connection> &conn) {
         pqxx::nontransaction w(*conn);
         w.exec("DROP DATABASE ecommerce");
     } catch (const std::exception &e) {
-        logError(e.what());
+        logError(__FILE__, __LINE__, e.what());
         throw e;
     }
 }

@@ -70,6 +70,6 @@ public:
 
 
 // Function to log errors onto file 
-void logError (string error);
+void logError (string filename, int line, string error);
 
 
